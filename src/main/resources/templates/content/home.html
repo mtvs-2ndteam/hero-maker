@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="content" layout:fragment="content">
+    <h2>This is Content</h2>
+    <hr>
+    <table border="1">
+        <tr>
+            <th>userNo</th>
+            <th>id</th>
+            <th>name</th>
+            <th>phone</th>
+            <th>email</th>
+        </tr>
+        <th:block th:each="user : ${userList}">
+            <tr>
+                <td th:text="${ user.userNo }"></td>
+                <td th:text="${ user.id }"></td>
+                <td th:text="${ user.name }"></td>
+                <td th:text="${ user.phone }"></td>
+                <td th:text="${ user.email }"></td>
+            </tr>
+        </th:block>
+    </table>
+</div>
+</body>
+</html>
