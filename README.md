@@ -30,7 +30,7 @@
 
 |  [김대철](https://github.com/tmddusgood)  |  [김지수](https://github.com/Code-Angler)  |  [박현섭](https://github.com/BlossomWhale)  |  [이유열](https://github.com/mangdo)  |   [조만제](https://github.com/mangdo)  | 
 | :----------: |  :--------:  |  :---------: |  :---------: |  :---------: | 
-| <img src="https://user-images.githubusercontent.com/70243735/131817966-37cd30fa-41e3-4806-a5dc-30b639b55114.png" width="150px" alt="승연"/> | <img src="https://user-images.githubusercontent.com/70243735/131817957-e3c4e507-2013-4289-a97a-0f532dbf5b69.jpg" width="100px" alt="성경"/> | <img src="https://user-images.githubusercontent.com/70243735/131817961-fe1ad30c-4ba5-44e4-9f09-1de7ea8ae7ab.png" width="100px" alt="태강"/> | <img src="https://user-images.githubusercontent.com/70243735/131817954-a68398bc-c7c1-4b9d-9044-02e09d4b61db.png" width="130px" alt="민서"> |
+
 
 
 <br>
