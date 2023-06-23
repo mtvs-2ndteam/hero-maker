@@ -1,4 +1,4 @@
 package com.contrabass.heromaker.domain.service;
 
-public class DomainService {
+public class CharacterDomainService {
 }

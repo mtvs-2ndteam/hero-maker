@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface Mapper {
+public interface UserMapper {
     // 회원가입
     User insertUser();
 
@@ -14,9 +14,6 @@ public interface Mapper {
     User getOneUser();
 
     // 모든 유저 조회
-//    @Select("SELECT * FROM USER")
     List<User> getUserList();
-
-    // 특정 유저의 모든 캐릭터 조회
-//    List<Character> getAllCharacters();
+    
 }
