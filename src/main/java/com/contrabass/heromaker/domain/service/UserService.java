@@ -1,6 +1,6 @@
 package com.contrabass.heromaker.domain.service;
 
-import com.contrabass.heromaker.application.dto.User;
+import com.contrabass.heromaker.domain.entity.User;
 import com.contrabass.heromaker.domain.repository.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

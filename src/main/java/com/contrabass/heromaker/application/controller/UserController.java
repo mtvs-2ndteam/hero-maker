@@ -1,6 +1,6 @@
 package com.contrabass.heromaker.application.controller;
 
-import com.contrabass.heromaker.application.dto.User;
+import com.contrabass.heromaker.domain.entity.User;
 import com.contrabass.heromaker.domain.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,4 +28,5 @@ public class UserController {
 
         return mav;
     }
+
 }
