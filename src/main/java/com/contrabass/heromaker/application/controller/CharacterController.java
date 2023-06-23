@@ -1,4 +1,4 @@
 package com.contrabass.heromaker.application.controller;
 
-public class Controller {
+public class CharacterController {
 }
