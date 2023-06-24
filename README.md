@@ -73,5 +73,6 @@
 
 ## 6. 설계
 ### [ERD] <br>
-<img width="368" alt="image" src="https://github.com/mtvs-2ndteam/hero-maker/assets/98208452/1f63a77a-5bab-44ca-8769-1715d8f28493"><br>
+<img width="344" alt="image" src="https://github.com/mtvs-2ndteam/hero-maker/assets/98208452/6ec92445-94a7-456b-930b-049bd868bd2a">
+<br>
 * 유저 시나리오 - ;사진;
