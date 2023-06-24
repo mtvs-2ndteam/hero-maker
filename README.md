@@ -10,9 +10,7 @@
 <br>
 
 ## 1. Hero Maker 소개
-> Phaser3과 자바를 이용한 용사 육성 게임
-
-지난 프로젝트에서 지적받은 점을 개선하기 위해 
+> '프린세스 메이커' 진행 방식을 활용한 용사 육성 게임
 
 
 ## 2. Team Contrabass 소개
@@ -30,7 +28,7 @@
 
 |  [김대철](https://github.com/horry10)  |  [김지수](https://github.com/jisoo9603)  |  [박현섭](https://github.com/kukenya)  |  [이유열](https://github.com/youyeul301)  |   [조만제](https://github.com/fakerdeft)  | 
 | :----------: |  :--------:  |  :---------: |  :---------: |  :---------: | 
-
+| <img src="https://github.com/mtvs-2ndteam/hero-maker/assets/98208452/52948f4a-3f38-4ae0-aad5-fdd89b188d9d" width="150px" alt="대철"/> | <img src="https://github.com/mtvs-2ndteam/hero-maker/assets/98208452/b9bea054-1137-4d9c-98c7-c34baf43a480" width="150px" alt="지수"/> | <img src="https://github.com/mtvs-2ndteam/hero-maker/assets/98208452/599c894f-4ffd-4c5d-92a0-6ad80627162a" width="150px" alt="현섭"/> | <img src="https://github.com/mtvs-2ndteam/hero-maker/assets/98208452/c03b4d83-bb3b-4710-ad8c-7cdf4ed633b8" width="150px" alt="유열"/> | <img src="https://github.com/mtvs-2ndteam/hero-maker/assets/98208452/8a82452d-a971-47b1-882b-eb0cb3dc8f39" width="150px" alt="만제"/> 
 
 
 <br>
