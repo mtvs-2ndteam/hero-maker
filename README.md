@@ -28,7 +28,7 @@
 <br>
 
 
-|  [김대철](https://github.com/tmddusgood)  |  [김지수](https://github.com/Code-Angler)  |  [박현섭](https://github.com/BlossomWhale)  |  [이유열](https://github.com/mangdo)  |   [조만제](https://github.com/mangdo)  | 
+|  [김대철](https://github.com/horry10)  |  [김지수](https://github.com/jisoo9603)  |  [박현섭](https://github.com/kukenya)  |  [이유열](https://github.com/youyeul301)  |   [조만제](https://github.com/fakerdeft)  | 
 | :----------: |  :--------:  |  :---------: |  :---------: |  :---------: | 
 
 
