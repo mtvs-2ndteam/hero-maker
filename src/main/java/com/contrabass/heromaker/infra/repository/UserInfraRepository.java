@@ -1,5 +1,6 @@
 package com.contrabass.heromaker.infra.repository;
 
+import com.contrabass.heromaker.application.dto.UserDTO;
 import com.contrabass.heromaker.domain.entity.User;
 import com.contrabass.heromaker.domain.repository.UserMapper;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -13,7 +14,7 @@ import java.util.List;
 @org.apache.ibatis.annotations.Mapper
 public class UserInfraRepository implements UserMapper {
     private final SqlSessionTemplate sqlSession;
-    private final UserMapper User;
+
 
     @Autowired
     public UserInfraRepository(SqlSessionTemplate sqlSession) {
@@ -21,29 +22,25 @@ public class UserInfraRepository implements UserMapper {
     }
 
     @Override
-    public User insertUser() {
-        List<User> members = User.findAllMembers();
+    public int insertUser(UserDTO userDto) {
+//        List<User> members = User.findAllMembers();
+//
+//        List<User> memberDTOs = new ArrayList<>();
+//        for(User  member : members) {
+//            memberDTOs.add(member);
+//        }
+//
+//        System.out.println("");
 
-        List<User> memberDTOs = new ArrayList<>();
-        for(User  member : members) {
-            memberDTOs.add(member);
-        }
-
-        System.out.println("");
-
-        return member;
+        return sqlSession.insert("UserMapper.insertUser", userDto);
 
     }
 
     @Override
     public User getOneUser() {
 
-            sqlSession.
-            if(User == null) {
-                throw new IllegalStateException("해당하는 id의 회원이 없습니다.");
-            }
 
-            return User;
+        return null;
     }
 
     @Override

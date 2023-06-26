@@ -1,5 +1,6 @@
 package com.contrabass.heromaker.domain.repository;
 
+import com.contrabass.heromaker.application.dto.UserDTO;
 import com.contrabass.heromaker.domain.entity.User;
 import org.springframework.stereotype.Repository;
 
@@ -8,7 +9,7 @@ import java.util.List;
 @Repository
 public interface UserMapper {
     // 회원가입
-    User insertUser();
+    int insertUser(UserDTO userDto);
 
     // 특정 유저 조회
     User getOneUser();

@@ -2,6 +2,9 @@ package com.contrabass.heromaker.infra.service;
 
 import com.contrabass.heromaker.application.dto.UserDTO;
 
-public class MemberService {
-    public String loginCheck(UserDTO dto,)
+import javax.servlet.http.HttpSession;
+
+public interface MemberService {
+    public String loginCheck(UserDTO dto, HttpSession session);
+    public void logout(HttpSession session);
 }

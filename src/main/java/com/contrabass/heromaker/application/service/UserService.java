@@ -1,6 +1,7 @@
 package com.contrabass.heromaker.application.service;
 
 import com.contrabass.heromaker.application.dto.UserDTO;
+import com.contrabass.heromaker.domain.entity.User;
 import com.contrabass.heromaker.domain.repository.UserMapper;
 import com.contrabass.heromaker.domain.service.UserDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,10 @@ public class UserService {
         this.userDomainService = userDomainService;
         this.userMapper = userMapper;
         this.userDTO = userDTO;
+    }
+
+    public int insertUser(UserDTO userDTO){
+        return userMapper.insertUser(userDTO);
     }
 
     public List<UserDTO> getUserList() {

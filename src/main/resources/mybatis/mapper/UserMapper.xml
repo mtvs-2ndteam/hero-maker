@@ -16,4 +16,8 @@
         SELECT *
         FROM USER;
     </select>
+
+    <insert id="insertUser">
+        INSERT INTO USER_TBL
+    </insert>
 </mapper>
