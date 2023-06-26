@@ -6,12 +6,14 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
 @org.apache.ibatis.annotations.Mapper
 public class UserInfraRepository implements UserMapper {
     private final SqlSessionTemplate sqlSession;
+    private final UserMapper User;
 
     @Autowired
     public UserInfraRepository(SqlSessionTemplate sqlSession) {
@@ -20,12 +22,28 @@ public class UserInfraRepository implements UserMapper {
 
     @Override
     public User insertUser() {
-        return null;
+        List<User> members = User.findAllMembers();
+
+        List<User> memberDTOs = new ArrayList<>();
+        for(User  member : members) {
+            memberDTOs.add(member);
+        }
+
+        System.out.println("findAllMembers Service method call..");
+
+        return member;
+
     }
 
     @Override
     public User getOneUser() {
-        return null;
+
+
+            if(User == null) {
+                throw new IllegalStateException("해당하는 id의 회원이 없습니다.");
+            }
+
+            return User;
     }
 
     @Override
