@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CharacterMapper">
+    <resultMap type="Character" id="CharacterList">
+        <result property="characterNo" column="characterNo"/>
+        <result property="userNo" column="userNo"/>
+        <result property="nickName" column="nickName"/>
+        <result property="hp" column="hp"/>
+        <result property="str" column="str"/>
+        <result property="mage" column="mage"/>
+        <result property="weaponPoint" column="weaponPoint"/>
+        <result property="reputation" column="reputation"/>
+        <result property="ending" column="ending"/>
+        <result property="present" column="present"/>
+        <result property="date" column="date"/>
+    </resultMap>
+
+    <select id="getCharacterList" resultMap="CharacterList">
+        SELECT *
+        FROM CHARACTER;
+    </select>
+</mapper>

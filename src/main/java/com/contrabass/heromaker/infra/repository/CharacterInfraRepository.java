@@ -1,15 +1,21 @@
 package com.contrabass.heromaker.infra.repository;
 
+import com.contrabass.heromaker.domain.entity.Character;
 import com.contrabass.heromaker.domain.repository.CharacterMapper;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 @org.apache.ibatis.annotations.Mapper
 public class CharacterInfraRepository implements CharacterMapper {
+    private final SqlSessionTemplate sqlSession;
+
+    public CharacterInfraRepository(SqlSessionTemplate sqlSession) {
+        this.sqlSession = sqlSession;
+    }
+
     @Override
-    public List<Character> getAllCharacters() {
-        return null;
+    public Character checkReputation() {
+        return sqlSession.selectOne("CharacterMapper.get");
     }
 }
