@@ -7,10 +7,11 @@ import java.util.Random;
 
 @Service
 public class CharacterDomainService {
+    // 평판에 따라 랜덤 선물 주는 로직
     public String getGift(int reputation) {
         Random random = new Random();
         String gift = "";
-        
+
         if (reputation >= 10 && reputation < 70) {
             gift = Gifts.getName(random.nextInt(3));
         }

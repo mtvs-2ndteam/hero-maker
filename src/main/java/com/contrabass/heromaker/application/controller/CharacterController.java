@@ -12,4 +12,8 @@ public class CharacterController {
     public CharacterController(CharacterService characterService) {
         this.characterService = characterService;
     }
+
+    public void getGift() {
+
+    }
 }

@@ -10,10 +10,10 @@ public class Character {
     private final int weaponPoint;
     private final int reputation;
     private final String ending;
-    private final String present;
+    private final String gift;
     private final int date;
 
-    public Character(int characterNo, int userNo, String nickName, int hp, int str, int mage, int weaponPoint, int reputation, String ending, String present, int date) {
+    public Character(int characterNo, int userNo, String nickName, int hp, int str, int mage, int weaponPoint, int reputation, String ending, String gift, int date) {
         this.characterNo = characterNo;
         this.userNo = userNo;
         this.nickName = nickName;
@@ -23,7 +23,7 @@ public class Character {
         this.weaponPoint = weaponPoint;
         this.reputation = reputation;
         this.ending = ending;
-        this.present = present;
+        this.gift = gift;
         this.date = date;
     }
 
@@ -63,8 +63,8 @@ public class Character {
         return ending;
     }
 
-    public String getPresent() {
-        return present;
+    public String getGift() {
+        return gift;
     }
 
     public int getDate() {
