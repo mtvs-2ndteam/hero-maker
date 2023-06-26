@@ -29,7 +29,7 @@ public class UserInfraRepository implements UserMapper {
             memberDTOs.add(member);
         }
 
-        System.out.println("findAllMembers Service method call..");
+        System.out.println("");
 
         return member;
 
@@ -38,7 +38,7 @@ public class UserInfraRepository implements UserMapper {
     @Override
     public User getOneUser() {
 
-
+            sqlSession.
             if(User == null) {
                 throw new IllegalStateException("해당하는 id의 회원이 없습니다.");
             }
