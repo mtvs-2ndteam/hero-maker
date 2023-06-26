@@ -1,11 +1,13 @@
 package com.contrabass.heromaker.domain.repository;
 
+import com.contrabass.heromaker.domain.entity.Character;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public interface CharacterMapper {
-    // 특정 유저의 모든 캐릭터 조회
-    List<Character> getAllCharacters();
+    // 현재 캐릭터 조회하는 메소드
+    Character checkCharacter(int userNo);
+
+    // 받은 선물 업데이트 하는 메소드
+    int updateGift(String gift);
 }
