@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!--    <link rel="preload" as="font" href="font/OdAutumnPoem.ttf" type="font/ttf" />-->
+    <title>Title</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+</head>
+<body>
+<style>
+    @font-face {
+        font-family: 'DOSPilgiMedium';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/DOSPilgiMedium.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'omyu_pretty';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    /*@font-face {*/
+    /*    font-family: 'OdAutumnPoem';*/
+    /*    src: url("font/OdAutumnPoem.ttf") format('truetype');*/
+    /*    font-weight:normal;*/
+    /*    font-style: normal;*/
+    /*}*/
+
+</style>
+<script src="javascript/Player.js"></script>
+<script src="javascript/Events.js"></script>
+<script src="javascript/LoadingBar.js"></script>
+<script src="javascript/ScheduleSelectUI.js"></script>
+<script src="javascript/UnderBarUI.js"></script>
+<script src="javascript/DayUI.js"></script>
+<script>
+    var villageEventText;
+    function requestVillageEventData() {
+        $.ajax({
+            type:"POST",
+            url: "/ajax/village-event",
+            async: false,
+            success : function(response){
+
+                villageEventText = response.eventText;
+            },
+            error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+                alert("통신 실패.")
+            }
+        });
+    }
+
+    function requestFightEventData() {
+        $.ajax({
+            type:"POST",
+            url: "/ajax/fight-event",
+            data : {
+                eventIndex : 1
+            },
+            async:false,
+            success : function(response){
+                this.response = response;
+            },
+            error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+                alert("통신 실패.")
+            }
+        });
+    }
+</script>
+<script src="javascript/Ending.js"></script>
+<script src="javascript/GameScene.js"></script>
+<script src="javascript/UserInformationUI.js"></script>
+</body>
+</html>4
