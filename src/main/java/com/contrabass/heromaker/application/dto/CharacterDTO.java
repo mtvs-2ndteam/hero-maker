@@ -19,6 +19,6 @@ public class CharacterDTO {
     private int weaponPoint;
     private int reputation;
     private String ending;
-    private String present;
+    private String gift;
     private int date;
 }

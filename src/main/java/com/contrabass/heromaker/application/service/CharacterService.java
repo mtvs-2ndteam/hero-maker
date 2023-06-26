@@ -15,4 +15,11 @@ public class CharacterService {
         this.characterDomainService = characterDomainService;
         this.characterMapper = characterMapper;
     }
+
+    public String getGift(int userNo) {
+        String gift = characterDomainService.getGift(characterMapper.checkCharacter(userNo).getReputation());
+        int result = characterMapper.updateGift(gift);
+        System.out.println(result);
+        return "";
+    }
 }

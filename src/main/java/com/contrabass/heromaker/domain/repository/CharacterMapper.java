@@ -5,6 +5,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CharacterMapper {
-    // 평판 수치에 따른 선물 받는 기능
-    Character checkReputation();
+    // 현재 캐릭터 조회하는 메소드
+    Character checkCharacter(int userNo);
+
+    // 받은 선물 업데이트 하는 메소드
+    int updateGift(String gift);
 }
