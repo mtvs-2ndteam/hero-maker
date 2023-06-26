@@ -28,6 +28,14 @@ public class InfraService {
 
         return memberDTOs;
     }
+    private UserDTO changeToDTO(User user) {
+
+        UserDTO dto = new UserDTO();
+        dto.setId(dto.getId());
+        dto.setName(dto.getName());
+
+        return dto;
+    }
 
 
 
