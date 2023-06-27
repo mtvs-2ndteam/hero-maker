@@ -8,7 +8,9 @@ import java.util.List;
 @Repository
 public interface UserMapper {
     // 회원가입
-    User insertUser();
+    int insertUser(User user);
+
+    User getUser(int userNo);
 
     // 특정 유저 조회
     User getOneUser();
