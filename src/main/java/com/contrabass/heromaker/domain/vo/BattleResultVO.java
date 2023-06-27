@@ -7,9 +7,7 @@ import lombok.Getter;
 @Builder
 @Getter
 @EqualsAndHashCode
-public class CharacterVO {
-    private int hp;
-    private int str;
-    private int mage;
-    private int weaponPoint;
+public class BattleResultVO {
+    private int statPoint;
+    private String status;
 }

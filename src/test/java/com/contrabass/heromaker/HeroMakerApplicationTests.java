@@ -1,7 +1,9 @@
 package com.contrabass.heromaker;
 
 import com.contrabass.heromaker.domain.repository.CharacterMapper;
+import com.contrabass.heromaker.domain.service.BattleDomainService;
 import com.contrabass.heromaker.domain.service.CharacterDomainService;
+import com.contrabass.heromaker.domain.vo.BattleResultVO;
 import com.contrabass.heromaker.domain.vo.GiftVO;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -14,15 +16,17 @@ import java.util.Random;
 
 @SpringBootTest
 class HeroMakerApplicationTests {
-    //    private CharacterService characterService;
     private CharacterDomainService characterDomainService;
     private CharacterMapper characterMapper;
+    private BattleDomainService battleDomainService;
 
     @Autowired
     void setUp(CharacterDomainService characterDomainService,
-               CharacterMapper characterMapper) {
+               CharacterMapper characterMapper,
+               BattleDomainService battleDomainService) {
         this.characterDomainService = characterDomainService;
         this.characterMapper = characterMapper;
+        this.battleDomainService = battleDomainService;
     }
 
     @DisplayName("랜덤 선물 도메인 테스트")
@@ -41,28 +45,61 @@ class HeroMakerApplicationTests {
     @DisplayName("랜덤 선물 DB에 저장 테스트")
     @Test
     void giftTest2() {
-        GiftVO giftVO = GiftVO.builder().characterNo(1).gift("가시갑옷").build();
+        GiftVO giftVO = GiftVO.builder()
+                .characterNo(1)
+                .gift("가시갑옷")
+                .build();
 
-//        org.junit.jupiter.api.Assertions.assertEquals(1,
-//                characterMapper.updateCharacterGift(giftVO));
+        org.junit.jupiter.api.Assertions.assertEquals(1,
+                characterMapper.updateCharacterGift(giftVO));
     }
 
-    @DisplayName("쉬움    ")
+    @DisplayName("Easy 난이도 테스트")
     @Test
     void battleTest1() {
+        BattleResultVO battleResultVO1 = BattleResultVO.builder()
+                .statPoint(3)
+                .status("Y")
+                .build();
+        BattleResultVO battleResultVO2 = BattleResultVO.builder()
+                .statPoint(3)
+                .status("N")
+                .build();
+        List<BattleResultVO> resultList = List.of(battleResultVO1, battleResultVO2);
 
+        Assertions.assertThat(resultList).contains(battleDomainService.getBattleResult("Easy"));
     }
 
-    @DisplayName("")
+    @DisplayName("Normal 난이도 테스트")
     @Test
     void battleTest2() {
+        BattleResultVO battleResultVO1 = BattleResultVO.builder()
+                .statPoint(6)
+                .status("Y")
+                .build();
+        BattleResultVO battleResultVO2 = BattleResultVO.builder()
+                .statPoint(6)
+                .status("N")
+                .build();
+        List<BattleResultVO> resultList = List.of(battleResultVO1, battleResultVO2);
 
+        Assertions.assertThat(resultList).contains(battleDomainService.getBattleResult("Normal"));
     }
 
-    @DisplayName("")
+    @DisplayName("Hard 난이도 테스트")
     @Test
     void battleTest3() {
+        BattleResultVO battleResultVO1 = BattleResultVO.builder()
+                .statPoint(12)
+                .status("Y")
+                .build();
+        BattleResultVO battleResultVO2 = BattleResultVO.builder()
+                .statPoint(12)
+                .status("N")
+                .build();
+        List<BattleResultVO> resultList = List.of(battleResultVO1, battleResultVO2);
 
+        Assertions.assertThat(resultList).contains(battleDomainService.getBattleResult("Hard"));
     }
 
 }
