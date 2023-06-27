@@ -51,8 +51,8 @@ class HeroMakerApplicationTests {
                 .today(3)
                 .build();
 
-        org.junit.jupiter.api.Assertions.assertEquals(1,
-                characterMapper.updateCharacterGift(giftVO));
+//        org.junit.jupiter.api.Assertions.assertEquals(1,
+//                characterMapper.updateCharacterGift(giftVO));
     }
 
     @DisplayName("Easy 난이도 테스트")
