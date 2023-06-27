@@ -62,7 +62,7 @@ class HeroMakerApplicationTests {
                 .status("Y")
                 .build();
         BattleResultVO battleResultVO2 = BattleResultVO.builder()
-                .statPoint(3)
+                .statPoint(0)
                 .status("N")
                 .build();
         List<BattleResultVO> resultList = List.of(battleResultVO1, battleResultVO2);
@@ -78,7 +78,7 @@ class HeroMakerApplicationTests {
                 .status("Y")
                 .build();
         BattleResultVO battleResultVO2 = BattleResultVO.builder()
-                .statPoint(6)
+                .statPoint(0)
                 .status("N")
                 .build();
         List<BattleResultVO> resultList = List.of(battleResultVO1, battleResultVO2);
@@ -94,7 +94,7 @@ class HeroMakerApplicationTests {
                 .status("Y")
                 .build();
         BattleResultVO battleResultVO2 = BattleResultVO.builder()
-                .statPoint(12)
+                .statPoint(0)
                 .status("N")
                 .build();
         List<BattleResultVO> resultList = List.of(battleResultVO1, battleResultVO2);

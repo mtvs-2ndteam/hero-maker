@@ -8,37 +8,27 @@ import java.util.Random;
 @Service
 public class BattleDomainService {
     public BattleResultVO getBattleResult(String level) {
+        Random random = new Random();
+        int ranNum = random.nextInt(100) + 1;
+        String status = "N";
         int statPoint = 0;
 
-        if (level.equals("Easy")) {
+        if (level.equals("Easy") && ranNum > 15) {
             statPoint = 3;
+            status = "Y";
         }
-        if (level.equals("Normal")) {
+        if (level.equals("Normal") && ranNum > 30) {
             statPoint = 6;
+            status = "Y";
         }
-        if (level.equals("Hard")) {
+        if (level.equals("Hard") && ranNum > 60) {
             statPoint = 12;
+            status = "Y";
         }
         return BattleResultVO.builder()
                 .statPoint(statPoint)
-                .status(getStatus(level))
+                .status(status)
                 .build();
     }
 
-    public String getStatus(String level) {
-        Random random = new Random();
-        int ranNum = random.nextInt(100) + 1;
-        String status = "Y";
-
-        if (level.equals("Easy") && ranNum <= 15) {
-            status = "N";
-        }
-        if (level.equals("Normal") && ranNum <= 30) {
-            status = "N";
-        }
-        if (level.equals("Hard") && ranNum <= 60) {
-            status = "N";
-        }
-        return status;
-    }
 }
