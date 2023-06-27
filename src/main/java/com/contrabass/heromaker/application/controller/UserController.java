@@ -35,6 +35,21 @@ public class UserController {
         mav.setViewName("content/login.html");
         return "content/home";
     }
+
+    @RequestMapping("/inserta")
+    public String GETUser( WebRequest request){
+        ModelAndView mav = new ModelAndView();
+        String id = request.getParameter("id");
+        String password = request.getParameter("password");
+        String password3 = request.getParameter("password3");
+
+        UserDTO userdto = new UserDTO(1,id,password,password,password,password);
+
+        int result = userService.insertUser(userdto);
+        mav.addObject("insertUser", result);
+        mav.setViewName("content/login.html");
+        return "content/home";
+    }
     // db 테스트
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView goHome() {
