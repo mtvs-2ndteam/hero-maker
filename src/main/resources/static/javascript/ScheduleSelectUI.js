@@ -31,9 +31,9 @@ export default class ScheduleSelectUI {
 
     createSprite(scene) {
         scene.add.sprite(800, 450, 'scheduleBackground').setDepth(3);
-        this.select1 = scene.add.sprite(1250, 250, 'selectSquare').setDepth(4);
-        this.select2 = scene.add.sprite(1250, 450, 'selectSquare').setDepth(4);
-        this.select3 = scene.add.sprite(1250, 650, 'selectSquare').setDepth(4);
+        this.select1 = scene.add.sprite(1250, 250, 'scheduleTrainingIcon').setDepth(4);
+        this.select2 = scene.add.sprite(1250, 450, 'scheduleFightingIcon').setDepth(4);
+        this.select3 = scene.add.sprite(1250, 650, 'scheduleHelpingIcon').setDepth(4);
     }
 
     createText(scene) {

@@ -134,7 +134,9 @@ export default class GameScene extends Phaser.Scene
 
         this.load.image("underBar", "image/메뉴바.png");
         this.load.image("scheduleBackground", "image/스케줄 1.png");
-        this.load.image("selectSquare", "image/선택네모.png");
+        this.load.image("scheduleTrainingIcon", "image/ui/schedule/훈련장 아이콘.png");
+        this.load.image("scheduleFightingIcon", "image/ui/schedule/던전 아이콘.png");
+        this.load.image("scheduleHelpingIcon", "image/ui/schedule/마을 아이콘.png");
     }
 
     progressBar() {
