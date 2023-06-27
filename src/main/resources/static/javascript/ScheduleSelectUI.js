@@ -24,7 +24,9 @@ export default class ScheduleSelectUI {
         this.select2.on('pointerup', function() {
             scene.yesOrNoUI.onFighting(scene);
         });
-        this.select3.on('pointerup', scene.startEnding, scene);
+        this.select3.on('pointerup', function () {
+            scene.yesOrNoUI.onHelping(scene);
+        });
     }
 
     createSprite(scene) {

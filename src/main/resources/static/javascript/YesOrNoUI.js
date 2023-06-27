@@ -2,7 +2,6 @@ export default class YesOrNoUI{
 
     onTraining(scene) {
 
-        console.log("onTraining");
         this.onUI(scene);
 
         this.yesImage.once('pointerup', function () {
@@ -27,6 +26,12 @@ export default class YesOrNoUI{
 
     onHelping(scene) {
 
+        this.onUI(scene);
+
+        this.yesImage.once('pointerup', function () {
+            scene.yesOrNoUI.offUI();
+
+        });
     }
 
     onUI(scene) {

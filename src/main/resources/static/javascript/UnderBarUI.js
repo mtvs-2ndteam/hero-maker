@@ -17,6 +17,10 @@ export default class UnderBarUI{
         this.contiuneBar.once('pointerup', function () {
             scene.underBarUI.deleteMenuUI(scene);
         });
+
+        this.mainMenuBar.once('pointerup', function () {
+            scene.moveStartScene();
+        });
     }
 
     createSprite(scene) {

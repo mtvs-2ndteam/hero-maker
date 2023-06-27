@@ -63,17 +63,30 @@ export default class FightingUI{
         this.hardMonsterIcon.setInteractive(new Phaser.Geom.Rectangle(0, 0, this.hardMonsterIcon.width, this.hardMonsterIcon.height), Phaser.Geom.Rectangle.Contains);
 
         this.easyMonsterIcon.once('pointerup', function () {
-            scene.bar = scene.loadingBar.makeBar(0, 0, 1600, 50, 0x00002, scene).setDepth(12);
-            scene.barFlag = true;
-            scene.time.addEvent({
-                delay: 3150,
-                callback: ()=>{
-                    scene.fightingUI.deleteFightUI(scene);
-                    scene.bar.destroy();
-                    scene.scheduleSelectUI.insertInteractive(scene);
-                },
-                loop: false
-            });
+            scene.fightingUI.fightEvent(scene, "쉬움");
+        });
+
+        this.normalMonsterIcon.once('pointerup', function () {
+            scene.fightingUI.fightEvent(scene, "보통");
+        });
+
+        this.hardMonsterIcon.once('pointerup', function () {
+            scene.fightingUI.fightEvent(scene, "어려움");
+        });
+    }
+
+    fightEvent(scene, difficulty) {
+        scene.events.startFightEvent(scene, difficulty);
+        scene.bar = scene.loadingBar.makeBar(0, 0, 1600, 50, 0x00002, scene).setDepth(12);
+        scene.barFlag = true;
+        scene.time.addEvent({
+            delay: 3150,
+            callback: ()=>{
+                scene.fightingUI.deleteFightUI(scene);
+                scene.bar.destroy();
+                scene.scheduleSelectUI.insertInteractive(scene);
+            },
+            loop: false
         });
     }
 
