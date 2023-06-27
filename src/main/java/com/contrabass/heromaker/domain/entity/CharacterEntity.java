@@ -1,6 +1,6 @@
 package com.contrabass.heromaker.domain.entity;
 
-public class Character {
+public class CharacterEntity {
     private final int characterNo;
     private final int userNo;
     private final String nickName;
@@ -13,8 +13,8 @@ public class Character {
     private final int today;
     private final String status;
 
-    public Character(int characterNo, int userNo, String nickName, int hp, int str,
-                     int mage, int weaponPoint, int reputation, String gift, int today, String status) {
+    public CharacterEntity(int characterNo, int userNo, String nickName, int hp, int str,
+                           int mage, int weaponPoint, int reputation, String gift, int today, String status) {
         this.characterNo = characterNo;
         this.userNo = userNo;
         this.nickName = nickName;

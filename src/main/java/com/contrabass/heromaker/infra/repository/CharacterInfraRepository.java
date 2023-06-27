@@ -1,5 +1,6 @@
 package com.contrabass.heromaker.infra.repository;
 
+import com.contrabass.heromaker.domain.entity.CharacterEntity;
 import com.contrabass.heromaker.domain.entity.Gift;
 import com.contrabass.heromaker.domain.repository.CharacterMapper;
 import com.contrabass.heromaker.domain.vo.GiftVO;
@@ -17,11 +18,11 @@ public class CharacterInfraRepository implements CharacterMapper {
         this.sqlSession = sqlSession;
     }
 
-//    // DB에서 현재 캐릭터 정보 조회
-//    @Override
-//    public Character selectCharacter(int userNo) {
-//        return sqlSession.selectOne("CharacterMapper.checkCharacter", userNo);
-//    }
+    // DB에서 현재 캐릭터 정보 조회
+    @Override
+    public CharacterEntity selectCharacter(int userNo) {
+        return sqlSession.selectOne("CharacterMapper.selectCharacter", userNo);
+    }
 
     @Override
     public Gift selectGift(int giftNo) {

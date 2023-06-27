@@ -19,6 +19,20 @@ public class CharacterService {
         this.characterMapper = characterMapper;
     }
 
+    public CharacterDTO selectCharacter(int userNo) {
+        CharacterDTO characterDTO = new CharacterDTO();
+        characterDTO.setCharacterNo(characterMapper.selectCharacter(userNo).getCharacterNo());
+        characterDTO.setUserNo(characterMapper.selectCharacter(userNo).getUserNo());
+        characterDTO.setNickName(characterMapper.selectCharacter(userNo).getNickName());
+        characterDTO.setHp(characterMapper.selectCharacter(userNo).getHp());
+        characterDTO.setStr(characterMapper.selectCharacter(userNo).getStr());
+        characterDTO.setMage(characterMapper.selectCharacter(userNo).getMage());
+        characterDTO.setWeaponPoint(characterMapper.selectCharacter(userNo).getWeaponPoint());
+        characterDTO.setReputation(characterMapper.selectCharacter(userNo).getReputation());
+        characterDTO.setToday(characterMapper.selectCharacter(userNo).getToday());
+        characterDTO.setStatus(characterMapper.selectCharacter(userNo).getStatus());
+        return characterDTO;
+    }
 
     public int insertGift(CharacterDTO characterDTO) {
         int giftNo = characterDomainService.getGiftNo(characterDTO.getReputation());
@@ -26,9 +40,8 @@ public class CharacterService {
         GiftVO giftVO = GiftVO.builder()
                 .characterNo(characterDTO.getCharacterNo())
                 .gift(gift.getGift())
+                .today(characterDTO.getToday())
                 .build();
-        int result = characterMapper.updateCharacterGift(giftVO);
-
-        return result;
+        return characterMapper.updateCharacterGift(giftVO);
     }
 }
