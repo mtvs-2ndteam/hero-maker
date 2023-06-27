@@ -30,14 +30,18 @@ public class UserService {
         List<UserDTO> userDTOList = new ArrayList<>();
 
         int listSize = foundUserList.size();
-        for (int i = 0; i < listSize; i++) {
-            userDTO.setUserNo(userMapper.getUserList().get(i).getUserNo());
-            userDTO.setId(userMapper.getUserList().get(i).getId());
-            userDTO.setPwd(userMapper.getUserList().get(i).getPwd());
-            userDTO.setName(userMapper.getUserList().get(i).getName());
-            userDTO.setPhone(userMapper.getUserList().get(i).getPhone());
-            userDTO.setEmail(userMapper.getUserList().get(i).getEmail());
-            userDTOList.add(i, userDTO);
+        try {
+            for (int i = 0; i < listSize; i++) {
+                userDTO.setUserNo(userMapper.getUserList().get(i).getUserNo());
+                userDTO.setId(userMapper.getUserList().get(i).getId());
+                userDTO.setPwd(userMapper.getUserList().get(i).getPwd());
+                userDTO.setName(userMapper.getUserList().get(i).getName());
+                userDTO.setPhone(userMapper.getUserList().get(i).getPhone());
+                userDTO.setEmail(userMapper.getUserList().get(i).getEmail());
+                userDTOList.add(i, userDTO);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
         return userDTOList;
     }
@@ -47,14 +51,19 @@ public class UserService {
 
         List<User> foundUserList = userMapper.getUserList();
 
-        List<UserDTO> userDTOList = new ArrayList<>();
+        boolean result=false;
 
         int listSize = foundUserList.size();
 
         for (int i = 0; i < listSize; i++) {
-            userDTO.setUserNo(userMapper.getUserList().get(i).getUserNo());
-
-            userDTOList.add(i, userDTO);
+            if(userMapper.getUserList().get(i).getUserNo()==userNo){
+                userDTO.setUserNo(userMapper.getUserList().get(i).getUserNo());
+                userDTO.setId(userMapper.getUserList().get(i).getId());
+                userDTO.setPwd(userMapper.getUserList().get(i).getPwd());
+                userDTO.setName(userMapper.getUserList().get(i).getName());
+                userDTO.setPhone(userMapper.getUserList().get(i).getPhone());
+                userDTO.setEmail(userMapper.getUserList().get(i).getEmail());
+            }
         }
         return userDTO;
     }
