@@ -8,8 +8,13 @@
 name: Java CI with Gradle
 
 on:
+<<<<<<< HEAD
+#   pull_request:
+#     branches: [ "*" ]
+=======
   pull_request:
     branches: [ "sub" ]
+>>>>>>> 155acd3404531147fd1808537c20f363e3c8c394
 
 permissions:
   contents: read
@@ -26,10 +31,13 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+<<<<<<< HEAD
+=======
     - name: Add permission
       run: chmod +x gradlew
     - name: Test with Gradle
       run: ./gradlew --info test
+>>>>>>> 155acd3404531147fd1808537c20f363e3c8c394
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:

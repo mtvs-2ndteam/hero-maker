@@ -14,31 +14,70 @@ import java.util.List;
 public class UserService {
     private final UserDomainService userDomainService;
     private final UserMapper userMapper;
-    private final UserDTO userDTO;
+
 
     @Autowired
-    public UserService(UserDomainService userDomainService, UserMapper userMapper, UserDTO userDTO) {
+    public UserService(UserDomainService userDomainService, UserMapper userMapper) {
         this.userDomainService = userDomainService;
         this.userMapper = userMapper;
-        this.userDTO = userDTO;
     }
 
     public List<UserDTO> getUserList() {
+        UserDTO userDTO=new UserDTO();
 
         List<User> foundUserList = userMapper.getUserList();
 
         List<UserDTO> userDTOList = new ArrayList<>();
 
         int listSize = foundUserList.size();
-        for (int i = 0; i < listSize; i++) {
-            userDTO.setUserNo(userMapper.getUserList().get(i).getUserNo());
-            userDTO.setId(userMapper.getUserList().get(i).getId());
-            userDTO.setPwd(userMapper.getUserList().get(i).getPwd());
-            userDTO.setName(userMapper.getUserList().get(i).getName());
-            userDTO.setPhone(userMapper.getUserList().get(i).getPhone());
-            userDTO.setEmail(userMapper.getUserList().get(i).getEmail());
-            userDTOList.add(i, userDTO);
+        try {
+            for (int i = 0; i < listSize; i++) {
+                userDTO.setUserNo(userMapper.getUserList().get(i).getUserNo());
+                userDTO.setId(userMapper.getUserList().get(i).getId());
+                userDTO.setPwd(userMapper.getUserList().get(i).getPwd());
+                userDTO.setName(userMapper.getUserList().get(i).getName());
+                userDTO.setPhone(userMapper.getUserList().get(i).getPhone());
+                userDTO.setEmail(userMapper.getUserList().get(i).getEmail());
+                userDTOList.add(i, userDTO);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
         return userDTOList;
+    }
+
+    public UserDTO getUser(int userNo) {
+        UserDTO userDTO=new UserDTO();
+
+        List<User> foundUserList = userMapper.getUserList();
+
+        boolean result=false;
+
+        int listSize = foundUserList.size();
+
+        for (int i = 0; i < listSize; i++) {
+            if(userMapper.getUserList().get(i).getUserNo()==userNo){
+                userDTO.setUserNo(userMapper.getUserList().get(i).getUserNo());
+                userDTO.setId(userMapper.getUserList().get(i).getId());
+                userDTO.setPwd(userMapper.getUserList().get(i).getPwd());
+                userDTO.setName(userMapper.getUserList().get(i).getName());
+                userDTO.setPhone(userMapper.getUserList().get(i).getPhone());
+                userDTO.setEmail(userMapper.getUserList().get(i).getEmail());
+            }
+        }
+        return userDTO;
+    }
+    public int insertUser(UserDTO userDTO){
+        User user=new User(
+            userDTO.getUserNo(),
+            userDTO.getId(),
+            userDTO.getPwd(),
+            userDTO.getName(),
+            userDTO.getPhone(),
+            userDTO.getEmail()
+        );
+
+
+        return userMapper.insertUser(user);
     }
 }
