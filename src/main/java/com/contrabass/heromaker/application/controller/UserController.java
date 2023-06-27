@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -15,7 +16,6 @@ import java.util.List;
 @Controller
 public class UserController {
     private final UserService userService;
-    private  UserDTO UserDTO;
 
 
     @Autowired
@@ -23,16 +23,17 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping("/")
-    public String insertUser(@RequestParam("id") String id, @RequestParam("pwd") String pwd, Model model){
+    @RequestMapping("/insert")
+    public String insertUser( WebRequest request){
         ModelAndView mav = new ModelAndView();
+        String id = request.getParameter("id");
+        String password = request.getParameter("name");
+        UserDTO userdto = new UserDTO(1,id,password,password,password,password);
 
-
-        int result = userService.insertUser(UserDTO);
-
-        mav.addObject("inserUser", result);
+        int result = userService.insertUser(userdto);
+        mav.addObject("insertUser", result);
         mav.setViewName("content/home.html");
-        return "";
+        return "content/home";
     }
     // db 테스트
     @RequestMapping(value = "/", method = RequestMethod.GET)
