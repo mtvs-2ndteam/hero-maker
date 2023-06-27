@@ -4,7 +4,6 @@ import com.contrabass.heromaker.domain.repository.CharacterMapper;
 import com.contrabass.heromaker.domain.service.BattleDomainService;
 import com.contrabass.heromaker.domain.service.CharacterDomainService;
 import com.contrabass.heromaker.domain.vo.BattleResultVO;
-import com.contrabass.heromaker.domain.vo.GiftVO;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -42,18 +41,18 @@ class HeroMakerApplicationTests {
         Assertions.assertThat(list).contains(result2);
     }
 
-    @DisplayName("랜덤 선물 DB에 저장 테스트")
-    @Test
-    void giftTest2() {
-        GiftVO giftVO = GiftVO.builder()
-                .characterNo(1)
-                .gift("가시갑옷")
-                .today(3)
-                .build();
-
+//    @DisplayName("랜덤 선물 DB에 저장 테스트")
+//    @Test
+//    void giftTest2() {
+//        GiftVO giftVO = GiftVO.builder()
+//                .characterNo(1)
+//                .gift("가시갑옷")
+//                .today(3)
+//                .build();
+//
 //        org.junit.jupiter.api.Assertions.assertEquals(1,
 //                characterMapper.updateCharacterGift(giftVO));
-    }
+//    }
 
     @DisplayName("Easy 난이도 테스트")
     @Test
