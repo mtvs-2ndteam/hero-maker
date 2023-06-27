@@ -1,6 +1,6 @@
-import Ending from "./Ending.js";
-import GameScene from "./GameScene.js";
-import StartScene from "./StartScene.js";
+import Ending from "./scene/Ending.js";
+import GameScene from "./scene/GameScene.js";
+import StartScene from "./scene/StartScene.js";
 
 const config = {
     type: Phaser.AUTO,

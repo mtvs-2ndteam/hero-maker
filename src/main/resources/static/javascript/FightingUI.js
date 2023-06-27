@@ -76,6 +76,7 @@ export default class FightingUI{
     }
 
     fightEvent(scene, difficulty) {
+        scene.fightingUI.deleteFightIconInteractive();
         scene.events.startFightEvent(scene, difficulty);
         scene.bar = scene.loadingBar.makeBar(0, 0, 1600, 50, 0x00002, scene).setDepth(12);
         scene.barFlag = true;
@@ -102,5 +103,11 @@ export default class FightingUI{
         this.hardDifficultyText.destroy();
         this.fightRoomTitletext.destroy();
         this.fightRoomInfoText.destroy();
+    }
+
+    deleteFightIconInteractive() {
+        this.easyMonsterIcon.disableInteractive();
+        this.normalMonsterIcon.disableInteractive();
+        this.hardMonsterIcon.disableInteractive();
     }
 }

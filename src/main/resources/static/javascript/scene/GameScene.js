@@ -1,14 +1,14 @@
-import Events from "./Events.js";
-import TrainingUI from "./TrainingUI.js";
-import FightingUI from "./FightingUI.js";
-import ScheduleSelectUI from "./ScheduleSelectUI.js";
-import Ajax from "./Ajax.js";
-import LoadingBar from "./LoadingBar.js";
-import Player from "./Player.js";
-import UnderBarUI from "./UnderBarUI.js";
-import YesOrNoUI from "./YesOrNoUI.js";
-import UserInformationUI from "./UserInformationUI.js";
-import DayUI from "./DayUI.js";
+import Events from "../Events.js";
+import TrainingUI from "../TrainingUI.js";
+import FightingUI from "../FightingUI.js";
+import ScheduleSelectUI from "../ScheduleSelectUI.js";
+import Ajax from "../Ajax.js";
+import LoadingBar from "../LoadingBar.js";
+import Player from "../Player.js";
+import UnderBarUI from "../UnderBarUI.js";
+import OptionUI from "../OptionUI.js";
+import UserInformationUI from "../UserInformationUI.js";
+import DayUI from "../DayUI.js";
 
 export default class GameScene extends Phaser.Scene
 {
@@ -26,7 +26,7 @@ export default class GameScene extends Phaser.Scene
         this.bar = null;
         this.barGauge = 0;
 
-        this.yesOrNoUI = new YesOrNoUI();
+        this.optionUI = new OptionUI();
         this.player = new Player();
         this.loadingBar = new LoadingBar();
         this.userInfoUI = new UserInformationUI();
@@ -38,6 +38,7 @@ export default class GameScene extends Phaser.Scene
         this.fightingUI = new FightingUI();
         this.underBarUI = new UnderBarUI();
 
+        this.response = this.ajax.requestPlayerData();
         this.loadImage();
     }
     create() {
@@ -108,6 +109,8 @@ export default class GameScene extends Phaser.Scene
         this.load.image("save", "image/ui/Save.png");
 
         // 예 아니오 UI 불러오기
+        this.load.image("loadFileBackground", "image/ui/저장된_파일을_불러오시겠습니까.png");
+        this.load.image("createNewFileBackground", "image/ui/새로운_파일을.png");
         this.load.image("ynBackground", "image/ui/booleanBackground.png");
         this.load.image("50alpaBackground", "image/ui/반투명 검은 배경.png");
         this.load.image("yes", "image/ui/예.png");

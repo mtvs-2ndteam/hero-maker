@@ -93,35 +93,48 @@ export default class TrainingUI{
     insertEvent(scene) {
 
         // 체력 훈련 이벤트 매핑
-        this.trainingEvent(scene, "체력");
+        this.hpIcon.once('pointerup', function(){
+            scene.trainingUI.trainingEvent(scene, "체력");
+        });
 
         // 힘 훈련 이벤트 매핑
-        this.trainingEvent(scene, "힘");
+        this.strIcon.once('pointerup', function () {
+            scene.trainingUI.trainingEvent(scene, "힘");
+        });
+
 
         // 마력 훈련 이벤트 매핑
-        this.trainingEvent(scene, "마력");
+        this.mageIcon.once('pointerup', function () {
+            scene.trainingUI.trainingEvent(scene, "마력");
+        });
 
         // 무기술 훈련 이벤트 매핑
-        this.trainingEvent(scene, "무기술");
-
-
+        this.weaponPointIcon.once('pointerup', function () {
+            scene.trainingUI.trainingEvent(scene, "무기술");
+        });
     }
 
     trainingEvent(scene, kind) {
-        this.hpIcon.once('pointerup', function(){
-            scene.events.startTrainingEvent(scene, kind);
-            scene.bar = scene.loadingBar.makeBar(0, 0, 1600, 50, 0x00002, scene).setDepth(12);
-            scene.barFlag = true;
-            scene.time.addEvent({
-                delay: 3150,
-                callback: ()=>{
-                    scene.trainingUI.deleteTrainingUI();
-                    scene.bar.destroy();
-                    scene.scheduleSelectUI.insertInteractive(scene);
-                },
-                loop: false
-            });
+        scene.trainingUI.deleteTrainingIconInteractive();
+        scene.events.startTrainingEvent(scene, kind);
+        scene.bar = scene.loadingBar.makeBar(0, 0, 1600, 50, 0x00002, scene).setDepth(12);
+        scene.barFlag = true;
+        scene.time.addEvent({
+            delay: 3150,
+            callback: ()=>{
+                scene.trainingUI.deleteTrainingUI();
+                scene.bar.destroy();
+                scene.scheduleSelectUI.insertInteractive(scene);
+            },
+            loop: false
         });
+    }
+
+    deleteTrainingIconInteractive() {
+        this.hpIcon.disableInteractive();
+        this.strIcon.disableInteractive();
+        this.mageIcon.disableInteractive();
+        this.weaponPointIcon.disableInteractive();
     }
 
     deleteTrainingUI() {

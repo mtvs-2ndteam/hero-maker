@@ -1,11 +1,11 @@
-export default class YesOrNoUI{
+export default class OptionUI {
 
     onTraining(scene) {
 
-        this.onUI(scene);
+        this.onUI(scene, 'ynBackground', true);
 
         this.yesImage.once('pointerup', function () {
-            scene.yesOrNoUI.offUI();
+            scene.optionUI.offUI();
             scene.trainingUI.createTrainingUI(scene);
         });
 
@@ -14,10 +14,10 @@ export default class YesOrNoUI{
 
     onFighting(scene) {
 
-        this.onUI(scene);
+        this.onUI(scene, 'ynBackground', true);
 
         this.yesImage.once('pointerup', function () {
-            scene.yesOrNoUI.offUI();
+            scene.optionUI.offUI();
             scene.fightingUI.createFightingUI(scene);
         });
 
@@ -26,18 +26,47 @@ export default class YesOrNoUI{
 
     onHelping(scene) {
 
-        this.onUI(scene);
+        this.onUI(scene, 'ynBackground', true);
 
         this.yesImage.once('pointerup', function () {
-            scene.yesOrNoUI.offUI();
+            scene.optionUI.offUI();
 
         });
+
+        this.noEvent(scene);
     }
 
-    onUI(scene) {
-        scene.scheduleSelectUI.disableInteractive();
+    onCreateFile(scene) {
+        this.onUI(scene, 'createNewFileBackground', false);
 
-        this.ynBackground = scene.add.sprite(800, 450, 'ynBackground').setDepth(10);
+        this.yesImage.once('pointerup', function () {
+            scene.optionUI.offUI();
+            scene.moveMain();
+        });
+
+        this.noEvent2(scene);
+    }
+
+    onLoadFile(scene) {
+        this.onUI(scene, 'loadFileBackground', false);
+
+        this.yesImage.once('pointerup', function () {
+            scene.optionUI.offUI();
+            scene.moveMain();
+        });
+
+        this.noEvent2(scene);
+    }
+
+    onUI(scene, optionBackgroundName, flag) {
+        if(flag){
+            scene.scheduleSelectUI.disableInteractive();
+        }
+        else{
+            scene.deleteInteractive();
+        }
+
+        this.ynBackground = scene.add.sprite(800, 450, optionBackgroundName).setDepth(10);
         this.alpaBackground = scene.add.sprite(800, 450, '50alpaBackground').setDepth(9);
         this.yesImage = scene.add.sprite(1150, 700, 'yes').setDepth(10);
         this.noImage = scene.add.sprite(1270, 700, 'no').setDepth(10);
@@ -55,8 +84,15 @@ export default class YesOrNoUI{
 
     noEvent(scene) {
         this.noImage.once('pointerup', function () {
-            scene.yesOrNoUI.offUI();
+            scene.optionUI.offUI();
             scene.scheduleSelectUI.insertInteractive(scene);
+        });
+    }
+
+    noEvent2(scene) {
+        this.noImage.once('pointerup', function () {
+            scene.optionUI.offUI();
+            scene.insertInteractive();
         });
     }
 

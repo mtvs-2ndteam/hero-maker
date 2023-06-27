@@ -19,13 +19,13 @@ export default class ScheduleSelectUI {
 
     insertEvents(scene) {
         this.select1.on('pointerup', function(){
-            scene.yesOrNoUI.onTraining(scene);
+            scene.optionUI.onTraining(scene);
         });
         this.select2.on('pointerup', function() {
-            scene.yesOrNoUI.onFighting(scene);
+            scene.optionUI.onFighting(scene);
         });
         this.select3.on('pointerup', function () {
-            scene.yesOrNoUI.onHelping(scene);
+            scene.optionUI.onHelping(scene);
         });
     }
 
