@@ -1,7 +1,8 @@
 package com.contrabass.heromaker.infra.repository;
 
-import com.contrabass.heromaker.domain.entity.Character;
+import com.contrabass.heromaker.domain.entity.Gift;
 import com.contrabass.heromaker.domain.repository.CharacterMapper;
+import com.contrabass.heromaker.domain.vo.GiftVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,15 +17,20 @@ public class CharacterInfraRepository implements CharacterMapper {
         this.sqlSession = sqlSession;
     }
 
-    // DB에서 현재 캐릭터 정보 조회
+//    // DB에서 현재 캐릭터 정보 조회
+//    @Override
+//    public Character selectCharacter(int userNo) {
+//        return sqlSession.selectOne("CharacterMapper.checkCharacter", userNo);
+//    }
+
     @Override
-    public Character checkCharacter(int userNo) {
-        return sqlSession.selectOne("CharacterMapper.checkCharacter", userNo);
+    public Gift selectGift(int giftNo) {
+        return sqlSession.selectOne("GiftMapper.selectGift", giftNo);
     }
 
     // 현재 캐릭터 선물 업데이트
     @Override
-    public int updateGift(String gift) {
-        return sqlSession.update("CharacterMapper.updateGift", gift);
+    public int updateCharacterGift(GiftVO giftVO) {
+        return sqlSession.update("CharacterMapper.updateCharacterGift", giftVO);
     }
 }

@@ -14,19 +14,16 @@ import java.util.List;
 public class UserService {
     private final UserDomainService userDomainService;
     private final UserMapper userMapper;
-    private final UserDTO userDTO;
 
     @Autowired
-    public UserService(UserDomainService userDomainService, UserMapper userMapper, UserDTO userDTO) {
+    public UserService(UserDomainService userDomainService, UserMapper userMapper) {
         this.userDomainService = userDomainService;
         this.userMapper = userMapper;
-        this.userDTO = userDTO;
     }
 
     public List<UserDTO> getUserList() {
-
+        UserDTO userDTO = new UserDTO();
         List<User> foundUserList = userMapper.getUserList();
-
         List<UserDTO> userDTOList = new ArrayList<>();
 
         int listSize = foundUserList.size();
