@@ -15,7 +15,6 @@ public class UserService {
     private final UserDomainService userDomainService;
     private final UserMapper userMapper;
 
-
     @Autowired
     public UserService(UserDomainService userDomainService, UserMapper userMapper) {
         this.userDomainService = userDomainService;
@@ -23,10 +22,7 @@ public class UserService {
     }
 
     public List<UserDTO> getUserList() {
-        UserDTO userDTO=new UserDTO();
-
         List<User> foundUserList = userMapper.getUserList();
-
         List<UserDTO> userDTOList = new ArrayList<>();
 
         int listSize = foundUserList.size();

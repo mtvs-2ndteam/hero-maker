@@ -12,19 +12,19 @@
         <result property="mage" column="mage"/>
         <result property="weaponPoint" column="weaponPoint"/>
         <result property="reputation" column="reputation"/>
-        <result property="ending" column="ending"/>
         <result property="gift" column="gift"/>
-        <result property="date" column="date"/>
+        <result property="today" column="today"/>
+        <result property="status" column="status"/>
     </resultMap>
 
-    <select id="checkCharacter" resultMap="CharacterResult">
-        SELECT *
-        FROM CHARACTER_TBL
-        WHERE userNo =
-              #{userNo}
-    </select>
+    <!--    <select id="selectCharacter" resultMap="CharacterResult">-->
+    <!--        SELECT *-->
+    <!--        FROM CHARACTER_TBL-->
+    <!--        WHERE userNo =-->
+    <!--              #{userNo}-->
+    <!--    </select>    -->
 
-    <update id="updateGift">
+    <update id="updateCharacterGift">
         UPDATE CHARACTER_TBL
         SET gift = #{gift}
         WHERE characterNo =

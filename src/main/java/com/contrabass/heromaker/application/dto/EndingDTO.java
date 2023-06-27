@@ -9,16 +9,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CharacterDTO {
-    private int characterNo;
+public class EndingDTO {
+    private int endingNo;
     private int userNo;
-    private String nickName;
-    private int hp;
-    private int str;
-    private int mage;
-    private int weaponPoint;
-    private int reputation;
-    private String gift;
-    private int today;
+    private String ending;
     private String status;
 }

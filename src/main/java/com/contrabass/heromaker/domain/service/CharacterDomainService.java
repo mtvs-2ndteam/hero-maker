@@ -1,23 +1,36 @@
 package com.contrabass.heromaker.domain.service;
 
-import com.contrabass.heromaker.domain.enumtype.Gifts;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
 @Service
 public class CharacterDomainService {
-    // 평판에 따라 랜덤 선물 주는 로직
-    public String getGift(int reputation) {
+
+    // 선물 번호 얻는 로직
+    public int getGiftNo(int reputation) {
         Random random = new Random();
-        String gift = "";
+        int prob = random.nextInt(10);
+        String grade = "";
 
         if (reputation >= 10 && reputation < 70) {
-            gift = Gifts.getName(random.nextInt(3));
+            grade = "A";
         }
         if (reputation >= 70) {
-            gift = Gifts.getName(random.nextInt(3) + 3);
+            grade = "S";
         }
-        return gift;
+        return getGiftResult(prob, grade);
+    }
+
+    public int getGiftResult(int prob, String grade) {
+        Random random = new Random();
+
+        if (7 <= prob && grade.equals("A")) {
+            return random.nextInt(3) + 1;
+        }
+        if (prob <= 5 && grade.equals("S")) {
+            return random.nextInt(3) + 1;
+        }
+        return random.nextInt(3) + 4;
     }
 }

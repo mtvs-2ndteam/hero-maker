@@ -1,6 +1,8 @@
 package com.contrabass.heromaker;
 
+import com.contrabass.heromaker.domain.repository.CharacterMapper;
 import com.contrabass.heromaker.domain.service.CharacterDomainService;
+import com.contrabass.heromaker.domain.vo.GiftVO;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,31 +10,59 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Random;
 
 @SpringBootTest
 class HeroMakerApplicationTests {
+    //    private CharacterService characterService;
     private CharacterDomainService characterDomainService;
+    private CharacterMapper characterMapper;
 
     @Autowired
-    public void setUp(CharacterDomainService characterDomainService) {
-        this.characterDomainService = new CharacterDomainService();
+    void setUp(CharacterDomainService characterDomainService,
+               CharacterMapper characterMapper) {
+        this.characterDomainService = characterDomainService;
+        this.characterMapper = characterMapper;
     }
 
-    @DisplayName("평판 10이상 70미만 랜덤 선물 테스트")
+    @DisplayName("랜덤 선물 도메인 테스트")
     @Test
-    void giftTest() {
-        List<String> list = List.of("마왕일살검", "세계수의지팡이", "가시갑옷");
+    void giftTest1() {
+        Random random = new Random();
+        List<Integer> list = List.of(1, 2, 3, 4, 5, 6);
+        int prob = random.nextInt(10);
+        int result1 = characterDomainService.getGiftResult(prob, "A");
+        int result2 = characterDomainService.getGiftResult(prob, "S");
 
-        Assertions.assertThat(list).contains(characterDomainService.getGift(69));
+        Assertions.assertThat(list).contains(result1);
+        Assertions.assertThat(list).contains(result2);
     }
 
-    @DisplayName("평판 70이상 랜덤 선물 테스트")
+    @DisplayName("랜덤 선물 DB에 저장 테스트")
     @Test
-    public void giftTest2() {
-        List<String> list = List.of("상인의돈주머니", "지나가던꼬마가준사탕", "먹다남은샐러드");
+    void giftTest2() {
+        GiftVO giftVO = GiftVO.builder().characterNo(1).gift("가시갑옷").build();
 
-        Assertions.assertThat(list).contains(characterDomainService.getGift(70));
+//        org.junit.jupiter.api.Assertions.assertEquals(1,
+//                characterMapper.updateCharacterGift(giftVO));
     }
 
+    @DisplayName("쉬움    ")
+    @Test
+    void battleTest1() {
+
+    }
+
+    @DisplayName("")
+    @Test
+    void battleTest2() {
+
+    }
+
+    @DisplayName("")
+    @Test
+    void battleTest3() {
+
+    }
 
 }

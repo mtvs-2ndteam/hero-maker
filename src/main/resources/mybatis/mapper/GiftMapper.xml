@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="GiftMapper">
+
+    <resultMap type="Gift" id="GiftResult">
+        <result property="giftNo" column="giftNo"/>
+        <result property="gift" column="gift"/>
+    </resultMap>
+
+    <select id="selectGift" resultMap="GiftResult">
+        SELECT *
+        FROM GIFT_TBL
+        WHERE giftNo =
+              #{giftNo}
+    </select>
+</mapper>
