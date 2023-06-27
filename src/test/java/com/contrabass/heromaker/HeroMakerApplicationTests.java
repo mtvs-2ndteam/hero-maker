@@ -53,7 +53,7 @@ class HeroMakerApplicationTests {
 //                characterMapper.updateCharacterGift(giftVO));
 //    }
 
-    @DisplayName("Easy 난이도 테스트")
+    @DisplayName("Easy 난이도 결과값 테스트")
     @Test
     void battleTest1() {
         BattleResultVO battleResultVO1 = BattleResultVO.builder()
@@ -69,7 +69,7 @@ class HeroMakerApplicationTests {
         Assertions.assertThat(resultList).contains(battleDomainService.getBattleResult("Easy"));
     }
 
-    @DisplayName("Normal 난이도 테스트")
+    @DisplayName("Normal 난이도 결과값 테스트")
     @Test
     void battleTest2() {
         BattleResultVO battleResultVO1 = BattleResultVO.builder()
@@ -85,7 +85,7 @@ class HeroMakerApplicationTests {
         Assertions.assertThat(resultList).contains(battleDomainService.getBattleResult("Normal"));
     }
 
-    @DisplayName("Hard 난이도 테스트")
+    @DisplayName("Hard 난이도 결과값 테스트")
     @Test
     void battleTest3() {
         BattleResultVO battleResultVO1 = BattleResultVO.builder()
