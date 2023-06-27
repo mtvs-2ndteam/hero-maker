@@ -9,6 +9,7 @@ export default class TrainingUI{
     }
 
     createSprite(scene) {
+
         // 배경 이미지
         this.background = scene.add.sprite(800, 450, 'trainingRoomBackground').setDepth(9);
 

@@ -7,6 +7,8 @@ import LoadingBar from "./LoadingBar.js";
 import Player from "./Player.js";
 import UnderBarUI from "./UnderBarUI.js";
 import YesOrNoUI from "./YesOrNoUI.js";
+import UserInformationUI from "./UserInformationUI.js";
+import DayUI from "./DayUI.js";
 
 export default class GameScene extends Phaser.Scene
 {
@@ -22,8 +24,8 @@ export default class GameScene extends Phaser.Scene
         this.yesOrNoUI = new YesOrNoUI();
         this.player = new Player();
         this.loadingBar = new LoadingBar();
-        this.userInfoUI = new UserInformationUI(this);
-        this.dayUI = new DayUI(this);
+        this.userInfoUI = new UserInformationUI();
+        this.dayUI = new DayUI();
         this.ajax = new Ajax();
         this.events = new Events();
         this.trainingUI = new TrainingUI();
@@ -31,38 +33,7 @@ export default class GameScene extends Phaser.Scene
         this.fightingUI = new FightingUI();
         this.underBarUI = new UnderBarUI();
 
-        this.load.image("character1", "image/character/전사.png");
-        this.load.image("background", "image/마을 2.png");
-
-        // 메뉴 UI 불러오기
-        this.load.image("menuBackground", "image/ui/menubackground2.png");
-        this.load.image("menuBar", "image/ui/menuBar.png");
-
-        // 예 아니오 UI 불러오기
-        this.load.image("ynBackground", "image/ui/booleanBackground.png");
-        this.load.image("50alpaBackground", "image/ui/반투명 검은 배경.png");
-        this.load.image("yes", "image/ui/예.png");
-        this.load.image("no", "image/ui/아니오.png");
-
-        // 몬스터 이미지 불러오기
-        this.load.image("monster", "image/monster/레이어 90.png");
-
-        // 훈련장 스탯 아이콘들 불러오기
-        this.load.image("mageIcon", "image/trainingUi/마력 아이콘.png");
-        this.load.image("hpIcon", "image/trainingUi/체력 아이콘.png");
-        this.load.image("strIcon", "image/trainingUi/힘 아이콘.png");
-        this.load.image("weaponPointIcon", "image/trainingUi/무기술 아이콘.png");
-
-        // 훈련장 배경 이미지
-        this.load.image("trainingRoomBackground", "image/background/훈련장 1.png");
-
-        this.load.image("userInformation", "image/내 정보.png");
-        this.load.image("dayData", "image/Day.png");
-        this.load.image("village", "마을.png");
-
-        this.load.image("underBar", "image/메뉴바.png");
-        this.load.image("scheduleBackground", "image/스케줄 1.png");
-        this.load.image("selectSquare", "image/선택네모.png");
+        this.loadImage();
     }
     create() {
 
@@ -70,7 +41,7 @@ export default class GameScene extends Phaser.Scene
         this.character1 = this.add.sprite(800, 450, 'character1').setDepth(2);
 
         // 유저 인포메이션 UI 생성
-        this.userInfoUI.createUserInformationUI();
+        this.userInfoUI.createUserInformationUI(this);
 
         // 스케쥴 관련 UI 생성
         this.scheduleSelectUI.createScheduleSelectUI(this);
@@ -79,7 +50,7 @@ export default class GameScene extends Phaser.Scene
         this.underBarUI.createUnderBarUI(this);
 
         // 날짜 관련 UI 생성
-        this.dayUI.createDayUI();
+        this.dayUI.createDayUI(this);
 
         // this.character1 = Phaser.Utils.Array.Shuffle(this.character1);
 
@@ -114,6 +85,44 @@ export default class GameScene extends Phaser.Scene
 
     startEnding() {
         this.scene.start('main2');
+    }
+
+    loadImage() {
+        this.load.image("character1", "image/character/전사.png");
+        this.load.image("background", "image/마을 2.png");
+
+        // 메뉴 UI 불러오기
+        this.load.image("menuBackground", "image/ui/menubackground2.png");
+        this.load.image("continue", "image/ui/Continue.png");
+        this.load.image("load", "image/ui/load.png");
+        this.load.image("mainMenu", "image/ui/Main Menu.png");
+        this.load.image("save", "image/ui/Save.png");
+
+        // 예 아니오 UI 불러오기
+        this.load.image("ynBackground", "image/ui/booleanBackground.png");
+        this.load.image("50alpaBackground", "image/ui/반투명 검은 배경.png");
+        this.load.image("yes", "image/ui/예.png");
+        this.load.image("no", "image/ui/아니오.png");
+
+        // 몬스터 이미지 불러오기
+        this.load.image("monster", "image/monster/레이어 90.png");
+
+        // 훈련장 스탯 아이콘들 불러오기
+        this.load.image("mageIcon", "image/trainingUi/마력 아이콘.png");
+        this.load.image("hpIcon", "image/trainingUi/체력 아이콘.png");
+        this.load.image("strIcon", "image/trainingUi/힘 아이콘.png");
+        this.load.image("weaponPointIcon", "image/trainingUi/무기술 아이콘.png");
+
+        // 훈련장 배경 이미지
+        this.load.image("trainingRoomBackground", "image/background/훈련장 1.png");
+
+        this.load.image("userInformation", "image/내 정보.png");
+        this.load.image("dayData", "image/Day.png");
+        this.load.image("village", "마을.png");
+
+        this.load.image("underBar", "image/메뉴바.png");
+        this.load.image("scheduleBackground", "image/스케줄 1.png");
+        this.load.image("selectSquare", "image/선택네모.png");
     }
 
 

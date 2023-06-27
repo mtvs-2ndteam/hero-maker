@@ -1,18 +1,13 @@
 
 
-class DayUI{
+export default class DayUI{
 
     dayText;
 
-    scene;
-    constructor(scene) {
-        this.scene = scene;
-    }
+    createDayUI(scene) {
+        scene.add.image(800, 450, 'dayData').setDepth(2);
 
-    createDayUI() {
-        this.scene.add.image(800, 450, 'dayData').setDepth(2);
-
-        this.dayText = this.scene.make.text({
+        this.dayText = scene.make.text({
             x: 335,
             y: 90,
             text: "30",
@@ -23,7 +18,7 @@ class DayUI{
         }).setDepth(3).setOrigin(1, 0.5);
     }
 
-    setDate(date) {
+    setDate(date, scene) {
 
         // 기존의 날짜를 삭제
         if (this.dayText != null) {
@@ -31,7 +26,7 @@ class DayUI{
         }
 
         // 새로운 바뀐 날짜를 생성
-        this.dayText = this.scene.make.text({
+        this.dayText = scene.make.text({
             x: 335,
             y: 90,
             text: date,
