@@ -1,4 +1,4 @@
-package com.contrabass.subPHS;
+package com.contrabass.heromaker.configuration;
 
 public class EventDTO {
     public String eventText = null;

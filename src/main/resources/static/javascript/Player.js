@@ -1,12 +1,21 @@
 class Player{
 
-    _nickName = null;
+    _nickName = "쿠크냐";
     _hp = 0;
     _str = 0;
     _mage = 0;
     _weaponPoint = 0;
     _reputation = 0;
+    _day = 1;
 
+
+    get day() {
+        return this._day;
+    }
+
+    set day(value) {
+        this._day = value;
+    }
 
     get nickName() {
         return this._nickName;

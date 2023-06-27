@@ -1,20 +1,49 @@
+import Events from "./Events.js";
+import TrainingUI from "./TrainingUI.js";
+import FightingUI from "./FightingUI.js";
+import ScheduleSelectUI from "./ScheduleSelectUI.js";
+import Ajax from "./Ajax.js";
 
-class Main extends Phaser.Scene
+export default class GameScene extends Phaser.Scene
 {
     init() {
 
     }
     preload() {
+
+        // 처음
+
+        // 그만
+
+
         this.barFlag = false;
         this.bar = null;
         this.barGauge = 0;
 
         this.player = new Player();
         this.loadingBar = new LoadingBar();
-        this.userInfoUI = new UserInformationUI(this.player, this);
+        this.userInfoUI = new UserInformationUI(this);
+        this.dayUI = new DayUI(this);
+        this.ajax = new Ajax();
+        this.events = new Events();
+        this.trainingUI = new TrainingUI();
+        this.scheduleSelectUI = new ScheduleSelectUI();
+        this.fightingUI = new FightingUI();
 
-        this.load.image("character1", "character1.jpg");
-        this.background = this.load.image("background", "image/마을 2.png");
+        this.load.image("character1", "image/character/전사.png");
+        this.load.image("background", "image/마을 2.png");
+
+        // 몬스터 이미지 불렁기
+        this.load.image("monster", "image/monster/레이어 90.png");
+
+        // 훈련장 스탯 아이콘들 불러오기
+        this.load.image("mageIcon", "image/trainingUi/마력 아이콘.png");
+        this.load.image("hpIcon", "image/trainingUi/체력 아이콘.png");
+        this.load.image("strIcon", "image/trainingUi/힘 아이콘.png");
+        this.load.image("weaponPointIcon", "image/trainingUi/무기술 아이콘.png");
+
+        // 훈련장 배경 이미지
+        this.load.image("trainingRoomBackground", "image/background/훈련장 1.png");
 
         this.load.image("userInformation", "image/내 정보.png");
         this.load.image("dayData", "image/Day.png");
@@ -27,19 +56,19 @@ class Main extends Phaser.Scene
     create() {
 
         this.add.image(800, 450, 'background').setDisplaySize(1600, 900).setDepth(1);
-        this.character1 = this.add.sprite(800, 450, 'character1').setDepth(2).setScale(0.5, 0.5);
+        this.character1 = this.add.sprite(800, 450, 'character1').setDepth(2);
 
         // 유저 인포메이션 UI 생성
-        this.userInfoUI.createUserInformationUI(this);
+        this.userInfoUI.createUserInformationUI();
 
         // 스케쥴 관련 UI 생성
-        createScheduleSelectUI(this);
+        this.scheduleSelectUI.createScheduleSelectUI(this);
 
         // 하단 바 UI 생성
         createUnderBarUI(this);
 
         // 날짜 관련 UI 생성
-        createDayUI(this);
+        this.dayUI.createDayUI();
 
         // this.character1 = Phaser.Utils.Array.Shuffle(this.character1);
 
@@ -57,16 +86,10 @@ class Main extends Phaser.Scene
 
             gameObject.clearTint();
         });
-
-        this.select1.once('pointerup', startVillageEvent, this);
-        this.select2.once('pointerup', startFightEvent, this);
     }
 
-
-    loadImage() {
-        this.load.once('complete', this.addSprites, this);
+    startEnding() {
         this.scene.start('main2');
-        this.load.start();
     }
 
     addSprites() {
@@ -76,47 +99,14 @@ class Main extends Phaser.Scene
     update() {
         if(this.barFlag){
             if(this.barGauge <= 100){
+
                 this.barGauge += 0.2;
                 this.loadingBar.setValue(this.bar, this.barGauge);
             }else{
+
                 this.barGauge = 0;
                 this.barFlag = false;
-
-                // 로딩 바 지우기
-                this.bar.destroy();
-
-                // 텍스트 지우기
-                this.eventText.destroy();
-
-                // 로딩 배경 화면 지우기
-                if (this.villageEventBackground != null) {
-                    this.villageEventBackground.destroy();
-
-                    // 이벤트를 다시 지정해주기
-                    this.select1.once('pointerup', startVillageEvent, this);
-                }
-                if (this.fightEventBackground != null) {
-                    this.fightEventBackground.destroy();
-
-                    // 이벤트를 다시 지정해주기
-                    this.select2.once('pointerup', startFightEvent, this);
-                }
             }
         }
     }
 }
-
-const config = {
-    type: Phaser.AUTO,
-    scale : {
-        mode : Phaser.Scale.FIT,
-        autoCenter: Phaser.DOM.CENTER_BOTH,
-        width: 1600,
-        height: 900
-    },
-
-    backgroundColor: "#18216D",
-    scene: Main
-};
-
-const gameScene = new Phaser.Game(config);
