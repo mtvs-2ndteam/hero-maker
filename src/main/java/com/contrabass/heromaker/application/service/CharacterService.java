@@ -1,6 +1,7 @@
 package com.contrabass.heromaker.application.service;
 
 import com.contrabass.heromaker.application.dto.CharacterDTO;
+import com.contrabass.heromaker.domain.entity.CharacterEntity;
 import com.contrabass.heromaker.domain.entity.Gift;
 import com.contrabass.heromaker.domain.repository.CharacterMapper;
 import com.contrabass.heromaker.domain.service.CharacterDomainService;
@@ -21,16 +22,17 @@ public class CharacterService {
 
     public CharacterDTO selectCharacter(int userNo) {
         CharacterDTO characterDTO = new CharacterDTO();
-        characterDTO.setCharacterNo(characterMapper.selectCharacter(userNo).getCharacterNo());
-        characterDTO.setUserNo(characterMapper.selectCharacter(userNo).getUserNo());
-        characterDTO.setNickName(characterMapper.selectCharacter(userNo).getNickName());
-        characterDTO.setHp(characterMapper.selectCharacter(userNo).getHp());
-        characterDTO.setStr(characterMapper.selectCharacter(userNo).getStr());
-        characterDTO.setMage(characterMapper.selectCharacter(userNo).getMage());
-        characterDTO.setWeaponPoint(characterMapper.selectCharacter(userNo).getWeaponPoint());
-        characterDTO.setReputation(characterMapper.selectCharacter(userNo).getReputation());
-        characterDTO.setToday(characterMapper.selectCharacter(userNo).getToday());
-        characterDTO.setStatus(characterMapper.selectCharacter(userNo).getStatus());
+        CharacterEntity characterEntity = characterMapper.selectCharacter(userNo);
+        characterDTO.setCharacterNo(characterEntity.getCharacterNo());
+        characterDTO.setUserNo(characterEntity.getUserNo());
+        characterDTO.setNickName(characterEntity.getNickName());
+        characterDTO.setHp(characterEntity.getHp());
+        characterDTO.setStr(characterEntity.getStr());
+        characterDTO.setMage(characterEntity.getMage());
+        characterDTO.setWeaponPoint(characterEntity.getWeaponPoint());
+        characterDTO.setReputation(characterEntity.getReputation());
+        characterDTO.setToday(characterEntity.getToday());
+        characterDTO.setStatus(characterEntity.getStatus());
         return characterDTO;
     }
 
