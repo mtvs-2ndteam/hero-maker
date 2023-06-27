@@ -6,6 +6,7 @@ import Ajax from "./Ajax.js";
 import LoadingBar from "./LoadingBar.js";
 import Player from "./Player.js";
 import UnderBarUI from "./UnderBarUI.js";
+import YesOrNoUI from "./YesOrNoUI.js";
 
 export default class GameScene extends Phaser.Scene
 {
@@ -18,6 +19,7 @@ export default class GameScene extends Phaser.Scene
         this.bar = null;
         this.barGauge = 0;
 
+        this.yesOrNoUI = new YesOrNoUI();
         this.player = new Player();
         this.loadingBar = new LoadingBar();
         this.userInfoUI = new UserInformationUI(this);
@@ -33,8 +35,14 @@ export default class GameScene extends Phaser.Scene
         this.load.image("background", "image/마을 2.png");
 
         // 메뉴 UI 불러오기
-        this.load.image("menuBackground", "image/ui/menubackground.png");
+        this.load.image("menuBackground", "image/ui/menubackground2.png");
         this.load.image("menuBar", "image/ui/menuBar.png");
+
+        // 예 아니오 UI 불러오기
+        this.load.image("ynBackground", "image/ui/booleanBackground.png");
+        this.load.image("50alpaBackground", "image/ui/반투명 검은 배경.png");
+        this.load.image("yes", "image/ui/예.png");
+        this.load.image("no", "image/ui/아니오.png");
 
         // 몬스터 이미지 불러오기
         this.load.image("monster", "image/monster/레이어 90.png");
@@ -77,7 +85,6 @@ export default class GameScene extends Phaser.Scene
 
         this.input.on('gameobjectover', (pointer, gameObject) =>
         {
-
             if (this.barFlag === false) {
 
                 gameObject.setTint(0x7878ff);

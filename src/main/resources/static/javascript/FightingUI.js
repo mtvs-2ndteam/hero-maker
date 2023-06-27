@@ -63,11 +63,22 @@ export default class FightingUI{
         this.hardMonsterIcon.setInteractive(new Phaser.Geom.Rectangle(0, 0, this.hardMonsterIcon.width, this.hardMonsterIcon.height), Phaser.Geom.Rectangle.Contains);
 
         this.easyMonsterIcon.once('pointerup', function () {
-            scene.fightingUI.deleteFightUI();
+            scene.bar = scene.loadingBar.makeBar(0, 0, 1600, 50, 0x00002, scene).setDepth(12);
+            scene.barFlag = true;
+            scene.time.addEvent({
+                delay: 3150,
+                callback: ()=>{
+                    scene.fightingUI.deleteFightUI(scene);
+                    scene.bar.destroy();
+                    scene.scheduleSelectUI.insertInteractive(scene);
+                },
+                loop: false
+            });
         });
     }
 
-    deleteFightUI() {
+    deleteFightUI(scene) {
+        scene.scheduleSelectUI.insertInteractive(scene);
         this.background.destroy();
         this.easyMonsterIcon.destroy();
         this.normalMonsterIcon.destroy();

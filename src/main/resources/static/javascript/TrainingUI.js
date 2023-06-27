@@ -1,4 +1,4 @@
-export default  class TrainingUI{
+export default class TrainingUI{
 
     createTrainingUI(scene) {
 
@@ -91,7 +91,6 @@ export default  class TrainingUI{
 
     insertEvent(scene) {
         this.hpIcon.once('pointerup', function(){
-            scene.scheduleSelectUI.select1Flag = false;
             scene.events.startTraining(scene, 1);
             scene.bar = scene.loadingBar.makeBar(0, 0, 1600, 50, 0x00002, scene).setDepth(12);
             scene.barFlag = true;
@@ -100,10 +99,11 @@ export default  class TrainingUI{
                 callback: ()=>{
                     scene.trainingUI.deleteTrainingUI();
                     scene.bar.destroy();
+                    scene.scheduleSelectUI.insertInteractive(scene);
                 },
                 loop: false
             });
-            scene.scheduleSelectUI.insertEvent(scene);
+
         });
     }
 

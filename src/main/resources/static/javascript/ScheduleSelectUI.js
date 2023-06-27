@@ -2,9 +2,6 @@
 // 오른쪽 스케쥴 UI 생성
 export default class ScheduleSelectUI {
 
-    select1Flag = false;
-    select2Flag = false;
-    select3Flag = false;
     createScheduleSelectUI(scene) {
 
         // 이미지 생성
@@ -17,22 +14,17 @@ export default class ScheduleSelectUI {
         this.insertInteractive(scene);
 
         // 상호작용에 이벤트 연결하기
-        this.insertEvent(scene);
+        this.insertEvents(scene);
     }
 
-    insertEvent(scene) {
-        if(!this.select1Flag){
-            this.select1.once('pointerup', function(){scene.trainingUI.createTrainingUI(scene)});
-            this.select1Flag = true;
-        }
-        if (!this.select2Flag) {
-            this.select2.once('pointerup', function() {scene.fightingUI.createFightingUI(scene)});
-            this.select2Flag = true;
-        }
-        if(!this.select3Flag){
-            this.select3.once('pointerup', scene.startEnding, scene);
-            this.select3Flag = true;
-        }
+    insertEvents(scene) {
+        this.select1.on('pointerup', function(){
+            scene.yesOrNoUI.onTraining(scene);
+        });
+        this.select2.on('pointerup', function() {
+            scene.yesOrNoUI.onFighting(scene);
+        });
+        this.select3.on('pointerup', scene.startEnding, scene);
     }
 
     createSprite(scene) {

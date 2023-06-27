@@ -5,13 +5,13 @@ export default class UnderBarUI{
     createUnderBarUI(scene) {
         this.underBar = scene.add.image(800, 450, 'underBar').setDepth(3);
         this.underBar.setInteractive(new Phaser.Geom.Rectangle(1400, 800, 200, 100), Phaser.Geom.Rectangle.Contains).setOrigin(0.5, 0.5);
-        this.underBar.once('pointerup', function () {
-            scene.underBarUI.createMenuUI(scene);
-        });
+        this.insertEvent(scene);
     }
 
     createMenuUI(scene) {
         scene.scheduleSelectUI.disableInteractive();
+
+        this.alpaBackground = scene.add.sprite(800, 450, '50alpaBackground').setDepth(8);
         this.menuBackground = scene.add.sprite(800, 450, 'menuBackground').setDepth(9);
         this.contiuneBar = scene.add.sprite(800, 290, 'menuBar').setDepth(10);
         this.mainMenuBar = scene.add.sprite(800, 413, 'menuBar').setDepth(10);
@@ -26,17 +26,23 @@ export default class UnderBarUI{
         this.contiuneBar.once('pointerup', function () {
             scene.underBarUI.deleteMenuUI(scene);
         });
-        this.saveBar.once()
+    }
+
+    insertEvent(scene) {
+        this.underBar.once('pointerup', function () {
+            scene.underBarUI.createMenuUI(scene);
+        });
     }
 
     deleteMenuUI(scene) {
         scene.scheduleSelectUI.insertInteractive();
-        scene.scheduleSelectUI.insertEvent(scene);
+        this.alpaBackground.destroy();
         this.menuBackground.destroy();
         this.contiuneBar.destroy();
         this.mainMenuBar.destroy();
         this.saveBar.destroy();
         this.loadBar.destroy();
+        this.insertEvent(scene);
     }
 
 }
