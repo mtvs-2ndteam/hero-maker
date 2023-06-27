@@ -28,7 +28,7 @@ public class CharacterService {
                 .gift(gift.getGift())
                 .build();
         int result = characterMapper.updateCharacterGift(giftVO);
-        System.out.println(result);
+
         return result;
     }
 }
