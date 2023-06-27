@@ -13,6 +13,15 @@
 
     <select id="getUserList" resultMap="UserList">
         SELECT *
-        FROM USER;
+        FROM user_tbl;
     </select>
+    <insert id="insertUser">
+        insert into user_tbl(id, pwd, name ,phone ,email) values(#{id},#{pwd},#{name},#{phone},#{email});
+    </insert>
+<!--    <select id="checkCharacter" resultMap="CharacterResult">-->
+<!--        SELECT *-->
+<!--        FROM user_tbl-->
+<!--        WHERE userNo =-->
+<!--              #{userNo}-->
+<!--    </select>-->
 </mapper>
