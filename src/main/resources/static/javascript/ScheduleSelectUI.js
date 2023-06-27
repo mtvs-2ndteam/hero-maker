@@ -79,4 +79,10 @@ export default class ScheduleSelectUI {
         this.select2.setInteractive(new Phaser.Geom.Rectangle(0, 0, this.select2.width, this.select2.height), Phaser.Geom.Rectangle.Contains);
         this.select3.setInteractive(new Phaser.Geom.Rectangle(0, 0, this.select3.width, this.select3.height), Phaser.Geom.Rectangle.Contains);
     }
+
+    disableInteractive() {
+        this.select1.disableInteractive();
+        this.select2.disableInteractive();
+        this.select3.disableInteractive();
+    }
 }

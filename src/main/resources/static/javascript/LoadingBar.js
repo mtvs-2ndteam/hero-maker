@@ -1,5 +1,5 @@
 
-class LoadingBar{
+export default class LoadingBar{
 
      makeBar(x, y, width, height, color, scene) {
 

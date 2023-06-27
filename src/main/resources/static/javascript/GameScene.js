@@ -3,6 +3,9 @@ import TrainingUI from "./TrainingUI.js";
 import FightingUI from "./FightingUI.js";
 import ScheduleSelectUI from "./ScheduleSelectUI.js";
 import Ajax from "./Ajax.js";
+import LoadingBar from "./LoadingBar.js";
+import Player from "./Player.js";
+import UnderBarUI from "./UnderBarUI.js";
 
 export default class GameScene extends Phaser.Scene
 {
@@ -10,11 +13,6 @@ export default class GameScene extends Phaser.Scene
 
     }
     preload() {
-
-        // 처음
-
-        // 그만
-
 
         this.barFlag = false;
         this.bar = null;
@@ -29,11 +27,16 @@ export default class GameScene extends Phaser.Scene
         this.trainingUI = new TrainingUI();
         this.scheduleSelectUI = new ScheduleSelectUI();
         this.fightingUI = new FightingUI();
+        this.underBarUI = new UnderBarUI();
 
         this.load.image("character1", "image/character/전사.png");
         this.load.image("background", "image/마을 2.png");
 
-        // 몬스터 이미지 불렁기
+        // 메뉴 UI 불러오기
+        this.load.image("menuBackground", "image/ui/menubackground.png");
+        this.load.image("menuBar", "image/ui/menuBar.png");
+
+        // 몬스터 이미지 불러오기
         this.load.image("monster", "image/monster/레이어 90.png");
 
         // 훈련장 스탯 아이콘들 불러오기
@@ -65,7 +68,7 @@ export default class GameScene extends Phaser.Scene
         this.scheduleSelectUI.createScheduleSelectUI(this);
 
         // 하단 바 UI 생성
-        createUnderBarUI(this);
+        this.underBarUI.createUnderBarUI(this);
 
         // 날짜 관련 UI 생성
         this.dayUI.createDayUI();
@@ -88,14 +91,6 @@ export default class GameScene extends Phaser.Scene
         });
     }
 
-    startEnding() {
-        this.scene.start('main2');
-    }
-
-    addSprites() {
-        this.character1.destroy();
-    }
-
     update() {
         if(this.barFlag){
             if(this.barGauge <= 100){
@@ -109,4 +104,10 @@ export default class GameScene extends Phaser.Scene
             }
         }
     }
+
+    startEnding() {
+        this.scene.start('main2');
+    }
+
+
 }

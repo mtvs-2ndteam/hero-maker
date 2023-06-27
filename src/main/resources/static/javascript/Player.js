@@ -1,4 +1,4 @@
-class Player{
+export default class Player{
 
     _nickName = "쿠크냐";
     _hp = 0;
