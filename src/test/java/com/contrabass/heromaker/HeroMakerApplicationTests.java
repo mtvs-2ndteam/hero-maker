@@ -1,6 +1,5 @@
 package com.contrabass.heromaker;
 
-import com.contrabass.heromaker.domain.repository.CharacterMapper;
 import com.contrabass.heromaker.domain.service.BattleDomainService;
 import com.contrabass.heromaker.domain.service.CharacterDomainService;
 import com.contrabass.heromaker.domain.vo.BattleResultVO;
@@ -16,15 +15,15 @@ import java.util.Random;
 @SpringBootTest
 class HeroMakerApplicationTests {
     private CharacterDomainService characterDomainService;
-    private CharacterMapper characterMapper;
+    //    private CharacterMapper characterMapper;
     private BattleDomainService battleDomainService;
 
     @Autowired
     void setUp(CharacterDomainService characterDomainService,
-               CharacterMapper characterMapper,
+//               CharacterMapper characterMapper,
                BattleDomainService battleDomainService) {
         this.characterDomainService = characterDomainService;
-        this.characterMapper = characterMapper;
+//        this.characterMapper = characterMapper;
         this.battleDomainService = battleDomainService;
     }
 
