@@ -4,25 +4,28 @@ public class Character {
     private final int characterNo;
     private final int userNo;
     private final String nickName;
+    private final int hp;
     private final int str;
-    private final int Int;
+    private final int mage;
     private final int weaponPoint;
     private final int reputation;
-    private final String ending;
-    private final String present;
-    private final int date;
+    private final String gift;
+    private final int today;
+    private final String status;
 
-    public Character(int characterNo, int userNo, String nickName, int str, int anInt, int weaponPoint, int reputation, String ending, String present, int date) {
+    public Character(int characterNo, int userNo, String nickName, int hp, int str,
+                     int mage, int weaponPoint, int reputation, String gift, int today, String status) {
         this.characterNo = characterNo;
         this.userNo = userNo;
         this.nickName = nickName;
+        this.hp = hp;
         this.str = str;
-        Int = anInt;
+        this.mage = mage;
         this.weaponPoint = weaponPoint;
         this.reputation = reputation;
-        this.ending = ending;
-        this.present = present;
-        this.date = date;
+        this.gift = gift;
+        this.today = today;
+        this.status = status;
     }
 
     public int getCharacterNo() {
@@ -37,12 +40,16 @@ public class Character {
         return nickName;
     }
 
+    public int getHp() {
+        return hp;
+    }
+
     public int getStr() {
         return str;
     }
 
-    public int getInt() {
-        return Int;
+    public int getMage() {
+        return mage;
     }
 
     public int getWeaponPoint() {
@@ -53,15 +60,15 @@ public class Character {
         return reputation;
     }
 
-    public String getEnding() {
-        return ending;
+    public String getGift() {
+        return gift;
     }
 
-    public String getPresent() {
-        return present;
+    public int getToday() {
+        return today;
     }
 
-    public int getDate() {
-        return date;
+    public String getStatus() {
+        return status;
     }
 }

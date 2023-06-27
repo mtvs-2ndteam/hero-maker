@@ -5,15 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
-    private int userNo;
-    private String id;
-    private String pwd;
-    private String name;
-    private String phone;
-    private String email;
+@Getter
+@Setter
+public class GiftDTO {
+    private int giftNo;
+    private String gift;
 }

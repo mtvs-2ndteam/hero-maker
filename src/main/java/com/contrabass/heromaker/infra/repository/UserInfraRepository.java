@@ -1,5 +1,6 @@
 package com.contrabass.heromaker.infra.repository;
 
+import com.contrabass.heromaker.application.service.UserService;
 import com.contrabass.heromaker.domain.entity.User;
 import com.contrabass.heromaker.domain.repository.UserMapper;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -16,11 +17,19 @@ public class UserInfraRepository implements UserMapper {
     @Autowired
     public UserInfraRepository(SqlSessionTemplate sqlSession) {
         this.sqlSession = sqlSession;
+
+    }
+
+
+    @Override
+    public int insertUser(User user) {
+
+        return sqlSession.insert("UserMapper.insertUser",user);
     }
 
     @Override
-    public User insertUser() {
-        return null;
+    public User getUser(int userNo) {
+        return sqlSession.selectOne("UserMapper.insertUser",userNo);
     }
 
     @Override
