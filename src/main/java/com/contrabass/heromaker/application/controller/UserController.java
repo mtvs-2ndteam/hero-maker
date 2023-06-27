@@ -27,12 +27,12 @@ public class UserController {
     public String insertUser( WebRequest request){
         ModelAndView mav = new ModelAndView();
         String id = request.getParameter("id");
-        String password = request.getParameter("name");
+        String password = request.getParameter("password");
         UserDTO userdto = new UserDTO(1,id,password,password,password,password);
 
         int result = userService.insertUser(userdto);
         mav.addObject("insertUser", result);
-        mav.setViewName("content/home.html");
+        mav.setViewName("content/login.html");
         return "content/home";
     }
     // db 테스트
