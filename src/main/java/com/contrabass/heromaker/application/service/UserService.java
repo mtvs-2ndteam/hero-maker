@@ -22,6 +22,7 @@ public class UserService {
     }
 
     public List<UserDTO> getUserList() {
+        UserDTO userDTO = new UserDTO();
         List<User> foundUserList = userMapper.getUserList();
         List<UserDTO> userDTOList = new ArrayList<>();
 
@@ -36,23 +37,23 @@ public class UserService {
                 userDTO.setEmail(userMapper.getUserList().get(i).getEmail());
                 userDTOList.add(i, userDTO);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return userDTOList;
     }
 
     public UserDTO getUser(int userNo) {
-        UserDTO userDTO=new UserDTO();
+        UserDTO userDTO = new UserDTO();
 
         List<User> foundUserList = userMapper.getUserList();
 
-        boolean result=false;
+        boolean result = false;
 
         int listSize = foundUserList.size();
 
         for (int i = 0; i < listSize; i++) {
-            if(userMapper.getUserList().get(i).getUserNo()==userNo){
+            if (userMapper.getUserList().get(i).getUserNo() == userNo) {
                 userDTO.setUserNo(userMapper.getUserList().get(i).getUserNo());
                 userDTO.setId(userMapper.getUserList().get(i).getId());
                 userDTO.setPwd(userMapper.getUserList().get(i).getPwd());
@@ -63,14 +64,15 @@ public class UserService {
         }
         return userDTO;
     }
-    public int insertUser(UserDTO userDTO){
-        User user=new User(
-            userDTO.getUserNo(),
-            userDTO.getId(),
-            userDTO.getPwd(),
-            userDTO.getName(),
-            userDTO.getPhone(),
-            userDTO.getEmail()
+
+    public int insertUser(UserDTO userDTO) {
+        User user = new User(
+                userDTO.getUserNo(),
+                userDTO.getId(),
+                userDTO.getPwd(),
+                userDTO.getName(),
+                userDTO.getPhone(),
+                userDTO.getEmail()
         );
 
 
