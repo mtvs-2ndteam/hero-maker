@@ -10,4 +10,5 @@ import lombok.Getter;
 public class GiftVO {
     private int characterNo;
     private String gift;
+    private int today;
 }

@@ -48,6 +48,7 @@ class HeroMakerApplicationTests {
         GiftVO giftVO = GiftVO.builder()
                 .characterNo(1)
                 .gift("가시갑옷")
+                .today(3)
                 .build();
 
         org.junit.jupiter.api.Assertions.assertEquals(1,
