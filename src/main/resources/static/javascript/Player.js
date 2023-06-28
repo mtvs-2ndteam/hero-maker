@@ -9,6 +9,7 @@ export default class Player{
     _day = 1;
 
 
+
     getPlayerData(nickName, hp, str, mage, weaponPoint, reputation, day) {
         this._nickName = nickName;
         this._hp = hp;
@@ -18,6 +19,7 @@ export default class Player{
         this._reputation = reputation;
         this._day = day;
     }
+
 
     get day() {
         return this._day;

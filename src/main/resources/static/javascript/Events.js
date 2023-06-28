@@ -1,6 +1,7 @@
 
 export default class Events{
 
+
     startHelpingEvent(scene) {
         scene.ajax.requestVillageEventData();
 
@@ -16,6 +17,7 @@ export default class Events{
 
         scene.userInfoUI.refreshStat(scene);
     }
+
 
 
     startFightEvent(scene){

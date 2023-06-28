@@ -1,3 +1,4 @@
+
 import Ending from "./scene/Ending.js";
 import GameScene from "./scene/GameScene.js";
 import StartScene from "./scene/StartScene.js";
@@ -10,6 +11,7 @@ const config = {
         width: 1600,
         height: 900
     },
+
     scene : [StartScene, GameScene, Ending],
 
     backgroundColor: "#000000",

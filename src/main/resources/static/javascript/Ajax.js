@@ -1,6 +1,9 @@
+
 let response;
 export default class Ajax{
     response;
+
+
 
     requestVillageEventData() {
         $.ajax({
@@ -12,11 +15,14 @@ export default class Ajax{
             },
             error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
                 return null;
+
             }
         });
     }
 
+
     requestFightEventData(difficulty) {
+
         $.ajax({
             type: "POST",
             url: "/ajax/fight-event",
@@ -29,15 +35,27 @@ export default class Ajax{
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) { // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
                 return null;
+
+                eventIndex: 1
+            },
+            async: false,
+            success: function (response) {
+                this._villageEventText = response;
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) { // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+                alert("통신 실패.")
             }
         });
     }
 
+
     requestTrainingEventData(kind) {
+
         $.ajax({
             type: "POST",
             url: "/ajax/training-event",
             data: {
+
                 kind: kind
             },
             async: false,
@@ -49,6 +67,7 @@ export default class Ajax{
             }
         });
     }
+
 
     requestPlayerData() {
         $.ajax({
@@ -80,6 +99,4 @@ export default class Ajax{
 
     }
 
-
-}
 
