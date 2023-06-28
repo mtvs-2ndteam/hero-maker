@@ -40,8 +40,9 @@ export default class OptionUI {
         this.onUI(scene, 'createNewFileBackground', false);
 
         this.yesImage.once('pointerup', function () {
+            scene.tintFlag = false;
+            scene.storyUI.onUI(scene);
             scene.optionUI.offUI();
-            scene.moveMain();
         });
 
         this.noEvent2(scene);

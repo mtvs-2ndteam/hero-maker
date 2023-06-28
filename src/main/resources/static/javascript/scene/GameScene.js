@@ -1,14 +1,14 @@
 import Events from "../Events.js";
-import TrainingUI from "../TrainingUI.js";
-import FightingUI from "../FightingUI.js";
-import ScheduleSelectUI from "../ScheduleSelectUI.js";
+import TrainingUI from "../ui/TrainingUI.js";
+import FightingUI from "../ui/FightingUI.js";
+import ScheduleSelectUI from "../ui/ScheduleSelectUI.js";
 import Ajax from "../Ajax.js";
 import LoadingBar from "../LoadingBar.js";
 import Player from "../Player.js";
-import UnderBarUI from "../UnderBarUI.js";
-import OptionUI from "../OptionUI.js";
-import UserInformationUI from "../UserInformationUI.js";
-import DayUI from "../DayUI.js";
+import UnderBarUI from "../ui/UnderBarUI.js";
+import OptionUI from "../ui/OptionUI.js";
+import UserInformationUI from "../ui/UserInformationUI.js";
+import DayUI from "../ui/DayUI.js";
 
 export default class GameScene extends Phaser.Scene
 {
