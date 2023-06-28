@@ -29,8 +29,18 @@ export default class OptionUI {
         this.onUI(scene, 'ynBackground', true);
 
         this.yesImage.once('pointerup', function () {
-            scene.optionUI.offUI();
-
+            scene.events.startHelpingEvent(scene);
+            scene.bar = scene.loadingBar.makeBar(0, 0, 1600, 50, 	0x808080, scene).setDepth(12);
+            scene.barFlag = true;
+            scene.time.addEvent({
+                delay: 3150,
+                callback: ()=>{
+                    scene.optionUI.offUI();
+                    scene.bar.destroy();
+                    scene.alertUI.onNextDay(scene);
+                },
+                loop: false
+            });
         });
 
         this.noEvent(scene);

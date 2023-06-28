@@ -1,7 +1,7 @@
 
 export default class Events{
 
-    startVillageEvent(scene) {
+    startHelpingEvent(scene) {
         scene.ajax.requestVillageEventData();
 
         scene.userInfoUI.refreshStat(scene);

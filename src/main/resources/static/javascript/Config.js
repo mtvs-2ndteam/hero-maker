@@ -12,7 +12,7 @@ const config = {
     },
     scene : [StartScene, GameScene, Ending],
 
-    backgroundColor: "#18216D",
+    backgroundColor: "#000000",
 
 };
 

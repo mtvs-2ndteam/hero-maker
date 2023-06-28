@@ -74,16 +74,60 @@ export default class UserInformationUI{
 
         // 스탯들 바 생성하기
 
-        this.statBar1 = scene.loadingBar.makeBar(165, 430,
-            170, 25, '#ffffff', scene).setDepth(4);
-        this.statBar2 = scene.loadingBar.makeBar(165, 500,
-            170, 25, '#ffffff', scene).setDepth(4);
-        this.statBar3 = scene.loadingBar.makeBar(165, 570,
-            170, 25, '#ffffff', scene).setDepth(4);
-        this.statBar4 = scene.loadingBar.makeBar(165, 640,
-            170, 25, '#ffffff', scene).setDepth(4);
+        this.statBar1 = scene.loadingBar.makeBar(165, 429,
+            170, 25, '0xFF0000', scene).setDepth(4);
+        this.statBar2 = scene.loadingBar.makeBar(165, 499,
+            170, 25, '0x800000', scene).setDepth(4);
+        this.statBar3 = scene.loadingBar.makeBar(165, 569,
+            170, 25, '0x0000FF', scene).setDepth(4);
+        this.statBar4 = scene.loadingBar.makeBar(165, 639,
+            170, 25, '0x800080', scene).setDepth(4);
+
+        // 스탯 텍스트 생성
+        scene.make.text({
+            x: 250,
+            y: 441,
+            text: scene.player._hp + " / 120",
+            style: {
+                font: "20px 'omyu_pretty'",
+                color: '#ffffff',
+            }
+        }).setDepth(5).setOrigin(0.5, 0.5);
+
+        scene.make.text({
+            x: 250,
+            y: 511,
+            text: scene.player._str + " / 120",
+            style: {
+                font: "20px 'omyu_pretty'",
+                color: '#ffffff',
+            }
+        }).setDepth(5).setOrigin(0.5, 0.5);
+
+        scene.make.text({
+            x: 250,
+            y: 581,
+            text: scene.player._mage + " / 120",
+            style: {
+                font: "20px 'omyu_pretty'",
+                color: '#ffffff',
+            }
+        }).setDepth(5).setOrigin(0.5, 0.5);
+
+        scene.make.text({
+            x: 250,
+            y: 651,
+            text: scene.player._weaponPoint + " / 120",
+            style: {
+                font: "20px 'omyu_pretty'",
+                color: '#ffffff',
+            }
+        }).setDepth(5).setOrigin(0.5, 0.5);
 
         this.statBar1Percentage = 100;
+        this.statBar2Percentage = 100;
+        this.statBar3Percentage = 100;
+        this.statBar4Percentage = 100;
 
         scene.loadingBar.setValue(this.statBar1, this.statBar1Percentage);
         scene.loadingBar.setValue(this.statBar2, this.statBar2Percentage);
