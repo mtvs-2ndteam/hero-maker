@@ -62,15 +62,17 @@ class HeroMakerApplicationTests {
         BattleVO battleResultVO1 = BattleVO.builder()
                 .statPoint(3)
                 .status("Y")
+                .today(1)
                 .build();
         BattleVO battleResultVO2 = BattleVO.builder()
                 .statPoint(0)
                 .status("N")
+                .today(3)
                 .build();
         List<BattleVO> resultList = List.of(battleResultVO1, battleResultVO2);
 
         Assertions.assertThat(resultList)
-                .contains(battleDomainService.getBattleResult("Easy"));
+                .contains(battleDomainService.getBattleResult("쉬움"));
     }
 
     @DisplayName("보통 난이도 결과값 테스트")
@@ -79,15 +81,17 @@ class HeroMakerApplicationTests {
         BattleVO battleResultVO1 = BattleVO.builder()
                 .statPoint(6)
                 .status("Y")
+                .today(1)
                 .build();
         BattleVO battleResultVO2 = BattleVO.builder()
                 .statPoint(0)
                 .status("N")
+                .today(3)
                 .build();
         List<BattleVO> resultList = List.of(battleResultVO1, battleResultVO2);
 
         Assertions.assertThat(resultList)
-                .contains(battleDomainService.getBattleResult("Normal"));
+                .contains(battleDomainService.getBattleResult("보통"));
     }
 
     @DisplayName("어려움 난이도 결과값 테스트")
@@ -96,15 +100,17 @@ class HeroMakerApplicationTests {
         BattleVO battleResultVO1 = BattleVO.builder()
                 .statPoint(12)
                 .status("Y")
+                .today(1)
                 .build();
         BattleVO battleResultVO2 = BattleVO.builder()
                 .statPoint(0)
                 .status("N")
+                .today(3)
                 .build();
         List<BattleVO> resultList = List.of(battleResultVO1, battleResultVO2);
 
         Assertions.assertThat(resultList)
-                .contains(battleDomainService.getBattleResult("Hard"));
+                .contains(battleDomainService.getBattleResult("어려움"));
     }
 
     @DisplayName("랜덤 스탯 인덱스 중복 체크 테스트")
