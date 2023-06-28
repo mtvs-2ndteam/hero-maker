@@ -35,7 +35,6 @@ public class UserController {
         String price = request.getParameter("userPassword");
         String message = name + "을(를) 신규 메뉴 목록의 " + name + "번 카테고리에 " + price + "원으로 등록하였습니다!!";
         model.addAttribute("message", message);
-        System.out.println(name.equals("hi"));
         return "content/messagePrinter";
     }
     @GetMapping("/content/register")
@@ -53,7 +52,6 @@ public class UserController {
 
         String message = id + "을(를) 신규 메뉴 목록의 " + id + "번 카테고리에 " + password+ "원으로 등록하였습니다!!";
         model.addAttribute("message", message);
-        System.out.println(id.equals("hi"));
         return "content/messagePrinter";
     }
 
