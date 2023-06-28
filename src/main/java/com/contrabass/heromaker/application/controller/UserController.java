@@ -65,6 +65,8 @@ public class UserController {
         List<UserDTO> userList = userService.getUserList();
         System.out.println("userList = " + userList);
 
+
+
         mav.addObject("userList", userList);
         mav.setViewName("content/home.html");
 

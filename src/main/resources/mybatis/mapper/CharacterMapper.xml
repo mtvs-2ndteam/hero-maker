@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CharacterMapper">
+    <resultMap type="CharacterEntity" id="CharacterResult">
+        <result property="characterNo" column="characterNo"/>
+        <result property="userNo" column="userNo"/>
+        <result property="nickName" column="nickName"/>
+        <result property="hp" column="hp"/>
+        <result property="str" column="str"/>
+        <result property="mage" column="mage"/>
+        <result property="weaponPoint" column="weaponPoint"/>
+        <result property="reputation" column="reputation"/>
+        <result property="gift" column="gift"/>
+        <result property="today" column="today"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <select id="selectCharacter" resultMap="CharacterResult">
+        SELECT *
+        FROM CHARACTER_TBL
+        WHERE userNo =
+              #{userNo}
+    </select>
+
+    <update id="updateCharacterGift">
+        UPDATE CHARACTER_TBL
+        SET gift  = #{gift}
+          , today = #{today} + 1
+        WHERE characterNo = #{characterNo}
+    </update>
+
+    <update id="saveBattleResult">
+        UPDATE CHARACTER_TBL
+        SET hp          = hp + #{hp}
+          , str         = str + #{str}
+          , mage        = mage + #{mage}
+          , weaponPoint = weaponPoint + #{weaponPoint}
+          , today       = today + #{today}
+          , status      = #{status}
+        WHERE characterNo = #{characterNo}
+    </update>
+
+</mapper>
