@@ -4,10 +4,12 @@
 <configuration>
     <typeAliases>
         <typeAlias type="com.contrabass.heromaker.domain.entity.User" alias="User"/>
-        <typeAlias type="com.contrabass.heromaker.domain.entity.Character" alias="Character"/>
+        <typeAlias type="com.contrabass.heromaker.domain.entity.CharacterEntity" alias="CharacterEntity"/>
+        <typeAlias type="com.contrabass.heromaker.domain.entity.Gift" alias="Gift"/>
     </typeAliases>
     <mappers>
         <mapper resource="UserMapper.xml"/>
         <mapper resource="CharacterMapper.xml"/>
+        <mapper resource="GiftMapper.xml"/>
     </mappers>
 </configuration>
