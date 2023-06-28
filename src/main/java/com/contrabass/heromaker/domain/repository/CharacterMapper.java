@@ -9,8 +9,14 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CharacterMapper {
+    // 신규 캐릭터 등록 // 조만제
+    int insertCharacter(int userNo);
+
     // 현재 캐릭터 조회 // 조만제
     CharacterEntity selectCharacter(int userNo);
+
+    // 현재 캐릭터 삭제 // 조만제
+    int deleteCharacter(int userNo);
 
     // 특정 선물 조회 // 조만제
     Gift selectGift(int giftNo);
