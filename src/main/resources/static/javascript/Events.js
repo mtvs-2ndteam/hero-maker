@@ -18,9 +18,7 @@ export default class Events{
     }
 
 
-    startFightEvent(scene){
-        this.response = scene.ajax.requestFightEventData();
-
-        scene.userInfoUI.refreshStat(scene);
-    }
+    // startFightEvent(scene, difficulty){
+    //
+    // }
 }

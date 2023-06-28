@@ -1,5 +1,6 @@
 package com.contrabass.heromaker;
 
+import com.contrabass.heromaker.application.dto.BattleDTO;
 import com.contrabass.heromaker.domain.repository.CharacterMapper;
 import com.contrabass.heromaker.domain.service.BattleDomainService;
 import com.contrabass.heromaker.domain.service.CharacterDomainService;
@@ -148,17 +149,17 @@ class HeroMakerApplicationTests {
     @DisplayName("DB에 전투 결과 저장 테스트")
     @Test
     void saveTest() {
-//        BattleDTO battleDTO = new BattleDTO(
-//                1
-//                , 6
-//                , 6
-//                , 6
-//                , 0
-//                , 17
-//                , "Y");
-//
-//        org.junit.jupiter.api.Assertions.assertEquals(1,
-//                characterMapper.saveBattleResult(battleDTO));
+        BattleDTO battleDTO = new BattleDTO(
+                1
+                , 6
+                , 6
+                , 6
+                , 0
+                , 17
+                , "Y");
+
+        org.junit.jupiter.api.Assertions.assertEquals(1,
+                characterMapper.saveBattleResult(battleDTO));
     }
 
 }

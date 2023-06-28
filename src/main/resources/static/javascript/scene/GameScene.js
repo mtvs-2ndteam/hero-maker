@@ -2,7 +2,7 @@ import Events from "../Events.js";
 import TrainingUI from "../ui/TrainingUI.js";
 import FightingUI from "../ui/FightingUI.js";
 import ScheduleSelectUI from "../ui/ScheduleSelectUI.js";
-import Ajax from "../Ajax.js";
+import Fetcher from "../Fetcher.js";
 import LoadingBar from "../LoadingBar.js";
 import Player from "../Player.js";
 import UnderBarUI from "../ui/UnderBarUI.js";
@@ -10,6 +10,7 @@ import OptionUI from "../ui/OptionUI.js";
 import UserInformationUI from "../ui/UserInformationUI.js";
 import DayUI from "../ui/DayUI.js";
 import AlertUI from "../ui/AlertUI.js";
+
 
 export default class GameScene extends Phaser.Scene
 {
@@ -29,11 +30,10 @@ export default class GameScene extends Phaser.Scene
 
         this.optionUI = new OptionUI();
         this.player = new Player();
-        this.player.getPlayerData("쿠크냐냐", 48, 24, 43, 67, 33, 1);
         this.loadingBar = new LoadingBar();
         this.userInfoUI = new UserInformationUI();
         this.dayUI = new DayUI();
-        this.ajax = new Ajax();
+        this.ajax = new Fetcher();
         this.events = new Events();
         this.trainingUI = new TrainingUI();
         this.scheduleSelectUI = new ScheduleSelectUI();
@@ -41,7 +41,6 @@ export default class GameScene extends Phaser.Scene
         this.underBarUI = new UnderBarUI();
         this.alertUI = new AlertUI();
 
-        this.response = this.ajax.requestPlayerData();
         this.loadImage();
     }
     create() {
@@ -62,6 +61,8 @@ export default class GameScene extends Phaser.Scene
         this.dayUI.createDayUI(this);
 
         this.dayUI.refreshDate(this.player._day, this);
+        this.userInfoUI.refreshStat(this);
+        this.ajax.requestCharacterData(this);
 
         // this.character1 = Phaser.Utils.Array.Shuffle(this.character1);
 

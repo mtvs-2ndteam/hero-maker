@@ -1,4 +1,4 @@
-import Ajax from "../Ajax.js";
+import Fetcher from "../Fetcher.js";
 
 export default class Ending extends Phaser.Scene
 {
@@ -19,7 +19,7 @@ export default class Ending extends Phaser.Scene
         this.load.image("ending10", "image/ui/endingImage/엔딩10.png");
         this.load.image("ending11", "image/ui/endingImage/엔딩11.png");
 
-        this.ajaxUI = new Ajax();
+        this.ajaxUI = new Fetcher();
     }
 
     create() {

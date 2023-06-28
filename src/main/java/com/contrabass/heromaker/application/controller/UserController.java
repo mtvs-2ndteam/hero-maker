@@ -20,19 +20,19 @@ public class UserController {
     }
 
     // db 테스트
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView goHome() {
-        ModelAndView mav = new ModelAndView();
-
-        List<UserDTO> userList = userService.getUserList();
-        System.out.println("userList = " + userList);
-
-
-
-        mav.addObject("userList", userList);
-        mav.setViewName("content/home.html");
-
-        return mav;
-    }
+//    @RequestMapping(value = "/", method = RequestMethod.GET)
+//    public ModelAndView goHome() {
+//        ModelAndView mav = new ModelAndView();
+//
+//        List<UserDTO> userList = userService.getUserList();
+//        System.out.println("userList = " + userList);
+//
+//
+//
+//        mav.addObject("userList", userList);
+//        mav.setViewName("content/home.html");
+//
+//        return mav;
+//    }
 
 }
