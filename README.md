@@ -60,8 +60,7 @@
 <br>
 
 ## 4. 아키텍처 설계
-;사진;
-
+<img width="891" alt="스크린샷 2023-06-28 164432" src="https://github.com/mtvs-2ndteam/hero-maker/assets/98208452/ea4d834b-7830-4b26-ac46-efe1bf84709d">
 <br>
 
 ## 5. 개발 포인트
@@ -82,4 +81,7 @@
 ### [ERD] <br>
 <img width="701" alt="image" src="https://github.com/mtvs-2ndteam/hero-maker/assets/98208452/3b350faf-c6dc-4850-b309-ec92174e5635">
 <br>
-* 유저 시나리오 - ;사진;
+
+### [유저 시나리오] <br>
+<img width="968" alt="스크린샷 2023-06-28 161153" src="https://github.com/mtvs-2ndteam/hero-maker/assets/98208452/0dcf47a8-15d0-47ba-90db-2a591edbbbd8">
+
