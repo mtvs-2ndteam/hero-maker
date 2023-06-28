@@ -26,20 +26,102 @@
 
     <update id="updateCharacterGift">
         UPDATE CHARACTER_TBL
-        SET gift  = #{gift}
-          , today = #{today} + 1
-        WHERE characterNo = #{characterNo}
+           SET gift  = #{gift}
+             , today = #{today} + 1
+         WHERE characterNo = #{characterNo}
     </update>
 
     <update id="saveBattleResult">
         UPDATE CHARACTER_TBL
-        SET hp          = hp + #{hp}
-          , str         = str + #{str}
-          , mage        = mage + #{mage}
-          , weaponPoint = weaponPoint + #{weaponPoint}
-          , today       = today + #{today}
-          , status      = #{status}
-        WHERE characterNo = #{characterNo}
+           SET hp          = hp + #{hp}
+             , str         = str + #{str}
+             , mage        = mage + #{mage}
+             , weaponPoint = weaponPoint + #{weaponPoint}
+             , today       = today + #{today}
+             , status      = #{status}
+         WHERE characterNo = #{characterNo}
     </update>
+
+    <select id="checkCharacter" resultMap="CharacterResult">
+        SELECT *
+          FROM CHARACTER_TBL
+         WHERE userNo =
+               #{userNo}
+    </select>
+
+    <update id="updateGift">
+        UPDATE CHARACTER_TBL
+           SET gift = #{gift}
+         WHERE characterNo =
+               #{characterNo}
+    </update>
+
+    <update id="updateCharacterStat">
+        UPDATE CHARACTER_TBL
+           SET hp = #{ hp },
+               str = #{ str },
+               mage = #{ mage },
+               weaponPoint = #{ weaponPoint }
+         WHERE characterNo =
+               #{characterNo}
+    </update>
+
+    <select id="selectCharacterStat" resultMap="CharacterStat">
+        SELECT
+               hp,
+               str,
+               mage,
+               weaponPoint
+          FROM CHARACTER_TBL
+         WHERE characterNo =
+               #{characterNo}
+    </select>
+
+    <select id="selectCharacterStr" resultMap="CharacterStr">
+        SELECT
+               str
+          FROM CHARACTER_TBL
+         WHERE characterNo =
+               #{characterNo}
+    </select>
+
+    <select id="selectCharacterHp" resultMap="CharacterHp">
+        SELECT
+               hp
+          FROM CHARACTER_TBL
+          WHERE characterNo =
+               #{characterNo}
+    </select>
+
+    <select id="selectCharacterMage" resultMap="CharacterMage">
+        SELECT
+               mage
+          FROM CHARACTER_TBL
+         WHERE characterNo =
+               #{characterNo}
+    </select>
+
+    <select id="selectCharacterWeaponPoint" resultMap="CharacterWeaponPoint">
+        SELECT
+               weaponPoint
+          FROM CHARACTER_TBL
+         WHERE characterNo =
+               #{characterNo}
+    </select>
+
+    <update id="updateReputation">
+        UPDATE CHARACTER_TBL
+           SET reputation = #{reputation}
+         WHERE characterNo =
+               #{characterNo}
+    </update>
+
+    <select id="checkReputation">
+        SELECT
+               reputation
+          FROM CHARACTER_TBL
+         WHERE characterNo =
+               #{characterNo}
+    </select>
 
 </mapper>
