@@ -13,7 +13,8 @@
     <!--    </resultMap>-->
 
     <select id="getUserList" resultType="User">
+
         SELECT *
-        FROM USER;
+        FROM USER_tbl;
     </select>
 </mapper>
