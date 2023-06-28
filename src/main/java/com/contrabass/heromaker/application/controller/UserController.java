@@ -43,11 +43,16 @@ public class UserController {
     @PostMapping("/content/register")
     public String RegisterMenu(Model model, WebRequest request) {
 
-        String name = request.getParameter("id");
-        String price = request.getParameter("password");
-        String message = name + "을(를) 신규 메뉴 목록의 " + name + "번 카테고리에 " + price + "원으로 등록하였습니다!!";
+        String id = request.getParameter("id");
+        String password = request.getParameter("password");
+        String nickname = request.getParameter("nickname");
+        String phonenumber = request.getParameter("phonenumber");
+        String email = request.getParameter("email");
+
+
+        String message = id + "을(를) 신규 메뉴 목록의 " + id + "번 카테고리에 " + password+ "원으로 등록하였습니다!!";
         model.addAttribute("message", message);
-        System.out.println(name.equals("hi"));
+        System.out.println(id.equals("hi"));
         return "content/messagePrinter";
     }
 
