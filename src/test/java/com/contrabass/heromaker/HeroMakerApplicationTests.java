@@ -1,29 +1,32 @@
 package com.contrabass.heromaker;
 
+import com.contrabass.heromaker.domain.repository.CharacterMapper;
 import com.contrabass.heromaker.domain.service.BattleDomainService;
 import com.contrabass.heromaker.domain.service.CharacterDomainService;
-import com.contrabass.heromaker.domain.vo.BattleResultVO;
+import com.contrabass.heromaker.domain.vo.BattleVO;
+import com.contrabass.heromaker.domain.vo.StatVO;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 @SpringBootTest
 class HeroMakerApplicationTests {
     private CharacterDomainService characterDomainService;
-    //    private CharacterMapper characterMapper;
+    private CharacterMapper characterMapper;
     private BattleDomainService battleDomainService;
 
     @Autowired
     void setUp(CharacterDomainService characterDomainService,
-//               CharacterMapper characterMapper,
+               CharacterMapper characterMapper,
                BattleDomainService battleDomainService) {
         this.characterDomainService = characterDomainService;
-//        this.characterMapper = characterMapper;
+        this.characterMapper = characterMapper;
         this.battleDomainService = battleDomainService;
     }
 
@@ -40,65 +43,116 @@ class HeroMakerApplicationTests {
         Assertions.assertThat(list).contains(result2);
     }
 
-//    @DisplayName("랜덤 선물 DB에 저장 테스트")
-//    @Test
-//    void giftTest2() {
-//        GiftVO giftVO = GiftVO.builder()
-//                .characterNo(1)
-//                .gift("가시갑옷")
-//                .today(3)
-//                .build();
+    @DisplayName("랜덤 선물 DB에 저장 테스트")
+    @Test
+    void giftTest2() {
+//        GiftResultDTO giftResultDTO = new GiftResultDTO(
+//                1
+//                ,"가시갑옷"
+//                ,3
+//              );
 //
 //        org.junit.jupiter.api.Assertions.assertEquals(1,
-//                characterMapper.updateCharacterGift(giftVO));
-//    }
+//                characterMapper.updateCharacterGift(giftResultDTO));
+    }
 
-    @DisplayName("Easy 난이도 결과값 테스트")
+    @DisplayName("쉬움 난이도 결과값 테스트")
     @Test
     void battleTest1() {
-        BattleResultVO battleResultVO1 = BattleResultVO.builder()
+        BattleVO battleResultVO1 = BattleVO.builder()
                 .statPoint(3)
                 .status("Y")
                 .build();
-        BattleResultVO battleResultVO2 = BattleResultVO.builder()
+        BattleVO battleResultVO2 = BattleVO.builder()
                 .statPoint(0)
                 .status("N")
                 .build();
-        List<BattleResultVO> resultList = List.of(battleResultVO1, battleResultVO2);
+        List<BattleVO> resultList = List.of(battleResultVO1, battleResultVO2);
 
-        Assertions.assertThat(resultList).contains(battleDomainService.getBattleResult("Easy"));
+        Assertions.assertThat(resultList)
+                .contains(battleDomainService.getBattleResult("Easy"));
     }
 
-    @DisplayName("Normal 난이도 결과값 테스트")
+    @DisplayName("보통 난이도 결과값 테스트")
     @Test
     void battleTest2() {
-        BattleResultVO battleResultVO1 = BattleResultVO.builder()
+        BattleVO battleResultVO1 = BattleVO.builder()
                 .statPoint(6)
                 .status("Y")
                 .build();
-        BattleResultVO battleResultVO2 = BattleResultVO.builder()
+        BattleVO battleResultVO2 = BattleVO.builder()
                 .statPoint(0)
                 .status("N")
                 .build();
-        List<BattleResultVO> resultList = List.of(battleResultVO1, battleResultVO2);
+        List<BattleVO> resultList = List.of(battleResultVO1, battleResultVO2);
 
-        Assertions.assertThat(resultList).contains(battleDomainService.getBattleResult("Normal"));
+        Assertions.assertThat(resultList)
+                .contains(battleDomainService.getBattleResult("Normal"));
     }
 
-    @DisplayName("Hard 난이도 결과값 테스트")
+    @DisplayName("어려움 난이도 결과값 테스트")
     @Test
     void battleTest3() {
-        BattleResultVO battleResultVO1 = BattleResultVO.builder()
+        BattleVO battleResultVO1 = BattleVO.builder()
                 .statPoint(12)
                 .status("Y")
                 .build();
-        BattleResultVO battleResultVO2 = BattleResultVO.builder()
+        BattleVO battleResultVO2 = BattleVO.builder()
                 .statPoint(0)
                 .status("N")
                 .build();
-        List<BattleResultVO> resultList = List.of(battleResultVO1, battleResultVO2);
+        List<BattleVO> resultList = List.of(battleResultVO1, battleResultVO2);
 
-        Assertions.assertThat(resultList).contains(battleDomainService.getBattleResult("Hard"));
+        Assertions.assertThat(resultList)
+                .contains(battleDomainService.getBattleResult("Hard"));
+    }
+
+    @DisplayName("랜덤 스탯 인덱스 중복 체크 테스트")
+    @Test
+    void indexTest() {
+        List<Integer> stats = new ArrayList<>();
+        stats.add(0, 3);
+        stats.add(1, 2);
+        stats.add(2, 0);
+
+        org.junit.jupiter.api.Assertions
+                .assertTrue(battleDomainService.checkDuplication(stats, 3));
+        org.junit.jupiter.api.Assertions
+                .assertFalse(battleDomainService.checkDuplication(stats, 1));
+    }
+
+    @DisplayName("올릴 스텟 결정 테스트")
+    @Test
+    void decideTest() {
+        StatVO statVO = StatVO.builder()
+                .hp(3)
+                .str(0)
+                .mage(3)
+                .weaponPoint(3)
+                .build();
+        List<Integer> stats = new ArrayList<>();
+        stats.add(0, 3);
+        stats.add(1, 2);
+        stats.add(2, 0);
+
+        org.junit.jupiter.api.Assertions
+                .assertEquals(statVO, battleDomainService.decideStats(stats, 3));
+    }
+
+    @DisplayName("DB에 전투 결과 저장 테스트")
+    @Test
+    void saveTest() {
+//        BattleDTO battleDTO = new BattleDTO(
+//                1
+//                , 6
+//                , 6
+//                , 6
+//                , 0
+//                , 17
+//                , "Y");
+//
+//        org.junit.jupiter.api.Assertions.assertEquals(1,
+//                characterMapper.saveBattleResult(battleDTO));
     }
 
 }
