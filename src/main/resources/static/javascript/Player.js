@@ -8,6 +8,7 @@ export default class Player{
     _reputation = 0;
     _day = 1;
 
+
     get day() {
         return this._day;
     }

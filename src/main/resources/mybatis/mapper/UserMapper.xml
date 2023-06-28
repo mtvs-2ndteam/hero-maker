@@ -10,6 +10,13 @@
         <result property="phone" column="phone"/>
         <result property="email" column="email"/>
     </resultMap>
+    <resultMap type="Ending" id="EndingList">
+        <result property="endingNo" column="endingNo"/>
+        <result property="userNo" column="userNo"/>
+        <result property="ending" column="ending"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
 
     <select id="getUserList" resultMap="UserList">
         SELECT *
@@ -18,10 +25,14 @@
     <insert id="insertUser">
         insert into user_tbl(id, pwd, name ,phone ,email) values(#{id},#{pwd},#{name},#{phone},#{email});
     </insert>
-<!--    <select id="checkCharacter" resultMap="CharacterResult">-->
-<!--        SELECT *-->
-<!--        FROM user_tbl-->
-<!--        WHERE userNo =-->
-<!--              #{userNo}-->
-<!--    </select>-->
+
+
+    <insert id="insertEndingNo">
+        insert into ending_tbl( userNo, ending , status) values(#{userNo},#{ending},#{status});
+    </insert>
+    <select id="getEndingList" resultMap="EndingList">
+        SELECT *
+        FROM ending_tbl
+        WHERE userNo = #{userNo};
+    </select>
 </mapper>

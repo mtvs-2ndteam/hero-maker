@@ -1,5 +1,5 @@
 
-export default class Events{
+export default class Events {
 
     startHelpingEvent(scene) {
         scene.ajax.requestVillageEventData();
@@ -7,7 +7,7 @@ export default class Events{
         scene.userInfoUI.refreshStat(scene);
     }
 
-    startTrainingEvent(scene, kind){
+    startTrainingEvent(scene, kind) {
         this.response = scene.ajax.requestTrainingEventData(kind);
         // scene.player._hp = this.response.hp;
         // scene.player._str = this.response.str;
@@ -17,8 +17,9 @@ export default class Events{
         scene.userInfoUI.refreshStat(scene);
     }
 
+}
+
 
     // startFightEvent(scene, difficulty){
     //
     // }
-}

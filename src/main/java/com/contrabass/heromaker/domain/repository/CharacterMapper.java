@@ -1,6 +1,7 @@
 package com.contrabass.heromaker.domain.repository;
 
 import com.contrabass.heromaker.application.dto.BattleDTO;
+import com.contrabass.heromaker.application.dto.CharacterDTO;
 import com.contrabass.heromaker.application.dto.GiftResultDTO;
 import com.contrabass.heromaker.domain.entity.CharacterEntity;
 import com.contrabass.heromaker.domain.entity.Gift;
@@ -19,4 +20,16 @@ public interface CharacterMapper {
 
     // 전투 결과 저장 // 조만제
     int saveBattleResult(BattleDTO battleDTO);
+
+    // 캐릭터의 스탯을 조회하는 메소드
+    CharacterEntity selectCharacterStat(int characterNo);
+
+    // 캐릭터 스탯 업데이트
+    int updateCharacterStat(CharacterDTO characterDTO);
+
+    // 캐릭터의 명성을 조회하는 메소드
+    CharacterEntity selectCharacterReputation(int characterNo);
+
+    // 캐릭터 명성 업데이트
+    int updateCharacterReputation(CharacterDTO characterDTO);
 }
