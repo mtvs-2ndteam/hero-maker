@@ -1,8 +1,10 @@
 package com.contrabass.heromaker.infra.repository;
 
+import com.contrabass.heromaker.application.dto.BattleDTO;
+import com.contrabass.heromaker.application.dto.GiftResultDTO;
+import com.contrabass.heromaker.domain.entity.CharacterEntity;
 import com.contrabass.heromaker.domain.entity.Gift;
 import com.contrabass.heromaker.domain.repository.CharacterMapper;
-import com.contrabass.heromaker.domain.vo.GiftVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,20 +19,27 @@ public class CharacterInfraRepository implements CharacterMapper {
         this.sqlSession = sqlSession;
     }
 
-//    // DB에서 현재 캐릭터 정보 조회
-//    @Override
-//    public Character selectCharacter(int userNo) {
-//        return sqlSession.selectOne("CharacterMapper.checkCharacter", userNo);
-//    }
+    // 현재 캐릭터 정보 조회 // 조만제
+    @Override
+    public CharacterEntity selectCharacter(int userNo) {
+        return sqlSession.selectOne("CharacterMapper.selectCharacter", userNo);
+    }
 
+    // 특정 선물 조회 // 조만제
     @Override
     public Gift selectGift(int giftNo) {
         return sqlSession.selectOne("GiftMapper.selectGift", giftNo);
     }
 
-    // 현재 캐릭터 선물 업데이트
+    // 현재 캐릭터 선물 업데이트 // 조만제
     @Override
-    public int updateCharacterGift(GiftVO giftVO) {
-        return sqlSession.update("CharacterMapper.updateCharacterGift", giftVO);
+    public int updateCharacterGift(GiftResultDTO giftResultDTO) {
+        return sqlSession.update("CharacterMapper.updateCharacterGift", giftResultDTO);
+    }
+
+    // 전투 결과 저장 // 조만제
+    @Override
+    public int saveBattleResult(BattleDTO battleDTO) {
+        return sqlSession.update("CharacterMapper.saveBattleResult", battleDTO);
     }
 }
