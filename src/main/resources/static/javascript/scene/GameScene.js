@@ -29,6 +29,7 @@ export default class GameScene extends Phaser.Scene
 
         this.optionUI = new OptionUI();
         this.player = new Player();
+        this.player.getPlayerData("쿠크냐냐", 48, 24, 43, 67, 33, 1);
         this.loadingBar = new LoadingBar();
         this.userInfoUI = new UserInformationUI();
         this.dayUI = new DayUI();
@@ -59,6 +60,8 @@ export default class GameScene extends Phaser.Scene
 
         // 날짜 관련 UI 생성
         this.dayUI.createDayUI(this);
+
+        this.dayUI.refreshDate(this.player._day, this);
 
         // this.character1 = Phaser.Utils.Array.Shuffle(this.character1);
 
@@ -153,36 +156,34 @@ export default class GameScene extends Phaser.Scene
         progressBox.fillStyle(0x222222, 0.8);
         progressBox.fillRect(630, 450, 320, 50);
 
-        var width = this.cameras.main.width;
-        var height = this.cameras.main.height;
         var loadingText = this.make.text({
-            x: width / 2,
-            y: height / 2 - 50,
-            text: 'Loading...',
+            x: 800,
+            y: 400,
+            text: '로딩중...',
             style: {
-                font: '20px monospace',
+                font: "35px 'omyu_pretty'",
                 fill: '#ffffff'
             }
         });
         loadingText.setOrigin(0.5, 0.5);
 
         var percentText = this.make.text({
-            x: width / 2,
-            y: height / 2 - 5,
+            x: 800,
+            y: 472,
             text: '0%',
             style: {
-                font: '18px monospace',
+                font: "20px 'omyu_pretty'",
                 fill: '#ffffff'
             }
         });
         percentText.setOrigin(0.5, 0.5);
 
         var assetText = this.make.text({
-            x: width / 2,
-            y: height / 2 + 50,
+            x: 800,
+            y: 700,
             text: '',
             style: {
-                font: '18px monospace',
+                font: "65px 'omyu_pretty'",
                 fill: '#ffffff'
             }
         });
@@ -196,7 +197,7 @@ export default class GameScene extends Phaser.Scene
         });
 
         this.load.on('fileprogress', function (file) {
-            assetText.setText('Loading asset: ' + file.key);
+            assetText.setText('로딩중인 파일 : ' + file.key);
         });
         this.load.on('complete', function () {
             progressBar.destroy();

@@ -1,5 +1,6 @@
 export default class AlertUI {
     onNextDay(scene) {
+        scene.dayUI.refreshDate(scene.player._day, scene);
         this.alertNextDayImage = scene.add.sprite(800, 450, 'alertNextDay').setDepth(10);
         this.alpaBackground = scene.add.sprite(800, 450, '50alpaBackground').setDepth(9);
         scene.time.addEvent({

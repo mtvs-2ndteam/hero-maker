@@ -124,27 +124,26 @@ export default class UserInformationUI{
             }
         }).setDepth(5).setOrigin(0.5, 0.5);
 
-        this.statBar1Percentage = 100;
-        this.statBar2Percentage = 100;
-        this.statBar3Percentage = 100;
-        this.statBar4Percentage = 100;
+        // this.statBar1Percentage = 100;
+        // this.statBar2Percentage = 100;
+        // this.statBar3Percentage = 100;
+        // this.statBar4Percentage = 100;
 
-        scene.loadingBar.setValue(this.statBar1, this.statBar1Percentage);
-        scene.loadingBar.setValue(this.statBar2, this.statBar2Percentage);
-        scene.loadingBar.setValue(this.statBar3, this.statBar3Percentage);
-        scene.loadingBar.setValue(this.statBar4, this.statBar4Percentage);
+        this.refreshStat(scene);
     }
 
     refreshStat(scene) {
-        this.statBar1Percentage = scene.player._hp;
-        this.statBar2Percentage = scene.player._str;
-        this.statBar3Percentage = scene.player._mage;
-        this.statBar4Percentage = scene.player._weaponPoint;
+
+        this.statBar1Percentage = scene.player._hp * 100 / 120;
+        this.statBar2Percentage = scene.player._str * 100 / 120;
+        this.statBar3Percentage = scene.player._mage * 100 / 120;
+        this.statBar4Percentage = scene.player._weaponPoint * 100 / 120;
 
         scene.loadingBar.setValue(this.statBar1, this.statBar1Percentage);
         scene.loadingBar.setValue(this.statBar2, this.statBar2Percentage);
         scene.loadingBar.setValue(this.statBar3, this.statBar3Percentage);
         scene.loadingBar.setValue(this.statBar4, this.statBar4Percentage);
     }
+
 }
 

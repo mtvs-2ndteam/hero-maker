@@ -18,7 +18,7 @@ export default class DayUI{
         }).setDepth(3).setOrigin(1, 0.5);
     }
 
-    setDate(date, scene) {
+    refreshDate(date, scene) {
 
         // 기존의 날짜를 삭제
         if (this.dayText != null) {
@@ -35,5 +35,5 @@ export default class DayUI{
                 color: '#ffffff'
             }
         }).setDepth(3).setOrigin(1, 0.5);
-}
+    }
 }
