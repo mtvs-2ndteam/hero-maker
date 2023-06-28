@@ -1,6 +1,7 @@
 package com.contrabass.heromaker.infra.repository;
 
 import com.contrabass.heromaker.application.dto.BattleDTO;
+import com.contrabass.heromaker.application.dto.CharacterDTO;
 import com.contrabass.heromaker.application.dto.GiftResultDTO;
 import com.contrabass.heromaker.domain.entity.CharacterEntity;
 import com.contrabass.heromaker.domain.entity.Gift;
@@ -41,5 +42,32 @@ public class CharacterInfraRepository implements CharacterMapper {
     @Override
     public int saveBattleResult(BattleDTO battleDTO) {
         return sqlSession.update("CharacterMapper.saveBattleResult", battleDTO);
+    }
+
+    // 캐릭터 스탯 조회
+    @Override
+    public CharacterEntity selectCharacterStat(int characterNo) {
+
+        return sqlSession.selectOne("CharacterMapper.selectCharacterStat", characterNo);
+    }
+
+    // 캐릭터 스탯 업데이트
+    @Override
+    public int updateCharacterStat(CharacterDTO characterDTO) {
+
+        return sqlSession.update("CharacterMapper.updateCharacterStat", characterDTO);
+    }
+
+    // 캐릭터 명성 조회
+    @Override
+    public CharacterEntity selectCharacterReputation(int characterNo) {
+
+        return sqlSession.selectOne("CharacterMapper.selectReputation", characterNo);
+    }
+
+    @Override
+    public int updateCharacterReputation(CharacterDTO characterDTO) {
+
+        return sqlSession.update("CharacterMapper.updateCharacterReputation", characterDTO);
     }
 }

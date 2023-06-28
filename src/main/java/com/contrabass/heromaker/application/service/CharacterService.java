@@ -47,4 +47,31 @@ public class CharacterService {
                 , characterDTO.getToday());
         return characterMapper.updateCharacterGift(giftResultDTO);
     }
+
+    // 캐릭터 스탯 조회
+    public CharacterDTO selectCharacterStat(int characterNo) {
+
+        CharacterDTO characterDTO = new CharacterDTO();
+
+        CharacterEntity characterStat = characterMapper.selectCharacterStat(characterNo);
+
+        characterDTO.setStr(characterStat.getStr());
+        characterDTO.setMage(characterStat.getMage());
+        characterDTO.setWeaponPoint(characterStat.getWeaponPoint());
+        characterDTO.setHp(characterStat.getHp());
+
+        return characterDTO;
+    }
+
+    // 캐릭터 명성 조회
+    public CharacterDTO selectCharacterReputation (int characterNo) {
+
+        CharacterDTO characterDTO = new CharacterDTO();
+
+        CharacterEntity characterReputation = characterMapper.selectCharacterReputation(characterNo);
+
+        characterDTO.setReputation(characterReputation.getReputation());
+
+        return characterDTO;
+    }
 }
