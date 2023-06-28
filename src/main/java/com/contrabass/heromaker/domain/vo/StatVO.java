@@ -7,7 +7,7 @@ import lombok.Getter;
 @Builder
 @Getter
 @EqualsAndHashCode
-public class CharacterVO {
+public class StatVO {
     private int hp;
     private int str;
     private int mage;

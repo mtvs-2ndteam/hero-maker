@@ -27,9 +27,19 @@
     <update id="updateCharacterGift">
         UPDATE CHARACTER_TBL
         SET gift  = #{gift}
-          , today = #{today}
-        WHERE characterNo =
-              #{characterNo}
+          , today = #{today} + 1
+        WHERE characterNo = #{characterNo}
+    </update>
+
+    <update id="saveBattleResult">
+        UPDATE CHARACTER_TBL
+        SET hp          = hp + #{hp}
+          , str         = str + #{str}
+          , mage        = mage + #{mage}
+          , weaponPoint = weaponPoint + #{weaponPoint}
+          , today       = today + #{today}
+          , status      = #{status}
+        WHERE characterNo = #{characterNo}
     </update>
 
 </mapper>
