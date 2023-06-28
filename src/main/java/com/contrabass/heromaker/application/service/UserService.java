@@ -23,10 +23,9 @@ public class UserService {
 
 
     public UserDTO getUser(int userNo) {
-        UserDTO userDTO=new UserDTO();
+        UserDTO userDTO = new UserDTO();
 
         List<User> foundUserList = userMapper.getUserList();
-
 
         int listSize = foundUserList.size();
 
@@ -42,14 +41,15 @@ public class UserService {
         }
         return userDTO;
     }
-    public int insertUser(UserDTO userDTO){
-        User user=new User(
-            userDTO.getUserNo(),
-            userDTO.getId(),
-            userDTO.getPwd(),
-            userDTO.getName(),
-            userDTO.getPhone(),
-            userDTO.getEmail()
+
+    public int insertUser(UserDTO userDTO) {
+        User user = new User(
+                userDTO.getUserNo(),
+                userDTO.getId(),
+                userDTO.getPwd(),
+                userDTO.getName(),
+                userDTO.getPhone(),
+                userDTO.getEmail()
         );
 
 

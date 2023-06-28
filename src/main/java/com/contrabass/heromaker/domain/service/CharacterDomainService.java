@@ -6,8 +6,9 @@ import java.util.Random;
 
 @Service
 public class CharacterDomainService {
+    // 스텟 만렙 판단
 
-    // 선물 번호 얻는 로직
+    // 선물 번호  // 조만제
     public int getGiftNo(int reputation) {
         Random random = new Random();
         int prob = random.nextInt(10);
@@ -22,6 +23,7 @@ public class CharacterDomainService {
         return getGiftResult(prob, grade);
     }
 
+    // 선물 결과  // 조만제
     public int getGiftResult(int prob, String grade) {
         Random random = new Random();
 

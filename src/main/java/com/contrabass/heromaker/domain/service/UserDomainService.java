@@ -43,7 +43,7 @@ public class UserDomainService {
                 endingNo = "10";
             break;
 
-            case "가시값옷":
+            case "가시갑옷":
                 endingNo="11";
             break;
         }
