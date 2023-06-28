@@ -1,5 +1,6 @@
-
+let response;
 export default class Ajax{
+    response;
 
     requestVillageEventData() {
         $.ajax({
@@ -55,12 +56,30 @@ export default class Ajax{
             url: "/ajax/player-data",
             async: false,
             success: function (response) {
-                return response;
+                this.response = response;
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) { // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
-                return null;
+                this.response = 1;
             }
         });
+        return response;
     }
+
+    requestEndingData(classA) {
+        $.ajax({
+            type: "POST",
+            url: "/ajax/ending-data",
+            async: false,
+            success: function (response) {
+                classA.response = 1;
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) { // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+                classA.response = 1;
+            }
+        });
+
+    }
+
+
 }
 

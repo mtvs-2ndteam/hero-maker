@@ -124,7 +124,8 @@ export default class TrainingUI{
             callback: ()=>{
                 scene.trainingUI.deleteTrainingUI();
                 scene.bar.destroy();
-                scene.scheduleSelectUI.insertInteractive(scene);
+                scene.moveEnding();
+                scene.alertUI.onNextDay(scene);
             },
             loop: false
         });

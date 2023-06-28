@@ -4,9 +4,9 @@ export default class FightingUI{
         this.background = scene.add.sprite(800, 450, 'trainingRoomBackground').setDepth(9);
 
         // 아이콘 이미지
-        this.easyMonsterIcon = scene.add.sprite(300, 550, 'monster').setDepth(10);
-        this.normalMonsterIcon = scene.add.sprite(800, 550, 'monster').setDepth(10);
-        this.hardMonsterIcon = scene.add.sprite(1300, 550, 'monster').setDepth(10);
+        this.easyMonsterIcon = scene.add.sprite(300, 550, 'easyMonster').setDepth(10).setScale(3, 3);
+        this.normalMonsterIcon = scene.add.sprite(800, 550, 'normalMonster').setDepth(10).setScale(3, 3);
+        this.hardMonsterIcon = scene.add.sprite(1300, 550, 'hardMonster').setDepth(10).setScale(3, 3);
 
         this.easyDifficultyText = scene.make.text({
             x: 300,

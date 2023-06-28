@@ -50,7 +50,7 @@ export default class ScheduleSelectUI {
         scene.make.text({
             x: 1350,
             y: 450,
-            text: "전투",
+            text: "던전",
             style: {
                 font: "60px 'omyu_pretty'",
                 color: '#ffffff'

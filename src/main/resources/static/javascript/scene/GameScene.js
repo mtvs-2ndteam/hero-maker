@@ -9,6 +9,7 @@ import UnderBarUI from "../ui/UnderBarUI.js";
 import OptionUI from "../ui/OptionUI.js";
 import UserInformationUI from "../ui/UserInformationUI.js";
 import DayUI from "../ui/DayUI.js";
+import AlertUI from "../ui/AlertUI.js";
 
 export default class GameScene extends Phaser.Scene
 {
@@ -37,6 +38,7 @@ export default class GameScene extends Phaser.Scene
         this.scheduleSelectUI = new ScheduleSelectUI();
         this.fightingUI = new FightingUI();
         this.underBarUI = new UnderBarUI();
+        this.alertUI = new AlertUI();
 
         this.response = this.ajax.requestPlayerData();
         this.loadImage();
@@ -93,8 +95,8 @@ export default class GameScene extends Phaser.Scene
         this.scene.start('start');
     }
 
-    startEnding() {
-        this.scene.start('main2');
+    moveEnding() {
+        this.scene.start('ending');
     }
 
     loadImage() {
@@ -116,8 +118,14 @@ export default class GameScene extends Phaser.Scene
         this.load.image("yes", "image/ui/예.png");
         this.load.image("no", "image/ui/아니오.png");
 
+        // 알림 이미지 불러오기
+        this.load.image("alertNextDay", "image/ui/alert/nextDay.png");
+        this.load.image("injured", "image/ui/alert/injured.png");
+
         // 몬스터 이미지 불러오기
-        this.load.image("monster", "image/monster/레이어 90.png");
+        this.load.image("easyMonster", "image/monster/주황버섯.png");
+        this.load.image("normalMonster", "image/monster/다크_스텀프.png");
+        this.load.image("hardMonster", "image/monster/불독.png");
 
         // 훈련장 스탯 아이콘들 불러오기
         this.load.image("mageIcon", "image/trainingUi/마력 아이콘.png");
