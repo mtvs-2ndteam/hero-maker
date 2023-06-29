@@ -26,13 +26,20 @@ public class UserController {
         this.userCheckService = userCheckService;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String goHome() {
-        return "content/home.html";
-    }
 
     @GetMapping("/content/login")
     public void login() {
+    }
+
+    @GetMapping("/logout")
+    public String logout(Model model, WebRequest request) {
+        String msg="";
+        request.removeAttribute("userSession", request.SCOPE_SESSION);
+        int result=3;
+        msg="로그아웃 되었습니다.";
+        model.addAttribute("msg",msg);
+        model.addAttribute("result",result);
+        return "content/msg";
     }
 
     @PostMapping("/content/login")
