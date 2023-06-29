@@ -8,7 +8,6 @@ import com.contrabass.heromaker.domain.service.UserDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -37,7 +36,7 @@ public class UserService {
         int listSize = foundUserList.size();
 
         for (int i = 0; i < listSize; i++) {
-            if(foundUserList.get(i).getUserNo()==userNo){
+            if (foundUserList.get(i).getUserNo() == userNo) {
                 userDTO.setUserNo(foundUserList.get(i).getUserNo());
                 userDTO.setId(foundUserList.get(i).getId());
                 userDTO.setPwd(foundUserList.get(i).getPwd());
@@ -55,7 +54,7 @@ public class UserService {
         int listSize = foundUserList.size();
         try {
             for (int i = 0; i < listSize; i++) {
-                if(foundUserList.get(i).getId().equals(userId)) {
+                if (foundUserList.get(i).getId().equals(userId)) {
                     userDTO.setUserNo(foundUserList.get(i).getUserNo());
                     userDTO.setId(foundUserList.get(i).getId());
                     userDTO.setPwd(foundUserList.get(i).getPwd());

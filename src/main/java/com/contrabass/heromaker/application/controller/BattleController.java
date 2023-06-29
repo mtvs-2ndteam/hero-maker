@@ -1,14 +1,14 @@
 package com.contrabass.heromaker.application.controller;
 
-import com.contrabass.heromaker.application.dto.CharacterDTO;
 import com.contrabass.heromaker.application.service.BattleService;
 import com.contrabass.heromaker.application.service.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
 
 @Controller
 public class BattleController {
@@ -26,18 +26,13 @@ public class BattleController {
     public boolean fightEvent(HttpServletRequest request) {
 
         String param = request.getParameter("difficulty");
-        System.out.println(param);
         int indexFlag = this.battleService.doBattle(this.characterService.selectCharacter(1), param);
 
-        if(indexFlag == 1){
-            System.out.println("성공");
+        if (indexFlag == 1) {
             return true;
-        }
-        else if (indexFlag == 0){
-            System.out.println("실패");
+        } else if (indexFlag == 0) {
             return false;
-        }
-        else{
+        } else {
             return false;
         }
     }

@@ -1,8 +1,6 @@
 package com.contrabass.heromaker.application.controller;
 
-import com.contrabass.heromaker.application.dto.UserDTO;
 import com.contrabass.heromaker.application.service.UserCheckService;
-import com.contrabass.heromaker.application.dto.UserDTO;
 import com.contrabass.heromaker.application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,9 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 public class UserController {
@@ -28,33 +23,27 @@ public class UserController {
         this.userCheckService = userCheckService;
     }
 
-
     @GetMapping("/content/login")
     public void login() {
     }
 
     @GetMapping("/logout")
     public String logout(Model model, WebRequest request) {
-        String msg="";
+        String msg = "";
         request.removeAttribute("userSession", request.SCOPE_SESSION);
-        int result=3;
-        msg="로그아웃 되었습니다.";
-        model.addAttribute("msg",msg);
-        model.addAttribute("result",result);
+        int result = 3;
+        msg = "로그아웃 되었습니다.";
+        model.addAttribute("msg", msg);
+        model.addAttribute("result", result);
         return "content/msg";
     }
 
     @PostMapping("/content/login")
     public String LoginMenu(Model model, WebRequest request) {
-
-
         String id = request.getParameter("userName");
         String pwd = request.getParameter("userPassword");
-        String msg = "";
-
 
         return userCheckService.checkLogin(userService, id, pwd, request, model);
-
     }
 
     @GetMapping("/content/register")
@@ -63,15 +52,11 @@ public class UserController {
 
     @PostMapping("/content/register")
     public String RegisterMenu(Model model, WebRequest request) {
-
         String id = request.getParameter("id");
         String pwd = request.getParameter("password");
         String userName = request.getParameter("nickname");
         String phone = request.getParameter("phoneNumber");
         String email = request.getParameter("email");
-
-
-
         return userCheckService.checkRegist(userService, id, pwd, userName, phone, email, model);
     }
 

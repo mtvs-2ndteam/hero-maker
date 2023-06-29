@@ -48,9 +48,6 @@ public class UserDomainService {
                 break;
         }
 
-
-        System.out.println(endingNo);
-
         return endingNo;
     }
 

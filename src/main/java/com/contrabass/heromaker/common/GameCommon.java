@@ -27,6 +27,7 @@ public class GameCommon extends Thread {
             File file = new File(path);
             Clip clip = AudioSystem.getClip();
             clip.open(AudioSystem.getAudioInputStream(file));
+            Thread.sleep(3000);
             clip.loop(Clip.LOOP_CONTINUOUSLY);
             clip.start();
             try {

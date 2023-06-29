@@ -26,7 +26,6 @@ public class TrainingController {
     @ResponseBody
     public void trainingEvent(HttpServletRequest request) {
         String param = request.getParameter("kind");
-        System.out.println(param);
 
         trainingService.doTraining(this.characterService.selectCharacter(1), param);
     }

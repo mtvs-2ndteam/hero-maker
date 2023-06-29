@@ -28,8 +28,6 @@ public class QuestService {
                 characterDTO.getCharacterNo()
                 , questVO.getReputation()
                 , questVO.getToday());
-        System.out.println(questDTO.getReputation());
-        System.out.println(questDTO.getToday());
         return characterMapper.updateCharacterReputation(questDTO);
     }
 

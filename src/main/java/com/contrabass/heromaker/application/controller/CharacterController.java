@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
-
 @Controller
 public class CharacterController {
     private final CharacterService characterService;
@@ -22,17 +20,12 @@ public class CharacterController {
     @PostMapping("ajax/character-data")
     @ResponseBody
     public CharacterDTO getCharacterData() {
-//        HashMap<String, String> map  = new HashMap<>();
-//        CharacterDTO characterDTO = this.characterService.selectCharacter(1);
-//
-//        map.put("hp", Integer.toString(characterDTO.getHp()));
         return this.characterService.selectCharacter(1);
     }
 
     @PostMapping("ajax/new-character-data")
     @ResponseBody
     public CharacterDTO newCharacterData() {
-
         return this.characterService.deleteCharacter(1);
     }
 }
