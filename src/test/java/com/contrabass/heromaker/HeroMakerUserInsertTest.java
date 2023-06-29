@@ -7,6 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class HeroMakerUserInsertTest {
+
+
     private UserService userService;
     private UserInfraRepository userInfraRepository;
 
@@ -36,7 +38,8 @@ public class HeroMakerUserInsertTest {
 //    @Test
 //    void selectTest() {
 //        int userNo = 1;
-//        UserDTO userDTO=new UserDTO(1,"test1","test1","test1","test1","test1");
+
+//        UserDTO userDTO = new UserDTO(1, "test1", "test1", "test1", "test1", "test1");
 //
 //        Assertions.assertNotNull(userService.getUser(1)); //받아온 값이 null인지 비교
 //
