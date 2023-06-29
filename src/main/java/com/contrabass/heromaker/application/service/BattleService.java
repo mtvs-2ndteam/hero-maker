@@ -41,6 +41,4 @@ public class BattleService {
         }
         return -1; // 저장 실패
     }
-
-
 }

@@ -24,9 +24,14 @@ public class UserController {
         this.userService = userService;
     }
 
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String goHome() {
+        return "content/home.html";
+    }
 
     @GetMapping("/content/login")
-    public void login() {}
+    public void login() {
+    }
 
     @PostMapping("/content/login")
     public String LoginMenu(Model model, WebRequest request) {
@@ -37,8 +42,10 @@ public class UserController {
         model.addAttribute("message", message);
         return "content/messagePrinter";
     }
+
     @GetMapping("/content/register")
-    public void register() {}
+    public void register() {
+    }
 
     @PostMapping("/content/register")
     public String RegisterMenu(Model model, WebRequest request) {
@@ -50,27 +57,26 @@ public class UserController {
         String email = request.getParameter("email");
 
 
-        String message = id + "을(를) 신규 메뉴 목록의 " + id + "번 카테고리에 " + password+ "원으로 등록하였습니다!!";
+        String message = id + "을(를) 신규 메뉴 목록의 " + id + "번 카테고리에 " + password + "원으로 등록하였습니다!!";
         model.addAttribute("message", message);
         return "content/messagePrinter";
     }
 
 
-//    // db 테스트
-//    @RequestMapping(value = "/", method = RequestMethod.GET)
-//    public ModelAndView goHome() {
-//        ModelAndView mav = new ModelAndView();
-//
+    // db 테스트
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView goHome() {
+        ModelAndView mav = new ModelAndView();
+
 //        List<UserDTO> userList = userService.getUserList();
 //        System.out.println("userList = " + userList);
-//
-//
-//
+
+
 //        mav.addObject("userList", userList);
-//        mav.setViewName("content/home.html");
-//
-//        return mav;
-//    }
+        mav.setViewName("content/home.html");
+
+        return mav;
+    }
 
 //    @RequestMapping
 //    public String UserLoginCheck(HttpSession session){

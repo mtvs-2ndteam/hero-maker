@@ -11,9 +11,9 @@ public class HeroMakerUserInsertTest {
     private UserInfraRepository userInfraRepository;
 
     @Autowired
-    public void setUp(UserService userService,UserInfraRepository userInfraRepository) {
+    public void setUp(UserService userService, UserInfraRepository userInfraRepository) {
         this.userService = userService;
-        this.userInfraRepository=userInfraRepository;
+        this.userInfraRepository = userInfraRepository;
     }
 
 //    @DisplayName("데이터 삽입 테스트")

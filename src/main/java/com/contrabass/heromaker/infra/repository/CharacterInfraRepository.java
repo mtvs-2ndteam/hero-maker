@@ -1,6 +1,8 @@
 package com.contrabass.heromaker.infra.repository;
 
-import com.contrabass.heromaker.application.dto.*;
+import com.contrabass.heromaker.application.dto.BattleDTO;
+import com.contrabass.heromaker.application.dto.CharacterDTO;
+import com.contrabass.heromaker.application.dto.GiftResultDTO;
 import com.contrabass.heromaker.domain.entity.CharacterEntity;
 import com.contrabass.heromaker.domain.entity.Gift;
 import com.contrabass.heromaker.domain.repository.CharacterMapper;
@@ -18,16 +20,16 @@ public class CharacterInfraRepository implements CharacterMapper {
         this.sqlSession = sqlSession;
     }
 
-    // 현재 캐릭터 정보 조회 // 조만제
-    @Override
-    public CharacterEntity selectCharacter(int userNo) {
-        return sqlSession.selectOne("CharacterMapper.selectCharacter", userNo);
-    }
-
     // 신규 캐릭터 등록 // 조만제
     @Override
     public int insertCharacter(int userNo) {
         return sqlSession.insert("CharacterMapper.insertCharacter", userNo);
+    }
+
+    // 현재 캐릭터 조회 // 조만제
+    @Override
+    public CharacterEntity selectCharacter(int userNo) {
+        return sqlSession.selectOne("CharacterMapper.selectCharacter", userNo);
     }
 
     // 현재 캐릭터 삭제 // 조만제
@@ -63,9 +65,8 @@ public class CharacterInfraRepository implements CharacterMapper {
 
     // 캐릭터 스탯 업데이트
     @Override
-    public int updateCharacterStat(TrainingDTO trainingDTO) {
-
-        return sqlSession.update("CharacterMapper.updateCharacterStat", trainingDTO);
+    public int updateCharacterStat(CharacterDTO characterDTO) {
+        return sqlSession.update("CharacterMapper.updateCharacterStat", characterDTO);
     }
 
     // 캐릭터 명성 조회
@@ -76,8 +77,7 @@ public class CharacterInfraRepository implements CharacterMapper {
     }
 
     @Override
-    public int updateCharacterReputation(QuestDTO questDTO) {
-
-        return sqlSession.update("CharacterMapper.updateCharacterReputation", questDTO);
+    public int updateCharacterReputation(CharacterDTO characterDTO) {
+        return sqlSession.update("CharacterMapper.updateCharacterReputation", characterDTO);
     }
 }

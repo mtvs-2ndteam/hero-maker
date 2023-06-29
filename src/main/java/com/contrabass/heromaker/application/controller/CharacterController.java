@@ -28,6 +28,4 @@ public class CharacterController {
 //        map.put("hp", Integer.toString(characterDTO.getHp()));
         return this.characterService.selectCharacter(1);
     }
-
-
 }
