@@ -15,7 +15,7 @@ public class UserSessionInterceptor implements HandlerInterceptor {
         Object obj=session.getAttribute("loginCheck");
 
         if(obj ==null){
-            response.sendRedirect("login"); //로그인 할수 있는 페이지로 이동
+            response.sendRedirect("content/login"); //로그인 할수 있는 페이지로 이동
             return false;
         }
 

@@ -42,6 +42,28 @@ public class UserService {
         return userDTO;
     }
 
+    public UserDTO getUserList(String userId) {
+        UserDTO userDTO = new UserDTO();
+        List<User> foundUserList = userMapper.getUserList();
+        System.out.println("userId = "+userId);
+        int listSize = foundUserList.size();
+        try {
+            for (int i = 0; i < listSize; i++) {
+                if(foundUserList.get(i).getId().equals(userId)) {
+                    userDTO.setUserNo(foundUserList.get(i).getUserNo());
+                    userDTO.setId(foundUserList.get(i).getId());
+                    userDTO.setPwd(foundUserList.get(i).getPwd());
+                    userDTO.setName(foundUserList.get(i).getName());
+                    userDTO.setPhone(foundUserList.get(i).getPhone());
+                    userDTO.setEmail(foundUserList.get(i).getEmail());
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return userDTO;
+    }
+
     public int insertUser(UserDTO userDTO) {
         User user = new User(
                 userDTO.getUserNo(),
@@ -55,4 +77,6 @@ public class UserService {
 
         return userMapper.insertUser(user);
     }
+
+
 }

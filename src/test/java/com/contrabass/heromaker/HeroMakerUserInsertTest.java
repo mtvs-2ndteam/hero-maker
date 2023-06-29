@@ -6,14 +6,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class HeroMakerUserInsertTest {
 
 
-    private UserService userService;
-    private UserInfraRepository userInfraRepository;
-
-    @Autowired
-    public void setUp(UserService userService,UserInfraRepository userInfraRepository) {
-        this.userService = userService;
-        this.userInfraRepository=userInfraRepository;
-    }
+//    private UserService userService;
+//    private UserInfraRepository userInfraRepository;
+//
+//    @Autowired
+//    public void setUp(UserService userService,UserInfraRepository userInfraRepository) {
+//        this.userService = userService;
+//        this.userInfraRepository=userInfraRepository;
+//    }
 
 
 //    @DisplayName("데이터 삽입 테스트")
