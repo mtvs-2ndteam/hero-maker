@@ -65,15 +65,7 @@
 
 ## 5. 개발 포인트
 > 자세한 내용은 링크를 참고해주세요.
-
-* [Git Flow를 따르는 협업 프로세스](https://blossomwhale.notion.site/945341227bd64432a973d4294b89db37)
 * [만장일치 방식의 철저한 코드 리뷰](https://github.com/Team-PandaN/Team-PandaN-Back/pull/21)
-* [팀 자체 기술 블로그를 운영하여 문서화](https://blossomwhale.notion.site/ab1407eab5154d108f562b84f8cef731)
-* [Mysql에서 실행계획 분석 후 쿼리 튜닝](https://blossomwhale.notion.site/Mysql-0ca7bcd2a4b34333b3880693c7ed9e88)
-* 동시성 제어를 통한 DB 무결성 확보
-  * [동시 수정 제어 - Lock Manager](https://blossomwhale.notion.site/930f626a77f642ab8f49ceffe035e3dc)
-  * [동시 이동 제어 - 비즈니스 로직과 격리 수준 차별화](https://blossomwhale.notion.site/58f5dd7e7ab340e8bec32c720a2ccc12)
-
 
 <br>
 
