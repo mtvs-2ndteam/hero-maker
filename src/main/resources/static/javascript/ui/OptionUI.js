@@ -1,5 +1,6 @@
+
 export default class OptionUI {
-    newGameFlag = false;
+
 
     onTraining(scene) {
 
@@ -50,7 +51,7 @@ export default class OptionUI {
 
         this.yesImage.once('pointerup', function () {
             scene.tintFlag = false;
-            this.newGameFlag = true;
+            newGameFlag = true;
             scene.storyUI.onUI(scene);
             scene.optionUI.offUI();
         }, this);
@@ -63,7 +64,7 @@ export default class OptionUI {
 
         this.yesImage.once('pointerup', function () {
             scene.optionUI.offUI();
-            this.newGameFlag = false;
+            newGameFlag = false;
             scene.moveMain();
         }, this);
 

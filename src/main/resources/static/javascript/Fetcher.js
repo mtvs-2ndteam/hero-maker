@@ -62,6 +62,7 @@ export default class Fetcher {
 
     async requestNewCharacterData(scene) {
 
+        console.log("newCharacter");
         const player = await fetchNewPlayer();
         this.refreshPlayerStat(scene, player);
     }

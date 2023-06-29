@@ -29,12 +29,9 @@ public class CharacterService {
 
     // 새로하기 // 조만제
     public CharacterDTO deleteCharacter(int userNo) {
-        int deleteResult = characterMapper.deleteCharacter(userNo);
-        int insertResult = characterMapper.insertCharacter(userNo);
-        if (deleteResult == 1 && insertResult == 1) {
-            return selectCharacter(userNo);
-        }
-        return null;
+        characterMapper.deleteCharacter(userNo);
+        characterMapper.insertCharacter(userNo);
+        return selectCharacter(userNo);
     }
 
     // 선물 입력 // 조만제

@@ -1,0 +1,2 @@
+
+var newGameFlag = false;

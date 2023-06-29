@@ -28,7 +28,6 @@ export default class GameScene extends Phaser.Scene
         this.barFlag = false;
         this.bar = null;
         this.barGauge = 0;
-
         this.optionUI = new OptionUI();
         this.player = new Player();
         this.loadingBar = new LoadingBar();
@@ -61,6 +60,7 @@ export default class GameScene extends Phaser.Scene
         this.dayUI.createDayUI(this);
 
 
+        console.log(newGameFlag);
         if (newGameFlag) {
             this.ajax.requestNewCharacterData(this);
         }else{

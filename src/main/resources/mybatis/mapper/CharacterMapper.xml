@@ -77,12 +77,12 @@
 
     <update id="updateCharacterStat">
         UPDATE CHARACTER_TBL
-        SET hp          = #{ hp },
-            str         = #{ str },
-            mage        = #{ mage },
-            weaponPoint = #{ weaponPoint }
-        WHERE characterNo =
-              #{characterNo}
+        SET hp          = hp + #{hp}
+          , str         = str + #{str}
+          , mage        = mage + #{mage}
+          , weaponPoint = weaponPoint + #{weaponPoint}
+          , today       = today + #{today}
+        WHERE characterNo = #{characterNo}
     </update>
 
     <update id="updateReputation">

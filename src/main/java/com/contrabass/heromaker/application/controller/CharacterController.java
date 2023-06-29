@@ -28,4 +28,11 @@ public class CharacterController {
 //        map.put("hp", Integer.toString(characterDTO.getHp()));
         return this.characterService.selectCharacter(1);
     }
+
+    @PostMapping("ajax/new-character-data")
+    @ResponseBody
+    public CharacterDTO newCharacterData() {
+
+        return this.characterService.deleteCharacter(1);
+    }
 }

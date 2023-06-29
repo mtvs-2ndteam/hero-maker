@@ -31,9 +31,11 @@ public interface CharacterMapper {
     // 캐릭터 스탯 업데이트
     int updateCharacterStat(TrainingDTO trainingDTO);
 
+
     // 캐릭터의 명성을 조회하는 메소드
     CharacterEntity selectCharacterReputation(int characterNo);
 
     // 캐릭터 명성 업데이트
     int updateCharacterReputation(QuestDTO questDTO);
+
 }
