@@ -1,5 +1,7 @@
-import Ending from "./Ending.js";
-import GameScene from "./GameScene.js";
+
+import Ending from "./scene/Ending.js";
+import GameScene from "./scene/GameScene.js";
+import StartScene from "./scene/StartScene.js";
 
 const config = {
     type: Phaser.AUTO,
@@ -9,9 +11,10 @@ const config = {
         width: 1600,
         height: 900
     },
-    scene : [GameScene, Ending],
 
-    backgroundColor: "#18216D",
+    scene : [StartScene, GameScene, Ending],
+
+    backgroundColor: "#000000",
 
 };
 

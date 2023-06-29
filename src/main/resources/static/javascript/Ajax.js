@@ -1,7 +1,9 @@
 
+let response;
 export default class Ajax{
+    response;
 
-    _villageEventText;
+
 
     requestVillageEventData() {
         $.ajax({
@@ -9,20 +11,31 @@ export default class Ajax{
             url: "/ajax/village-event",
             async: false,
             success : function(response){
-                alert("통신 성공");
-                this._villageEventText = response.eventText;
+                return response;
             },
             error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
-                alert("통신 실패.")
+                return null;
+
             }
         });
     }
 
-    requestFightEventData() {
+
+    requestFightEventData(difficulty) {
+
         $.ajax({
             type: "POST",
             url: "/ajax/fight-event",
             data: {
+                difficulty: difficulty
+            },
+            async: false,
+            success: function (response) {
+                return response;
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) { // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+                return null;
+
                 eventIndex: 1
             },
             async: false,
@@ -35,31 +48,55 @@ export default class Ajax{
         });
     }
 
-    requestTrainingEventData(index) {
+
+    requestTrainingEventData(kind) {
+
         $.ajax({
             type: "POST",
             url: "/ajax/training-event",
             data: {
-                statIndex: index
+
+                kind: kind
             },
             async: false,
             success: function (response) {
-                alert("통신 성공.")
                 return response;
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) { // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
-                alert("통신 실패.")
                 return null;
             }
         });
     }
 
-    get villageEventText() {
-        return this._villageEventText;
+
+    requestPlayerData() {
+        $.ajax({
+            type: "POST",
+            url: "/ajax/player-data",
+            async: false,
+            success: function (response) {
+                this.response = response;
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) { // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+                this.response = 1;
+            }
+        });
+        return response;
     }
 
-    set villageEventText(value) {
-        this._villageEventText = value;
+    requestEndingData(classA) {
+        $.ajax({
+            type: "POST",
+            url: "/ajax/ending-data",
+            async: false,
+            success: function (response) {
+                classA.response = 1;
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) { // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+                classA.response = 1;
+            }
+        });
+
     }
-}
+
 
