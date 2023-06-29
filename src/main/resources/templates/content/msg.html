@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script  th:inline="javascript">
+  let msg = [[${msg}]];
+  let result = [[${result}]];
+  if(result==1){
+      alert(msg);
+      location.href="/";
+  }else if(result==2){
+      alert("게임을 시작합니다");
+      location.href="content/startGame.html";
+  }
+  else if(msg!=""||msg!=null) {
+    alert(msg);
+      history.go(-1);
+  }
+
+</script>
+</body>
+</html>
