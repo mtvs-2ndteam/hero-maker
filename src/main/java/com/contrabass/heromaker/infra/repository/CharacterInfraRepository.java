@@ -20,10 +20,22 @@ public class CharacterInfraRepository implements CharacterMapper {
         this.sqlSession = sqlSession;
     }
 
-    // 현재 캐릭터 정보 조회 // 조만제
+    // 신규 캐릭터 등록 // 조만제
+    @Override
+    public int insertCharacter(int userNo) {
+        return sqlSession.insert("CharacterMapper.insertCharacter", userNo);
+    }
+
+    // 현재 캐릭터 조회 // 조만제
     @Override
     public CharacterEntity selectCharacter(int userNo) {
         return sqlSession.selectOne("CharacterMapper.selectCharacter", userNo);
+    }
+
+    // 현재 캐릭터 삭제 // 조만제
+    @Override
+    public int deleteCharacter(int userNo) {
+        return sqlSession.selectOne("CharacterMapper.deleteCharacter", userNo);
     }
 
     // 특정 선물 조회 // 조만제
@@ -47,27 +59,23 @@ public class CharacterInfraRepository implements CharacterMapper {
     // 캐릭터 스탯 조회
     @Override
     public CharacterEntity selectCharacterStat(int characterNo) {
-
         return sqlSession.selectOne("CharacterMapper.selectCharacterStat", characterNo);
     }
 
     // 캐릭터 스탯 업데이트
     @Override
     public int updateCharacterStat(CharacterDTO characterDTO) {
-
         return sqlSession.update("CharacterMapper.updateCharacterStat", characterDTO);
     }
 
     // 캐릭터 명성 조회
     @Override
     public CharacterEntity selectCharacterReputation(int characterNo) {
-
         return sqlSession.selectOne("CharacterMapper.selectReputation", characterNo);
     }
 
     @Override
     public int updateCharacterReputation(CharacterDTO characterDTO) {
-
         return sqlSession.update("CharacterMapper.updateCharacterReputation", characterDTO);
     }
 }

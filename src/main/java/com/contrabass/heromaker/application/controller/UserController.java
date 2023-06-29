@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpSession;
 
 
@@ -27,6 +26,10 @@ public class UserController {
         this.userCheckService = userCheckService;
     }
 
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String goHome() {
+        return "content/home.html";
+    }
 
     @GetMapping("/content/login")
     public void login() {
@@ -57,6 +60,7 @@ public class UserController {
         String userName = request.getParameter("nickname");
         String phone = request.getParameter("phoneNumber");
         String email = request.getParameter("email");
+
 
 
         return userCheckService.checkRegist(userService, id, pwd, userName, phone, email, model);

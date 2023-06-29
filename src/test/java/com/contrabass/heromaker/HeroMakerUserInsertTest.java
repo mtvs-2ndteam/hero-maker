@@ -1,9 +1,13 @@
 package com.contrabass.heromaker;
 
+import com.contrabass.heromaker.application.service.UserService;
+import com.contrabass.heromaker.infra.repository.UserInfraRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class HeroMakerUserInsertTest {
+
 
 
 //    private UserService userService;
@@ -14,6 +18,7 @@ public class HeroMakerUserInsertTest {
 //        this.userService = userService;
 //        this.userInfraRepository=userInfraRepository;
 //    }
+
 
 
 //    @DisplayName("데이터 삽입 테스트")
@@ -52,7 +57,6 @@ public class HeroMakerUserInsertTest {
 //
 //        org.assertj.core.api.Assertions.assertThat(userDTO).usingRecursiveComparison().isEqualTo(userDTO);  //받아온 데이터가 테스트 데이터와 같은지 확인
 //    }
-
 
 
 }

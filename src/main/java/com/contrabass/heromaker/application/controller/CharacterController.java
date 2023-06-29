@@ -14,6 +14,6 @@ public class CharacterController {
     }
 
     public void getGift() {
-
+        
     }
 }
