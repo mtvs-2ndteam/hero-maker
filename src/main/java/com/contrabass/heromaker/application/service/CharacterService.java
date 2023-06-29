@@ -24,17 +24,17 @@ public class CharacterService {
     public CharacterDTO selectCharacter(int userNo) {
         CharacterDTO characterDTO = new CharacterDTO();
         CharacterEntity characterEntity = characterMapper.selectCharacter(userNo);
-        characterDTO.setCharacterNo(characterEntity.getCharacterNo());
-        characterDTO.setUserNo(characterEntity.getUserNo());
-        characterDTO.setNickName(characterEntity.getNickName());
-        characterDTO.setHp(characterEntity.getHp());
-        characterDTO.setStr(characterEntity.getStr());
-        characterDTO.setMage(characterEntity.getMage());
-        characterDTO.setWeaponPoint(characterEntity.getWeaponPoint());
-        characterDTO.setReputation(characterEntity.getReputation());
-        characterDTO.setToday(characterEntity.getToday());
-        characterDTO.setStatus(characterEntity.getStatus());
-        return characterDTO;
+        return characterDTO.setCharacterDTO(characterEntity);
+    }
+
+    // 새로하기 // 조만제
+    public CharacterDTO deleteCharacter(int userNo) {
+        int deleteResult = characterMapper.deleteCharacter(userNo);
+        int insertResult = characterMapper.insertCharacter(userNo);
+        if (deleteResult == 1 && insertResult == 1) {
+            return selectCharacter(userNo);
+        }
+        return null;
     }
 
     // 선물 입력 // 조만제
@@ -64,7 +64,7 @@ public class CharacterService {
     }
 
     // 캐릭터 명성 조회
-    public CharacterDTO selectCharacterReputation (int characterNo) {
+    public CharacterDTO selectCharacterReputation(int characterNo) {
 
         CharacterDTO characterDTO = new CharacterDTO();
 
