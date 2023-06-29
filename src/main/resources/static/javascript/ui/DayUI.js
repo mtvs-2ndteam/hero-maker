@@ -25,6 +25,16 @@ export default class DayUI{
             this.dayText.destroy();
         }
 
+
+        // 29일 이상일 경우 선물
+        if (date >= 29) {
+            scene.ajax.requestGiftData(scene);
+        }
+        // 30일 일경우 엔딩을 진행
+        if(date >= 30){
+            scene.moveEnding();
+        }
+
         // 새로운 바뀐 날짜를 생성
         this.dayText = scene.make.text({
             x: 335,

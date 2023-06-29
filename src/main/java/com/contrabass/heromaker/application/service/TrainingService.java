@@ -26,6 +26,7 @@ public class TrainingService {
     // 훈련 서비스
     public int doTraining(CharacterDTO characterDTO, String level) {
         TrainingVO trainingVO = trainingDomainService.getTrainingStat(level);
+
         TrainingDTO trainingDTO = new TrainingDTO(
                 characterDTO.getCharacterNo()
                 , trainingVO.getStr()
@@ -33,6 +34,7 @@ public class TrainingService {
                 , trainingVO.getMage()
                 , trainingVO.getWeaponPoint()
                 , trainingVO.getToday());
-        return characterMapper.updateCharacterStat(characterDTO);
+
+        return characterMapper.updateCharacterStat(trainingDTO);
     }
 }

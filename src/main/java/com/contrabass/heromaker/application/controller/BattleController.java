@@ -27,14 +27,17 @@ public class BattleController {
 
         String param = request.getParameter("difficulty");
         System.out.println(param);
+        int indexFlag = this.battleService.doBattle(this.characterService.selectCharacter(1), param);
 
-        if(this.battleService.doBattle(
-                this.characterService.selectCharacter(1), param) == 1){
+        if(indexFlag == 1){
             System.out.println("성공");
             return true;
         }
-        else{
+        else if (indexFlag == 0){
             System.out.println("실패");
+            return false;
+        }
+        else{
             return false;
         }
     }

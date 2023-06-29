@@ -24,14 +24,12 @@ public class EndingCheckService {
         this.userMapper = userMapper;
     }
 
-
+    public int getEnding() {
+//        this.userDomainService.endingNo()
+        return 1;
+    }
 
     public int insertEnding(EndingDTO endingDTO){
-
-        String endingNo=userDomainService.endingNo(30,30,30,30,5,"선물1"); //controller로 뺼 예정
-        String statusN=userDomainService.statusNo(endingNo); //controller로 뺼 예정
-        int userNo=endingDTO.getUserNo(); //controller로 뺼 예정
-
 
         Ending ending =new Ending(
                 endingDTO.getEndingNo(),

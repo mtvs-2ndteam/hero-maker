@@ -1,11 +1,12 @@
 package com.contrabass.heromaker;
 
+import com.contrabass.heromaker.application.service.UserService;
+import com.contrabass.heromaker.infra.repository.UserInfraRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class HeroMakerUserInsertTest {
-
-<<<<<<<<< Temporary merge branch 1
     private UserService userService;
     private UserInfraRepository userInfraRepository;
 
@@ -44,17 +45,7 @@ public class HeroMakerUserInsertTest {
 //        org.assertj.core.api.Assertions.assertThat(userDTO).isInstanceOf(UserDTO.class); //받아온 데이터가 UserDTO 타입인지 확인
 //
 //        org.assertj.core.api.Assertions.assertThat(userDTO).usingRecursiveComparison().isEqualTo(userDTO);  //받아온 데이터가 테스트 데이터와 같은지 확인
-=========
-//    private UserService userService;
-//    private UserInfraRepository userInfraRepository;
-//
-//    @Autowired
-//    public void setUp(UserService userService
-//            , UserInfraRepository userInfraRepository
-//    ) {
-//        this.userService = userService;
-//        this.userInfraRepository = userInfraRepository;
->>>>>>>>> Temporary merge branch 2
+
 //    }
 
 //    @DisplayName("데이터 삽입 테스트")

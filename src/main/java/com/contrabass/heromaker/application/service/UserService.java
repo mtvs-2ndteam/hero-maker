@@ -1,5 +1,6 @@
 package com.contrabass.heromaker.application.service;
 
+import com.contrabass.heromaker.application.dto.CharacterDTO;
 import com.contrabass.heromaker.application.dto.UserDTO;
 import com.contrabass.heromaker.domain.entity.User;
 import com.contrabass.heromaker.domain.repository.UserMapper;
@@ -19,6 +20,12 @@ public class UserService {
     public UserService(UserDomainService userDomainService, UserMapper userMapper) {
         this.userDomainService = userDomainService;
         this.userMapper = userMapper;
+    }
+
+    public String getEnding(CharacterDTO characterDTO) {
+        return userDomainService.endingNo(characterDTO.getStr(), characterDTO.getHp(),
+                characterDTO.getMage(), characterDTO.getWeaponPoint(),
+                characterDTO.getReputation(), characterDTO.getGift());
     }
 
 

@@ -24,13 +24,7 @@ export default class Ending extends Phaser.Scene
 
     create() {
         this.ajaxUI.requestEndingData(this);
-        this.string = "ending" + this.response;
-        console.log(this.string)
-        this.endingImage = this.add.image(800, 450, this.string);
-        this.endingImage.setInteractive(new Phaser.Geom.Rectangle(0, 0, this.endingImage.width, this.endingImage.height), Phaser.Geom.Rectangle.Contains);
-        this.endingImage.once('pointerup', function () {
-            this.scene.start('start');
-        }, this);
+
     }
 
 

@@ -1,4 +1,4 @@
-import Events from "../Events.js";
+
 import TrainingUI from "../ui/TrainingUI.js";
 import FightingUI from "../ui/FightingUI.js";
 import ScheduleSelectUI from "../ui/ScheduleSelectUI.js";
@@ -24,6 +24,7 @@ export default class GameScene extends Phaser.Scene
 
         this.progressBar();
 
+        this.newGameFlag = false;
         this.barFlag = false;
         this.bar = null;
         this.barGauge = 0;
@@ -34,7 +35,6 @@ export default class GameScene extends Phaser.Scene
         this.userInfoUI = new UserInformationUI();
         this.dayUI = new DayUI();
         this.ajax = new Fetcher();
-        this.events = new Events();
         this.trainingUI = new TrainingUI();
         this.scheduleSelectUI = new ScheduleSelectUI();
         this.fightingUI = new FightingUI();
@@ -60,9 +60,14 @@ export default class GameScene extends Phaser.Scene
         // 날짜 관련 UI 생성
         this.dayUI.createDayUI(this);
 
+
+        if (newGameFlag) {
+            this.ajax.requestNewCharacterData(this);
+        }else{
+            this.ajax.requestCharacterData(this);
+        }
+
         this.dayUI.refreshDate(this.player._day, this);
-        this.userInfoUI.refreshStat(this);
-        this.ajax.requestCharacterData(this);
 
         // this.character1 = Phaser.Utils.Array.Shuffle(this.character1);
 
@@ -139,6 +144,8 @@ export default class GameScene extends Phaser.Scene
 
         // 훈련장 배경 이미지
         this.load.image("trainingRoomBackground", "image/background/훈련장 1.png");
+
+        this.load.image("dungeonBackground", "image/background/던전 2.png");
 
         this.load.image("userInformation", "image/내 정보.png");
         this.load.image("dayData", "image/Day.png");

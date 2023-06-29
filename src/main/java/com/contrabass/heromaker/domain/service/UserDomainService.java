@@ -6,6 +6,7 @@ import java.util.Random;
 
 @Service
 public class UserDomainService {
+
     public String endingNo(int str,int hp,int mage, int weaponPoint,int reputation,String gift) {
         String endingNo="";
         int lowStat=30;
@@ -34,18 +35,20 @@ public class UserDomainService {
             endingNo="7";
         }
 
-        switch (gift){
-            case "마왕일살검" :
-                endingNo ="9";
-            break;
+        if (gift != null) {
+            switch (gift){
+                case "마왕일살검" :
+                    endingNo ="9";
+                    break;
 
-            case "세계수의 자팡이" :
-                endingNo = "10";
-            break;
+                case "세계수의 자팡이" :
+                    endingNo = "10";
+                    break;
 
-            case "가시갑옷":
-                endingNo="11";
-            break;
+                case "가시갑옷":
+                    endingNo="11";
+                    break;
+            }
         }
 
         System.out.println(endingNo);

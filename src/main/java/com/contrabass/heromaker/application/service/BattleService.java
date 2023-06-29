@@ -32,7 +32,14 @@ public class BattleService {
                 , statVO.getWeaponPoint()
                 , battleVO.getToday()
                 , battleVO.getStatus());
-        return characterMapper.saveBattleResult(battleDTO);
+        int result = characterMapper.saveBattleResult(battleDTO);
+        if (result == 1) {
+            if (battleVO.getToday() == 3) {
+                return 0; // 부상
+            }
+            return 1; // 전투 승리
+        }
+        return -1; // 저장 실패
     }
 
 
