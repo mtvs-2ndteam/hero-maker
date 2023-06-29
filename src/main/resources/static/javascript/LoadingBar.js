@@ -5,7 +5,9 @@ export default class LoadingBar{
 
          let bar = scene.add.graphics().setDepth(7);
 
-         bar.fillStyle( 2000,1);
+
+         bar.fillStyle( color,1);
+
 
         bar.fillRect(0, 0, width, height);
 

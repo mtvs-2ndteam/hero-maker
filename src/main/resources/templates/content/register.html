@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> 회원가입 폼</title>
+    <link rel="stylesheet" href="/css/box.css">
+    <script src="/javascript/Scan.js"></script>
+</head>
+<body>
+<form name="joinForm" method="post" action="/content/register" id="login-form">
+
+    <div class="login-wrapper">
+        <h2> 회원가입</h2>
+
+        <div class="field">
+        <b>아이디</b>
+        <input type="text" name="id" id="uid">
+    </div>
+
+    <div class="field">
+        <b> 비밀번호</b>
+        <input class="userpw" type="password" name="password" id="pw">
+    </div>
+
+
+    <div class="field">
+        <b>닉네임</b>
+        <input type="text" name="nickname" id="nickname">
+    </div>
+
+    <div class="field">
+        <b>핸드폰</b>
+        <input type="text"  name="phoneNumber" id="phone">
+    </div>
+
+    <div class="field">
+        <b>이메일</b>
+        <input type="email" placeholder="이메일"  name="email" id="mail">
+    </div>
+
+        <button id="test" type="button" onclick="clickBtn()">가입하기</button>
+<!--        <script>-->
+<!--            window.onload = function() {-->
+<!--                console.log('window.onload')-->
+<!--                let btn = document.getElementById('test');-->
+
+<!--                 btn.addEventListener('click', function() {-->
+<!--                     console.log('클릭')-->
+<!--                 })-->
+<!--            }-->
+<!--        </script>-->
+</div>
+</form>
+
+
+    </body>
+    </html>
+
+
