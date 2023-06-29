@@ -33,6 +33,17 @@ public class UserController {
     public void login() {
     }
 
+    @GetMapping("/logout")
+    public String logout(Model model, WebRequest request) {
+        String msg="";
+        request.removeAttribute("userSession", request.SCOPE_SESSION);
+        int result=3;
+        msg="로그아웃 되었습니다.";
+        model.addAttribute("msg",msg);
+        model.addAttribute("result",result);
+        return "content/msg";
+    }
+
     @PostMapping("/content/login")
     public String LoginMenu(Model model, WebRequest request) {
 

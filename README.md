@@ -70,6 +70,7 @@
 
 ## 5. 개발 포인트
 
+
 > 자세한 내용은 링크를 참고해주세요.
 * [만장일치 방식의 철저한 코드 리뷰](https://github.com/Team-PandaN/Team-PandaN-Back/pull/21)
 

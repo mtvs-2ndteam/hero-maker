@@ -52,7 +52,6 @@ public class UserService {
     public UserDTO getUserList(String userId) {
         UserDTO userDTO = new UserDTO();
         List<User> foundUserList = userMapper.getUserList();
-        System.out.println("userId = "+userId);
         int listSize = foundUserList.size();
         try {
             for (int i = 0; i < listSize; i++) {
