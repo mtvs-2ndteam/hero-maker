@@ -1,8 +1,6 @@
 package com.contrabass.heromaker.infra.repository;
 
-import com.contrabass.heromaker.application.dto.BattleDTO;
-import com.contrabass.heromaker.application.dto.CharacterDTO;
-import com.contrabass.heromaker.application.dto.GiftResultDTO;
+import com.contrabass.heromaker.application.dto.*;
 import com.contrabass.heromaker.domain.entity.CharacterEntity;
 import com.contrabass.heromaker.domain.entity.Gift;
 import com.contrabass.heromaker.domain.repository.CharacterMapper;
@@ -35,7 +33,7 @@ public class CharacterInfraRepository implements CharacterMapper {
     // 현재 캐릭터 삭제 // 조만제
     @Override
     public int deleteCharacter(int userNo) {
-        return sqlSession.selectOne("CharacterMapper.deleteCharacter", userNo);
+        return sqlSession.delete("CharacterMapper.deleteCharacter", userNo);
     }
 
     // 특정 선물 조회 // 조만제
@@ -59,23 +57,25 @@ public class CharacterInfraRepository implements CharacterMapper {
     // 캐릭터 스탯 조회
     @Override
     public CharacterEntity selectCharacterStat(int characterNo) {
+
         return sqlSession.selectOne("CharacterMapper.selectCharacterStat", characterNo);
     }
 
     // 캐릭터 스탯 업데이트
     @Override
-    public int updateCharacterStat(CharacterDTO characterDTO) {
-        return sqlSession.update("CharacterMapper.updateCharacterStat", characterDTO);
+    public int updateCharacterStat(TrainingDTO trainingDTO) {
+        return sqlSession.update("CharacterMapper.updateCharacterStat", trainingDTO);
     }
 
     // 캐릭터 명성 조회
     @Override
     public CharacterEntity selectCharacterReputation(int characterNo) {
+
         return sqlSession.selectOne("CharacterMapper.selectReputation", characterNo);
     }
 
     @Override
-    public int updateCharacterReputation(CharacterDTO characterDTO) {
-        return sqlSession.update("CharacterMapper.updateCharacterReputation", characterDTO);
+    public int updateCharacterReputation(QuestDTO questDTO) {
+        return sqlSession.update("CharacterMapper.updateCharacterReputation", questDTO);
     }
 }

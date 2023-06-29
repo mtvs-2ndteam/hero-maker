@@ -1,7 +1,7 @@
 export default class FightingUI{
     background;
     createFightingUI(scene){
-        this.background = scene.add.sprite(800, 450, 'trainingRoomBackground').setDepth(9);
+        this.background = scene.add.sprite(800, 450, 'dungeonBackground').setDepth(9);
 
         // 아이콘 이미지
         this.easyMonsterIcon = scene.add.sprite(300, 550, 'easyMonster').setDepth(10).setScale(3, 3);
@@ -77,15 +77,12 @@ export default class FightingUI{
 
     fightEvent(scene, difficulty) {
         scene.fightingUI.deleteFightIconInteractive();
-        scene.events.startFightEvent(scene, difficulty);
         scene.bar = scene.loadingBar.makeBar(0, 0, 1600, 50, 	0x808080, scene).setDepth(12);
         scene.barFlag = true;
         scene.time.addEvent({
-            delay: 3150,
+            delay: 3600,
             callback: ()=>{
-                scene.fightingUI.deleteFightUI(scene);
-                scene.bar.destroy();
-                scene.alertUI.onNextDay(scene);
+                scene.ajax.requestFightEventData(difficulty, scene);
             },
             loop: false
         });

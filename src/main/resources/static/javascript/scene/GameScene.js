@@ -1,8 +1,8 @@
-import Events from "../Events.js";
+
 import TrainingUI from "../ui/TrainingUI.js";
 import FightingUI from "../ui/FightingUI.js";
 import ScheduleSelectUI from "../ui/ScheduleSelectUI.js";
-import Ajax from "../Ajax.js";
+import Fetcher from "../Fetcher.js";
 import LoadingBar from "../LoadingBar.js";
 import Player from "../Player.js";
 import UnderBarUI from "../ui/UnderBarUI.js";
@@ -10,6 +10,7 @@ import OptionUI from "../ui/OptionUI.js";
 import UserInformationUI from "../ui/UserInformationUI.js";
 import DayUI from "../ui/DayUI.js";
 import AlertUI from "../ui/AlertUI.js";
+
 
 export default class GameScene extends Phaser.Scene
 {
@@ -23,25 +24,22 @@ export default class GameScene extends Phaser.Scene
 
         this.progressBar();
 
+        this.newGameFlag = false;
         this.barFlag = false;
         this.bar = null;
         this.barGauge = 0;
-
         this.optionUI = new OptionUI();
         this.player = new Player();
-        this.player.getPlayerData("쿠크냐냐", 48, 24, 43, 67, 33, 1);
         this.loadingBar = new LoadingBar();
         this.userInfoUI = new UserInformationUI();
         this.dayUI = new DayUI();
-        this.ajax = new Ajax();
-        this.events = new Events();
+        this.ajax = new Fetcher();
         this.trainingUI = new TrainingUI();
         this.scheduleSelectUI = new ScheduleSelectUI();
         this.fightingUI = new FightingUI();
         this.underBarUI = new UnderBarUI();
         this.alertUI = new AlertUI();
 
-        this.response = this.ajax.requestPlayerData();
         this.loadImage();
     }
     create() {
@@ -60,6 +58,14 @@ export default class GameScene extends Phaser.Scene
 
         // 날짜 관련 UI 생성
         this.dayUI.createDayUI(this);
+
+
+        console.log(newGameFlag);
+        if (newGameFlag) {
+            this.ajax.requestNewCharacterData(this);
+        }else{
+            this.ajax.requestCharacterData(this);
+        }
 
         this.dayUI.refreshDate(this.player._day, this);
 
@@ -138,6 +144,8 @@ export default class GameScene extends Phaser.Scene
 
         // 훈련장 배경 이미지
         this.load.image("trainingRoomBackground", "image/background/훈련장 1.png");
+
+        this.load.image("dungeonBackground", "image/background/던전 2.png");
 
         this.load.image("userInformation", "image/내 정보.png");
         this.load.image("dayData", "image/Day.png");

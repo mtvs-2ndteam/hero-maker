@@ -116,16 +116,12 @@ export default class TrainingUI{
 
     trainingEvent(scene, kind) {
         scene.trainingUI.deleteTrainingIconInteractive();
-        scene.events.startTrainingEvent(scene, kind);
         scene.bar = scene.loadingBar.makeBar(0, 0, 1600, 50, 0x808080, scene).setDepth(12);
         scene.barFlag = true;
         scene.time.addEvent({
-            delay: 3150,
+            delay: 3600,
             callback: ()=>{
-                scene.trainingUI.deleteTrainingUI();
-                scene.bar.destroy();
-                scene.moveEnding();
-                scene.alertUI.onNextDay(scene);
+                scene.ajax.requestTrainingEventData(scene, kind);
             },
             loop: false
         });

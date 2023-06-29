@@ -2,6 +2,8 @@ import OptionUI from "../ui/OptionUI.js";
 import EndingUI from "../ui/EndingUI.js";
 import StoryUI from "../ui/StoryUI.js";
 
+var newGameFlag = false;
+
 export default class GameScene extends Phaser.Scene{
 
     tintFlag = true;

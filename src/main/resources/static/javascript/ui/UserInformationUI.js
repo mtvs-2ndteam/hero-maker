@@ -68,10 +68,6 @@ export default class UserInformationUI{
         }).setDepth(3).setOrigin(1, 0.5);
 
 
-
-
-
-
         // 스탯들 바 생성하기
 
         this.statBar1 = scene.loadingBar.makeBar(165, 429,
@@ -84,50 +80,7 @@ export default class UserInformationUI{
             170, 25, '0x800080', scene).setDepth(4);
 
         // 스탯 텍스트 생성
-        scene.make.text({
-            x: 250,
-            y: 441,
-            text: scene.player._hp + " / 120",
-            style: {
-                font: "20px 'omyu_pretty'",
-                color: '#ffffff',
-            }
-        }).setDepth(5).setOrigin(0.5, 0.5);
-
-        scene.make.text({
-            x: 250,
-            y: 511,
-            text: scene.player._str + " / 120",
-            style: {
-                font: "20px 'omyu_pretty'",
-                color: '#ffffff',
-            }
-        }).setDepth(5).setOrigin(0.5, 0.5);
-
-        scene.make.text({
-            x: 250,
-            y: 581,
-            text: scene.player._mage + " / 120",
-            style: {
-                font: "20px 'omyu_pretty'",
-                color: '#ffffff',
-            }
-        }).setDepth(5).setOrigin(0.5, 0.5);
-
-        scene.make.text({
-            x: 250,
-            y: 651,
-            text: scene.player._weaponPoint + " / 120",
-            style: {
-                font: "20px 'omyu_pretty'",
-                color: '#ffffff',
-            }
-        }).setDepth(5).setOrigin(0.5, 0.5);
-
-        // this.statBar1Percentage = 100;
-        // this.statBar2Percentage = 100;
-        // this.statBar3Percentage = 100;
-        // this.statBar4Percentage = 100;
+        this.createStatText(scene);
 
         this.refreshStat(scene);
     }
@@ -139,11 +92,61 @@ export default class UserInformationUI{
         this.statBar3Percentage = scene.player._mage * 100 / 120;
         this.statBar4Percentage = scene.player._weaponPoint * 100 / 120;
 
+        if (this.hpText != null) {
+            this.hpText.destroy();
+            this.strText.destroy();
+            this.mageText.destroy();
+            this.weaponPointText.destroy();
+        }
+
+        this.createStatText(scene);
+
         scene.loadingBar.setValue(this.statBar1, this.statBar1Percentage);
         scene.loadingBar.setValue(this.statBar2, this.statBar2Percentage);
         scene.loadingBar.setValue(this.statBar3, this.statBar3Percentage);
         scene.loadingBar.setValue(this.statBar4, this.statBar4Percentage);
     }
 
+    createStatText(scene) {
+        this.hpText = scene.make.text({
+            x: 250,
+            y: 441,
+            text: scene.player._hp + " / 120",
+            style: {
+                font: "20px 'omyu_pretty'",
+                color: '#ffffff',
+            }
+        }).setDepth(5).setOrigin(0.5, 0.5);
+
+        this.strText = scene.make.text({
+            x: 250,
+            y: 511,
+            text: scene.player._str + " / 120",
+            style: {
+                font: "20px 'omyu_pretty'",
+                color: '#ffffff',
+            }
+        }).setDepth(5).setOrigin(0.5, 0.5);
+
+        this.mageText = scene.make.text({
+            x: 250,
+            y: 581,
+            text: scene.player._mage + " / 120",
+            style: {
+                font: "20px 'omyu_pretty'",
+                color: '#ffffff',
+            }
+        }).setDepth(5).setOrigin(0.5, 0.5);
+
+        this.weaponPointText = scene.make.text({
+            x: 250,
+            y: 651,
+            text: scene.player._weaponPoint + " / 120",
+            style: {
+                font: "20px 'omyu_pretty'",
+                color: '#ffffff',
+            }
+        }).setDepth(5).setOrigin(0.5, 0.5);
+    }
 }
 

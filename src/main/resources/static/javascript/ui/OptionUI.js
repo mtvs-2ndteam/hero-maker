@@ -1,4 +1,6 @@
+
 export default class OptionUI {
+
 
     onTraining(scene) {
 
@@ -29,15 +31,13 @@ export default class OptionUI {
         this.onUI(scene, 'ynBackground', true);
 
         this.yesImage.once('pointerup', function () {
-            scene.events.startHelpingEvent(scene);
+
             scene.bar = scene.loadingBar.makeBar(0, 0, 1600, 50, 	0x808080, scene).setDepth(12);
             scene.barFlag = true;
             scene.time.addEvent({
-                delay: 3150,
+                delay: 3600,
                 callback: ()=>{
-                    scene.optionUI.offUI();
-                    scene.bar.destroy();
-                    scene.alertUI.onNextDay(scene);
+                    scene.ajax.requestQuestEventData(scene);
                 },
                 loop: false
             });
@@ -51,9 +51,10 @@ export default class OptionUI {
 
         this.yesImage.once('pointerup', function () {
             scene.tintFlag = false;
+            newGameFlag = true;
             scene.storyUI.onUI(scene);
             scene.optionUI.offUI();
-        });
+        }, this);
 
         this.noEvent2(scene);
     }
@@ -63,8 +64,9 @@ export default class OptionUI {
 
         this.yesImage.once('pointerup', function () {
             scene.optionUI.offUI();
+            newGameFlag = false;
             scene.moveMain();
-        });
+        }, this);
 
         this.noEvent2(scene);
     }

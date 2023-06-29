@@ -2,6 +2,7 @@ package com.contrabass.heromaker.application.controller;
 
 import com.contrabass.heromaker.application.dto.UserDTO;
 import com.contrabass.heromaker.application.service.UserCheckService;
+import com.contrabass.heromaker.application.dto.UserDTO;
 import com.contrabass.heromaker.application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,8 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
-import javax.servlet.http.HttpSession;
 
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -90,4 +92,3 @@ public class UserController {
         return mav;
     }
 }
-

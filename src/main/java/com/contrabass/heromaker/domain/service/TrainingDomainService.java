@@ -14,19 +14,19 @@ public class TrainingDomainService {
         int weaponPoint = 0;
         int today = 1;
 
-        if (level.equals("힘 훈련")) {
+        if (level.equals("힘")) {
             str = 2;
             today = 1;
         }
-        if (level.equals("체력 훈련")) {
+        if (level.equals("체력")) {
             hp = 2;
             today = 1;
         }
-        if (level.equals("지능 훈련")) {
+        if (level.equals("마력")) {
             mage = 2;
             today = 1;
         }
-        if (level.equals("무기술 훈련")) {
+        if (level.equals("무기술")) {
             weaponPoint = 2;
             today = 1;
         }

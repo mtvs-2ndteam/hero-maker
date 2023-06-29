@@ -15,7 +15,8 @@ export default class AlertUI {
     }
 
     onInjured(scene) {
-        this.alertInjuredImage = scene.add.sprite(800, 450, 'injured');
+        scene.dayUI.refreshDate(scene.player._day, scene);
+        this.alertInjuredImage = scene.add.sprite(800, 450, 'injured').setDepth(10);
         this.alpaBackground = scene.add.sprite(800, 450, '50alpaBackground').setDepth(9);
         scene.time.addEvent({
             delay: 1000,

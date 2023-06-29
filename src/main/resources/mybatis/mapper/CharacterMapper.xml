@@ -33,7 +33,15 @@
         FROM CHARACTER_TBL
         WHERE userNo = #{userNo}
     </delete>
-    
+
+
+    <update id="updateCharacterReputation">
+        UPDATE CHARACTER_TBL
+            SET today = today + #{today}
+              , reputation = reputation + #{reputation}
+        WHERE characterNo = #{characterNo}
+    </update>
+
     <update id="updateCharacterGift">
         UPDATE CHARACTER_TBL
         SET gift  = #{gift}
@@ -69,12 +77,12 @@
 
     <update id="updateCharacterStat">
         UPDATE CHARACTER_TBL
-        SET hp          = #{ hp },
-            str         = #{ str },
-            mage        = #{ mage },
-            weaponPoint = #{ weaponPoint }
-        WHERE characterNo =
-              #{characterNo}
+        SET hp          = hp + #{hp}
+          , str         = str + #{str}
+          , mage        = mage + #{mage}
+          , weaponPoint = weaponPoint + #{weaponPoint}
+          , today       = today + #{today}
+        WHERE characterNo = #{characterNo}
     </update>
 
     <update id="updateReputation">
