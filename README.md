@@ -4,11 +4,6 @@
 
 ![00  시작화면](https://github.com/mtvs-2ndteam/hero-maker/assets/48119129/047da248-71e3-4db4-b9df-8d39490b0600)
 
-
-📌 **시연 영상** :  <br>
-📌 **발표 자료
-** : [구글 프레젠테이션으로 이동](https://docs.google.com/presentation/d/1kloW7eZ71UodL_csitGjq6TjNO-AIE451UVIFgZWqlo/edit?usp=sharing)
-
 <br>
 
 ## 1. Hero Maker 소개
